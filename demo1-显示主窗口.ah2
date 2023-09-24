@@ -18,24 +18,26 @@ main()
     is_open_demo := true
     is_open_main := true 
     bf := ui.tb('input')
+    int4 := ctypes.array('int', 4)()
     while(ui.peekmsg())
     {
         ui.beginframe()
-
         if(is_open_demo)
             ui.igShowDemoWindow(&is_open_demo)
 
         if(is_open_main)
         {
-            ui.igBegin(ui.str('xxx'), &is_open_main)
-            if(ui.igButton(ui.str('button'), ImVec2([100, 100])))
+            if(ui.igBegin(ui.str('xxx##test'), &is_open_main))
             {
-                MsgBox('button')
+                if(ui.igButton(ui.str('button##2'), ImVec2([100, 100])))
+                {
+                    MsgBox(bf.Text int4[0] int4[1] int4[2] int4[3])
+                }
+                ui.igInputText(ui.str('input##3'), bf, bf.Size)
+                ui.igInputInt4(ui.str('int##int'), int4)
             }
-            ui.igInputText(ui.str('input'), bf, bf.Size)
             ui.igEnd()
         }
-
         ui.endframe()
     }
     ExitApp

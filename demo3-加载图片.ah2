@@ -22,7 +22,10 @@ main()
         if(is_open)
         {
             ui.igBegin(ui.str('main'), &is_open, 0)
-            ui.igButton(ui.str('Button'), ImVec2([100, 100]))
+            if(ui.igButton(ui.str('Button'), ImVec2([100, 100])))
+            {
+                MsgBox('ok')
+            }
             ui.igImageButton(ui.str('imageButton'), image, ImVec2(size))
             ui.igEnd()
         }

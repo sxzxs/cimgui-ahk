@@ -24,6 +24,18 @@ class Imgui extends Cimgui_AHK
         
     }
 
+    static color(cl := [0, 0, 0, 255]) ;rgba int
+    {
+        return ImVec4.from_ptr(ImColor_AHK.ImColor_Int(cl*))
+    }
+
+    static str(str, encoding := 'UTF-8')
+    {
+        buf := buffer(strput(str, encoding))
+        strput(str, buf, encoding)
+        return buf
+    }
+
     str(str, encoding := 'UTF-8')
     {
         buf := buffer(strput(str, encoding))
@@ -160,5 +172,39 @@ class Imgui extends Cimgui_AHK
     {
         rtn := DllCall(Cimgui_dll.LoadTextureFromMemory, "ptr", buf, "int", buf_size, "int *", &out_srv, "int *", &out_width, "int *", &out_height)
         return rtn
+    }
+
+    /*
+    * 从给定的字符串中获取字符的编码范围
+    * @string 字符串， utf-16
+    * @range_array 返回字符串编码数组
+    * @length 数字数组的长度
+    * @raw_data 原始字符范围字符串
+    */
+    load_font_range_from_string(string, &range_array, &length, &raw_data)
+    {
+        struct_value := buffer(10000 * 4, 0)
+        raw_data := buffer(10000 * 4, 0)
+        DllCall(Cimgui_dll.imgui_get_custom_font_range_from_string, "wstr", string, "ptr", struct_value, "int *", &length, "ptr", raw_data)
+        loop(length)
+            range_array.Push(NumGet(struct_value, (A_Index -1) * 4, "int"))
+    }
+
+    ;从给定的文件获取字符编码范围
+    load_font_range(file_path, &range_array, &length, &raw_data)
+    {
+        struct_value := buffer(10000 * 4, 0)
+        raw_data := buffer(10000 * 4, 0)
+        DllCall(Cimgui_dll.imgui_get_custom_font_range, "wstr", file_path, "ptr", struct_value, "int *", &length, "ptr", raw_data)
+        loop(length)
+            range_array.Push(NumGet(struct_value, (A_Index -1) * 4, "int"))
+    }
+
+    ;加载字体
+    load_font(font_path := "from_memory_simhei", font_size := 20, font_range := "GetGlyphRangesChineseFull", range_charBuf := 0, OversampleH := 1, OversampleV := 1, PixelSnapH := false)
+    {
+        font := 0
+        result := DllCall(Cimgui_dll.load_font, "ptr*", &font, "wstr", font_path, "float", font_size, "wstr", font_range, "ptr", range_charBuf, "int", OversampleH, "int", OversampleV, "int", PixelSnapH)
+        return font
     }
 }

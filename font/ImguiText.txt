@@ -1,0 +1,66 @@
+﻿abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ: 
+1234567890 
+
+#Requires AutoHotkey v2.0
+#include <cimgui>
+
+main()
+main()
+{
+    ;Register exited functions, Variables that need to be cleared for ctypes binding
+    OnExit ExitFunc
+    ui := Imgui()
+    ui.enableviewports(false)
+    ui.load_font_range(A_ScriptDir '/font/ImguiText.txt', &range_array := [], &length := 0, &raw_data)
+    hwnd := ui.gui_create("AHK ImGui", 500, 500, 0, 0, 0, 0,,,, raw_data)
+    WinShow(hwnd)
+
+    io := ui.igGetIO()
+    global g_io := ImGuiIO_AHK.from_ptr(io) ;ctypes from_ptr 对象，需要主动释放
+    imgui.ctype_bind_var.Push('g_io')
+
+    is_open_demo := true
+    is_open_main := true 
+    bf := ui.tb('input')
+    int4 := ctypes.array('int', 4)()
+    while(ui.peekmsg())
+    {
+        ui.beginframe()
+        if(is_open_demo)
+            ui.igShowDemoWindow(&is_open_demo)
+
+        if(is_open_main)
+        {
+            static mode := '大乱斗'
+            if(ui.igBegin(ui.str('main'), &is_open_main))
+            {
+                static v := 1
+                ui.igRadioButton_IntPtr(ui.str('大乱斗'), &v, 1)
+                ui.igRadioButton_IntPtr(ui.str('云顶匹配'), &v, 2), ui.igSameLine()
+                ui.igRadioButton_IntPtr(ui.str('云顶排位'), &v, 3)
+
+                static is_open := true
+                ui.igCheckbox(ui.str('是否开启'), &is_open)
+                static is_create_room := true
+                ui.igCheckbox(ui.str('是否创建房间'), &is_create_room)
+                static is_receive := true
+                ui.igCheckbox(ui.str('是否接受对局'), &is_receive)
+                static is_next_game := true
+                ui.igCheckbox(ui.str('是否自动下一局'), &is_next_game)
+            }
+            ui.igEnd()
+        }
+        ui.endframe()
+    }
+    ExitApp
+}
+
+
+ExitFunc(ExitReason, ExitCode)
+{
+    global
+    for k,v in imgui.ctype_bind_var
+    {
+        %v% := ''
+    }
+}

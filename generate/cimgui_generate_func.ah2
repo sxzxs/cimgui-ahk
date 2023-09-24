@@ -6,11 +6,12 @@
 
 info := ctypes.__get_typeinfo('bool')
 logger.info(info)
+info := ctypes.__get_typeinfo('bool*')
 logger.info(info)
 
 ; 先遍历一遍所有函数的参数，看是否都能转换到基础类型，ptr和 vector123
 
-json_str := FileRead(A_ScriptDir "\..\cimgui\cimgui\generator\output\definitions.json")
+json_str := FileRead(A_ScriptDir "\..\cimgui\generator\output\definitions.json")
 js := json.parse(json_str)
 
 result_str := ''
@@ -113,6 +114,8 @@ for k, v in js
             }
             dll_type := convert_to_dll_type(n['name'], n['type'])
             func_str .= dll_type
+            if(n['type'] = '...' && n['name'] = '...')
+                func_str .= ', p*'
             logger.info(dll_type)
         }
         if(is_class_func)        
@@ -126,7 +129,16 @@ for k, v in js
                 dll_type := ', "ptr"'
             ret_type := dll_type
         }
-        func_str .= ret_type
+        if(InStr(func_str, ', p*'))
+        {
+            if(!(InStr(ret_type, 'int') || ret_type = ''))
+            {
+                ;MsgBox('参数有...,但是返回值不能省略')
+
+            }
+        }
+        else
+            func_str .= ret_type
 
         func_str .= ')`n    return dll_rtn`n}`n'
 
@@ -183,9 +195,10 @@ logger.info(struct_no_ptr)
 
 convert_to_dll_type(name, tp)
 {
+    original_type := tp
     dll_type := ''
     tp := StrReplace(tp, 'const ')
-    tp := StrReplace(tp, 'bool', 'int')
+    ;tp := StrReplace(tp, 'bool', 'char')
     if (tp = '...')
     {
         dll_type := ''
@@ -264,7 +277,7 @@ convert_to_dll_type(name, tp)
 
     if (is_base)
     {
-        if (tp = 'char*')
+        if (tp = 'char*' && original_type != 'bool*')
         {
             dll_type := ', "ptr", ' name
         }

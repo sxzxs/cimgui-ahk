@@ -66,49 +66,49 @@ class Cimgui_AHK
 	igArrowButton(str_id, dir)
 	{
 		;bool igArrowButton(const char* str_id, ImGuiDir dir)
-	    dll_rtn := DllCall(Cimgui_dll.igArrowButton, "ptr", str_id, "int", dir, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igArrowButton, "ptr", str_id, "int", dir, "char")
 	    return dll_rtn
 	}
 	
 	igArrowButtonEx(str_id, dir, size_arg, flags := 0)
 	{
 		;bool igArrowButtonEx(const char* str_id, ImGuiDir dir, ImVec2 size_arg, ImGuiButtonFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igArrowButtonEx, "ptr", str_id, "int", dir, "int64", NumGet(size_arg, "int64"), "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igArrowButtonEx, "ptr", str_id, "int", dir, "int64", NumGet(size_arg, "int64"), "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igBegin(name, &p_open := 0, flags := 0)
 	{
 		;bool igBegin(const char* name, bool* p_open, ImGuiWindowFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igBegin, "ptr", name, "int*", &p_open, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igBegin, "ptr", name, "char*", &p_open, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igBeginChild_Str(str_id, size := ImVec2([0, 0]), border := false, flags := 0)
 	{
 		;bool igBeginChild_Str(const char* str_id, const ImVec2 size, bool border, ImGuiWindowFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igBeginChild_Str, "ptr", str_id, "int64", NumGet(size, "int64"), "int", border, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igBeginChild_Str, "ptr", str_id, "int64", NumGet(size, "int64"), "char", border, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igBeginChild_ID(id, size := ImVec2([0, 0]), border := false, flags := 0)
 	{
 		;bool igBeginChild_ID(ImGuiID id, const ImVec2 size, bool border, ImGuiWindowFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igBeginChild_ID, "uint", id, "int64", NumGet(size, "int64"), "int", border, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igBeginChild_ID, "uint", id, "int64", NumGet(size, "int64"), "char", border, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igBeginChildEx(name, id, size_arg, border, flags)
 	{
 		;bool igBeginChildEx(const char* name, ImGuiID id, const ImVec2 size_arg, bool border, ImGuiWindowFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igBeginChildEx, "ptr", name, "uint", id, "int64", NumGet(size_arg, "int64"), "int", border, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igBeginChildEx, "ptr", name, "uint", id, "int64", NumGet(size_arg, "int64"), "char", border, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igBeginChildFrame(id, size, flags := 0)
 	{
 		;bool igBeginChildFrame(ImGuiID id, const ImVec2 size, ImGuiWindowFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igBeginChildFrame, "uint", id, "int64", NumGet(size, "int64"), "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igBeginChildFrame, "uint", id, "int64", NumGet(size, "int64"), "int", flags, "char")
 	    return dll_rtn
 	}
 	
@@ -122,28 +122,28 @@ class Cimgui_AHK
 	igBeginCombo(label, preview_value, flags := 0)
 	{
 		;bool igBeginCombo(const char* label, const char* preview_value, ImGuiComboFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igBeginCombo, "ptr", label, "ptr", preview_value, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igBeginCombo, "ptr", label, "ptr", preview_value, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igBeginComboPopup(popup_id, bb, flags)
 	{
 		;bool igBeginComboPopup(ImGuiID popup_id, const ImRect bb, ImGuiComboFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igBeginComboPopup, "uint", popup_id, "ptr", bb, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igBeginComboPopup, "uint", popup_id, "ptr", bb, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igBeginComboPreview()
 	{
 		;bool igBeginComboPreview()
-	    dll_rtn := DllCall(Cimgui_dll.igBeginComboPreview, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igBeginComboPreview, "char")
 	    return dll_rtn
 	}
 	
 	igBeginDisabled(disabled := true)
 	{
 		;void igBeginDisabled(bool disabled)
-	    dll_rtn := DllCall(Cimgui_dll.igBeginDisabled, "int", disabled)
+	    dll_rtn := DllCall(Cimgui_dll.igBeginDisabled, "char", disabled)
 	    return dll_rtn
 	}
 	
@@ -164,28 +164,28 @@ class Cimgui_AHK
 	igBeginDocked(window, &p_open)
 	{
 		;void igBeginDocked(ImGuiWindow* window, bool* p_open)
-	    dll_rtn := DllCall(Cimgui_dll.igBeginDocked, "ptr", window, "int*", &p_open)
+	    dll_rtn := DllCall(Cimgui_dll.igBeginDocked, "ptr", window, "char*", &p_open)
 	    return dll_rtn
 	}
 	
 	igBeginDragDropSource(flags := 0)
 	{
 		;bool igBeginDragDropSource(ImGuiDragDropFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igBeginDragDropSource, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igBeginDragDropSource, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igBeginDragDropTarget()
 	{
 		;bool igBeginDragDropTarget()
-	    dll_rtn := DllCall(Cimgui_dll.igBeginDragDropTarget, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igBeginDragDropTarget, "char")
 	    return dll_rtn
 	}
 	
 	igBeginDragDropTargetCustom(bb, id)
 	{
 		;bool igBeginDragDropTargetCustom(const ImRect bb, ImGuiID id)
-	    dll_rtn := DllCall(Cimgui_dll.igBeginDragDropTargetCustom, "ptr", bb, "uint", id, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igBeginDragDropTargetCustom, "ptr", bb, "uint", id, "char")
 	    return dll_rtn
 	}
 	
@@ -199,140 +199,140 @@ class Cimgui_AHK
 	igBeginItemTooltip()
 	{
 		;bool igBeginItemTooltip()
-	    dll_rtn := DllCall(Cimgui_dll.igBeginItemTooltip, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igBeginItemTooltip, "char")
 	    return dll_rtn
 	}
 	
 	igBeginListBox(label, size := ImVec2([0, 0]))
 	{
 		;bool igBeginListBox(const char* label, const ImVec2 size)
-	    dll_rtn := DllCall(Cimgui_dll.igBeginListBox, "ptr", label, "int64", NumGet(size, "int64"), "int")
+	    dll_rtn := DllCall(Cimgui_dll.igBeginListBox, "ptr", label, "int64", NumGet(size, "int64"), "char")
 	    return dll_rtn
 	}
 	
 	igBeginMainMenuBar()
 	{
 		;bool igBeginMainMenuBar()
-	    dll_rtn := DllCall(Cimgui_dll.igBeginMainMenuBar, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igBeginMainMenuBar, "char")
 	    return dll_rtn
 	}
 	
 	igBeginMenu(label, enabled := true)
 	{
 		;bool igBeginMenu(const char* label, bool enabled)
-	    dll_rtn := DllCall(Cimgui_dll.igBeginMenu, "ptr", label, "int", enabled, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igBeginMenu, "ptr", label, "char", enabled, "char")
 	    return dll_rtn
 	}
 	
 	igBeginMenuBar()
 	{
 		;bool igBeginMenuBar()
-	    dll_rtn := DllCall(Cimgui_dll.igBeginMenuBar, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igBeginMenuBar, "char")
 	    return dll_rtn
 	}
 	
 	igBeginMenuEx(label, icon, enabled := true)
 	{
 		;bool igBeginMenuEx(const char* label, const char* icon, bool enabled)
-	    dll_rtn := DllCall(Cimgui_dll.igBeginMenuEx, "ptr", label, "ptr", icon, "int", enabled, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igBeginMenuEx, "ptr", label, "ptr", icon, "char", enabled, "char")
 	    return dll_rtn
 	}
 	
 	igBeginPopup(str_id, flags := 0)
 	{
 		;bool igBeginPopup(const char* str_id, ImGuiWindowFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igBeginPopup, "ptr", str_id, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igBeginPopup, "ptr", str_id, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igBeginPopupContextItem(str_id := 0, popup_flags := 1)
 	{
 		;bool igBeginPopupContextItem(const char* str_id, ImGuiPopupFlags popup_flags)
-	    dll_rtn := DllCall(Cimgui_dll.igBeginPopupContextItem, "ptr", str_id, "int", popup_flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igBeginPopupContextItem, "ptr", str_id, "int", popup_flags, "char")
 	    return dll_rtn
 	}
 	
 	igBeginPopupContextVoid(str_id := 0, popup_flags := 1)
 	{
 		;bool igBeginPopupContextVoid(const char* str_id, ImGuiPopupFlags popup_flags)
-	    dll_rtn := DllCall(Cimgui_dll.igBeginPopupContextVoid, "ptr", str_id, "int", popup_flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igBeginPopupContextVoid, "ptr", str_id, "int", popup_flags, "char")
 	    return dll_rtn
 	}
 	
 	igBeginPopupContextWindow(str_id := 0, popup_flags := 1)
 	{
 		;bool igBeginPopupContextWindow(const char* str_id, ImGuiPopupFlags popup_flags)
-	    dll_rtn := DllCall(Cimgui_dll.igBeginPopupContextWindow, "ptr", str_id, "int", popup_flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igBeginPopupContextWindow, "ptr", str_id, "int", popup_flags, "char")
 	    return dll_rtn
 	}
 	
 	igBeginPopupEx(id, extra_flags)
 	{
 		;bool igBeginPopupEx(ImGuiID id, ImGuiWindowFlags extra_flags)
-	    dll_rtn := DllCall(Cimgui_dll.igBeginPopupEx, "uint", id, "int", extra_flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igBeginPopupEx, "uint", id, "int", extra_flags, "char")
 	    return dll_rtn
 	}
 	
 	igBeginPopupModal(name, &p_open := 0, flags := 0)
 	{
 		;bool igBeginPopupModal(const char* name, bool* p_open, ImGuiWindowFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igBeginPopupModal, "ptr", name, "int*", &p_open, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igBeginPopupModal, "ptr", name, "char*", &p_open, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igBeginTabBar(str_id, flags := 0)
 	{
 		;bool igBeginTabBar(const char* str_id, ImGuiTabBarFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igBeginTabBar, "ptr", str_id, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igBeginTabBar, "ptr", str_id, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igBeginTabBarEx(tab_bar, bb, flags, dock_node)
 	{
 		;bool igBeginTabBarEx(ImGuiTabBar* tab_bar, const ImRect bb, ImGuiTabBarFlags flags, ImGuiDockNode* dock_node)
-	    dll_rtn := DllCall(Cimgui_dll.igBeginTabBarEx, "ptr", tab_bar, "ptr", bb, "int", flags, "ptr", dock_node, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igBeginTabBarEx, "ptr", tab_bar, "ptr", bb, "int", flags, "ptr", dock_node, "char")
 	    return dll_rtn
 	}
 	
 	igBeginTabItem(label, &p_open := 0, flags := 0)
 	{
 		;bool igBeginTabItem(const char* label, bool* p_open, ImGuiTabItemFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igBeginTabItem, "ptr", label, "int*", &p_open, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igBeginTabItem, "ptr", label, "char*", &p_open, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igBeginTable(str_id, column, flags := 0, outer_size := ImVec2([0.0f, 0.0f]), inner_width := 0.0)
 	{
 		;bool igBeginTable(const char* str_id, int column, ImGuiTableFlags flags, const ImVec2 outer_size, float inner_width)
-	    dll_rtn := DllCall(Cimgui_dll.igBeginTable, "ptr", str_id, "int", column, "int", flags, "int64", NumGet(outer_size, "int64"), "float", inner_width, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igBeginTable, "ptr", str_id, "int", column, "int", flags, "int64", NumGet(outer_size, "int64"), "float", inner_width, "char")
 	    return dll_rtn
 	}
 	
 	igBeginTableEx(name, id, columns_count, flags := 0, outer_size := ImVec2([0, 0]), inner_width := 0.0)
 	{
 		;bool igBeginTableEx(const char* name, ImGuiID id, int columns_count, ImGuiTableFlags flags, const ImVec2 outer_size, float inner_width)
-	    dll_rtn := DllCall(Cimgui_dll.igBeginTableEx, "ptr", name, "uint", id, "int", columns_count, "int", flags, "int64", NumGet(outer_size, "int64"), "float", inner_width, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igBeginTableEx, "ptr", name, "uint", id, "int", columns_count, "int", flags, "int64", NumGet(outer_size, "int64"), "float", inner_width, "char")
 	    return dll_rtn
 	}
 	
 	igBeginTooltip()
 	{
 		;bool igBeginTooltip()
-	    dll_rtn := DllCall(Cimgui_dll.igBeginTooltip, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igBeginTooltip, "char")
 	    return dll_rtn
 	}
 	
 	igBeginTooltipEx(tooltip_flags, extra_window_flags)
 	{
 		;bool igBeginTooltipEx(ImGuiTooltipFlags tooltip_flags, ImGuiWindowFlags extra_window_flags)
-	    dll_rtn := DllCall(Cimgui_dll.igBeginTooltipEx, "int", tooltip_flags, "int", extra_window_flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igBeginTooltipEx, "int", tooltip_flags, "int", extra_window_flags, "char")
 	    return dll_rtn
 	}
 	
 	igBeginViewportSideBar(name, viewport, dir, size, window_flags)
 	{
 		;bool igBeginViewportSideBar(const char* name, ImGuiViewport* viewport, ImGuiDir dir, float size, ImGuiWindowFlags window_flags)
-	    dll_rtn := DllCall(Cimgui_dll.igBeginViewportSideBar, "ptr", name, "ptr", viewport, "int", dir, "float", size, "int", window_flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igBeginViewportSideBar, "ptr", name, "ptr", viewport, "int", dir, "float", size, "int", window_flags, "char")
 	    return dll_rtn
 	}
 	
@@ -374,7 +374,7 @@ class Cimgui_AHK
 	igBulletText(fmt, p*)
 	{
 		;void igBulletText(const char* fmt, ...)
-	    dll_rtn := DllCall(Cimgui_dll.igBulletText, "ptr", fmt)
+	    dll_rtn := DllCall(Cimgui_dll.igBulletText, "ptr", fmt, p*)
 	    return dll_rtn
 	}
 	
@@ -388,21 +388,21 @@ class Cimgui_AHK
 	igButton(label, size := ImVec2([0, 0]))
 	{
 		;bool igButton(const char* label, const ImVec2 size)
-	    dll_rtn := DllCall(Cimgui_dll.igButton, "ptr", label, "int64", NumGet(size, "int64"), "int")
+	    dll_rtn := DllCall(Cimgui_dll.igButton, "ptr", label, "int64", NumGet(size, "int64"), "char")
 	    return dll_rtn
 	}
 	
 	igButtonBehavior(bb, id, &out_hovered, &out_held, flags := 0)
 	{
 		;bool igButtonBehavior(const ImRect bb, ImGuiID id, bool* out_hovered, bool* out_held, ImGuiButtonFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igButtonBehavior, "ptr", bb, "uint", id, "int*", &out_hovered, "int*", &out_held, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igButtonBehavior, "ptr", bb, "uint", id, "char*", &out_hovered, "char*", &out_held, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igButtonEx(label, size_arg := ImVec2([0, 0]), flags := 0)
 	{
 		;bool igButtonEx(const char* label, const ImVec2 size_arg, ImGuiButtonFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igButtonEx, "ptr", label, "int64", NumGet(size_arg, "int64"), "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igButtonEx, "ptr", label, "int64", NumGet(size_arg, "int64"), "int", flags, "char")
 	    return dll_rtn
 	}
 	
@@ -430,7 +430,7 @@ class Cimgui_AHK
 	igCalcTextSize(pOut, text, text_end := 0, hide_text_after_double_hash := false, wrap_width := -1.0)
 	{
 		;void igCalcTextSize(ImVec2 *pOut, const char* text, const char* text_end, bool hide_text_after_double_hash, float wrap_width)
-	    dll_rtn := DllCall(Cimgui_dll.igCalcTextSize, "ptr", pOut, "ptr", text, "ptr", text_end, "int", hide_text_after_double_hash, "float", wrap_width)
+	    dll_rtn := DllCall(Cimgui_dll.igCalcTextSize, "ptr", pOut, "ptr", text, "ptr", text_end, "char", hide_text_after_double_hash, "float", wrap_width)
 	    return dll_rtn
 	}
 	
@@ -465,35 +465,35 @@ class Cimgui_AHK
 	igCheckbox(label, &v)
 	{
 		;bool igCheckbox(const char* label, bool* v)
-	    dll_rtn := DllCall(Cimgui_dll.igCheckbox, "ptr", label, "int*", &v, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igCheckbox, "ptr", label, "char*", &v, "char")
 	    return dll_rtn
 	}
 	
 	igCheckboxFlags_IntPtr(label, &flags, flags_value)
 	{
 		;bool igCheckboxFlags_IntPtr(const char* label, int* flags, int flags_value)
-	    dll_rtn := DllCall(Cimgui_dll.igCheckboxFlags_IntPtr, "ptr", label, "int*", &flags, "int", flags_value, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igCheckboxFlags_IntPtr, "ptr", label, "int*", &flags, "int", flags_value, "char")
 	    return dll_rtn
 	}
 	
 	igCheckboxFlags_UintPtr(label, &flags, flags_value)
 	{
 		;bool igCheckboxFlags_UintPtr(const char* label, unsigned int* flags, unsigned int flags_value)
-	    dll_rtn := DllCall(Cimgui_dll.igCheckboxFlags_UintPtr, "ptr", label, "uint*", &flags, "uint", flags_value, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igCheckboxFlags_UintPtr, "ptr", label, "uint*", &flags, "uint", flags_value, "char")
 	    return dll_rtn
 	}
 	
 	igCheckboxFlags_S64Ptr(label, &flags, flags_value)
 	{
 		;bool igCheckboxFlags_S64Ptr(const char* label, ImS64* flags, ImS64 flags_value)
-	    dll_rtn := DllCall(Cimgui_dll.igCheckboxFlags_S64Ptr, "ptr", label, "int64*", &flags, "int64", flags_value, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igCheckboxFlags_S64Ptr, "ptr", label, "int64*", &flags, "int64", flags_value, "char")
 	    return dll_rtn
 	}
 	
 	igCheckboxFlags_U64Ptr(label, &flags, flags_value)
 	{
 		;bool igCheckboxFlags_U64Ptr(const char* label, ImU64* flags, ImU64 flags_value)
-	    dll_rtn := DllCall(Cimgui_dll.igCheckboxFlags_U64Ptr, "ptr", label, "uint64*", &flags, "uint64", flags_value, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igCheckboxFlags_U64Ptr, "ptr", label, "uint64*", &flags, "uint64", flags_value, "char")
 	    return dll_rtn
 	}
 	
@@ -528,7 +528,7 @@ class Cimgui_AHK
 	igCloseButton(id, pos)
 	{
 		;bool igCloseButton(ImGuiID id, const ImVec2 pos)
-	    dll_rtn := DllCall(Cimgui_dll.igCloseButton, "uint", id, "int64", NumGet(pos, "int64"), "int")
+	    dll_rtn := DllCall(Cimgui_dll.igCloseButton, "uint", id, "int64", NumGet(pos, "int64"), "char")
 	    return dll_rtn
 	}
 	
@@ -542,7 +542,7 @@ class Cimgui_AHK
 	igClosePopupToLevel(remaining, restore_focus_to_window_under_popup)
 	{
 		;void igClosePopupToLevel(int remaining, bool restore_focus_to_window_under_popup)
-	    dll_rtn := DllCall(Cimgui_dll.igClosePopupToLevel, "int", remaining, "int", restore_focus_to_window_under_popup)
+	    dll_rtn := DllCall(Cimgui_dll.igClosePopupToLevel, "int", remaining, "char", restore_focus_to_window_under_popup)
 	    return dll_rtn
 	}
 	
@@ -556,35 +556,35 @@ class Cimgui_AHK
 	igClosePopupsOverWindow(ref_window, restore_focus_to_window_under_popup)
 	{
 		;void igClosePopupsOverWindow(ImGuiWindow* ref_window, bool restore_focus_to_window_under_popup)
-	    dll_rtn := DllCall(Cimgui_dll.igClosePopupsOverWindow, "ptr", ref_window, "int", restore_focus_to_window_under_popup)
+	    dll_rtn := DllCall(Cimgui_dll.igClosePopupsOverWindow, "ptr", ref_window, "char", restore_focus_to_window_under_popup)
 	    return dll_rtn
 	}
 	
 	igCollapseButton(id, pos, dock_node)
 	{
 		;bool igCollapseButton(ImGuiID id, const ImVec2 pos, ImGuiDockNode* dock_node)
-	    dll_rtn := DllCall(Cimgui_dll.igCollapseButton, "uint", id, "int64", NumGet(pos, "int64"), "ptr", dock_node, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igCollapseButton, "uint", id, "int64", NumGet(pos, "int64"), "ptr", dock_node, "char")
 	    return dll_rtn
 	}
 	
 	igCollapsingHeader_TreeNodeFlags(label, flags := 0)
 	{
 		;bool igCollapsingHeader_TreeNodeFlags(const char* label, ImGuiTreeNodeFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igCollapsingHeader_TreeNodeFlags, "ptr", label, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igCollapsingHeader_TreeNodeFlags, "ptr", label, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igCollapsingHeader_BoolPtr(label, &p_visible, flags := 0)
 	{
 		;bool igCollapsingHeader_BoolPtr(const char* label, bool* p_visible, ImGuiTreeNodeFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igCollapsingHeader_BoolPtr, "ptr", label, "int*", &p_visible, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igCollapsingHeader_BoolPtr, "ptr", label, "char*", &p_visible, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igColorButton(desc_id, col, flags := 0, size := ImVec2([0, 0]))
 	{
 		;bool igColorButton(const char* desc_id, const ImVec4 col, ImGuiColorEditFlags flags, const ImVec2 size)
-	    dll_rtn := DllCall(Cimgui_dll.igColorButton, "ptr", desc_id, "ptr", col, "int", flags, "int64", NumGet(size, "int64"), "int")
+	    dll_rtn := DllCall(Cimgui_dll.igColorButton, "ptr", desc_id, "ptr", col, "int", flags, "int64", NumGet(size, "int64"), "char")
 	    return dll_rtn
 	}
 	
@@ -619,14 +619,14 @@ class Cimgui_AHK
 	igColorEdit3(label, col, flags := 0)
 	{
 		;bool igColorEdit3(const char* label, float col[3], ImGuiColorEditFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igColorEdit3, "ptr", label, "ptr", col, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igColorEdit3, "ptr", label, "ptr", col, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igColorEdit4(label, col, flags := 0)
 	{
 		;bool igColorEdit4(const char* label, float col[4], ImGuiColorEditFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igColorEdit4, "ptr", label, "ptr", col, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igColorEdit4, "ptr", label, "ptr", col, "int", flags, "char")
 	    return dll_rtn
 	}
 	
@@ -640,14 +640,14 @@ class Cimgui_AHK
 	igColorPicker3(label, col, flags := 0)
 	{
 		;bool igColorPicker3(const char* label, float col[3], ImGuiColorEditFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igColorPicker3, "ptr", label, "ptr", col, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igColorPicker3, "ptr", label, "ptr", col, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igColorPicker4(label, col, flags := 0, &ref_col := 0)
 	{
 		;bool igColorPicker4(const char* label, float col[4], ImGuiColorEditFlags flags, const float* ref_col)
-	    dll_rtn := DllCall(Cimgui_dll.igColorPicker4, "ptr", label, "ptr", col, "int", flags, "float*", &ref_col, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igColorPicker4, "ptr", label, "ptr", col, "int", flags, "float*", &ref_col, "char")
 	    return dll_rtn
 	}
 	
@@ -668,28 +668,28 @@ class Cimgui_AHK
 	igColumns(count := 1, id := 0, border := true)
 	{
 		;void igColumns(int count, const char* id, bool border)
-	    dll_rtn := DllCall(Cimgui_dll.igColumns, "int", count, "ptr", id, "int", border)
+	    dll_rtn := DllCall(Cimgui_dll.igColumns, "int", count, "ptr", id, "char", border)
 	    return dll_rtn
 	}
 	
 	igCombo_Str_arr(label, &current_item, items, items_count, popup_max_height_in_items := -1)
 	{
 		;bool igCombo_Str_arr(const char* label, int* current_item, const char* const items[], int items_count, int popup_max_height_in_items)
-	    dll_rtn := DllCall(Cimgui_dll.igCombo_Str_arr, "ptr", label, "int*", &current_item, "ptr", items, "int", items_count, "int", popup_max_height_in_items, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igCombo_Str_arr, "ptr", label, "int*", &current_item, "ptr", items, "int", items_count, "int", popup_max_height_in_items, "char")
 	    return dll_rtn
 	}
 	
 	igCombo_Str(label, &current_item, items_separated_by_zeros, popup_max_height_in_items := -1)
 	{
 		;bool igCombo_Str(const char* label, int* current_item, const char* items_separated_by_zeros, int popup_max_height_in_items)
-	    dll_rtn := DllCall(Cimgui_dll.igCombo_Str, "ptr", label, "int*", &current_item, "ptr", items_separated_by_zeros, "int", popup_max_height_in_items, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igCombo_Str, "ptr", label, "int*", &current_item, "ptr", items_separated_by_zeros, "int", popup_max_height_in_items, "char")
 	    return dll_rtn
 	}
 	
 	igCombo_FnBoolPtr(label, &current_item, items_getter, data, items_count, popup_max_height_in_items := -1)
 	{
 		;bool igCombo_FnBoolPtr(const char* label, int* current_item, bool(*items_getter)(void* data, int idx, const char** out_text), void* data, int items_count, int popup_max_height_in_items)
-	    dll_rtn := DllCall(Cimgui_dll.igCombo_FnBoolPtr, "ptr", label, "int*", &current_item, "ptr", items_getter, "ptr", data, "int", items_count, "int", popup_max_height_in_items, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igCombo_FnBoolPtr, "ptr", label, "int*", &current_item, "ptr", items_getter, "ptr", data, "int", items_count, "int", popup_max_height_in_items, "char")
 	    return dll_rtn
 	}
 	
@@ -724,7 +724,7 @@ class Cimgui_AHK
 	igDataTypeApplyFromText(buf, data_type, p_data, format)
 	{
 		;bool igDataTypeApplyFromText(const char* buf, ImGuiDataType data_type, void* p_data, const char* format)
-	    dll_rtn := DllCall(Cimgui_dll.igDataTypeApplyFromText, "ptr", buf, "int", data_type, "ptr", p_data, "ptr", format, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igDataTypeApplyFromText, "ptr", buf, "int", data_type, "ptr", p_data, "ptr", format, "char")
 	    return dll_rtn
 	}
 	
@@ -738,7 +738,7 @@ class Cimgui_AHK
 	igDataTypeClamp(data_type, p_data, p_min, p_max)
 	{
 		;bool igDataTypeClamp(ImGuiDataType data_type, void* p_data, const void* p_min, const void* p_max)
-	    dll_rtn := DllCall(Cimgui_dll.igDataTypeClamp, "int", data_type, "ptr", p_data, "ptr", p_min, "ptr", p_max, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igDataTypeClamp, "int", data_type, "ptr", p_data, "ptr", p_min, "ptr", p_max, "char")
 	    return dll_rtn
 	}
 	
@@ -766,7 +766,7 @@ class Cimgui_AHK
 	igDebugCheckVersionAndDataLayout(version_str, sz_io, sz_style, sz_vec2, sz_vec4, sz_drawvert, sz_drawidx)
 	{
 		;bool igDebugCheckVersionAndDataLayout(const char* version_str, size_t sz_io, size_t sz_style, size_t sz_vec2, size_t sz_vec4, size_t sz_drawvert, size_t sz_drawidx)
-	    dll_rtn := DllCall(Cimgui_dll.igDebugCheckVersionAndDataLayout, "ptr", version_str, "uptr", sz_io, "uptr", sz_style, "uptr", sz_vec2, "uptr", sz_vec4, "uptr", sz_drawvert, "uptr", sz_drawidx, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igDebugCheckVersionAndDataLayout, "ptr", version_str, "uptr", sz_io, "uptr", sz_style, "uptr", sz_vec2, "uptr", sz_vec4, "uptr", sz_drawvert, "uptr", sz_drawidx, "char")
 	    return dll_rtn
 	}
 	
@@ -822,7 +822,7 @@ class Cimgui_AHK
 	igDebugLog(fmt, p*)
 	{
 		;void igDebugLog(const char* fmt, ...)
-	    dll_rtn := DllCall(Cimgui_dll.igDebugLog, "ptr", fmt)
+	    dll_rtn := DllCall(Cimgui_dll.igDebugLog, "ptr", fmt, p*)
 	    return dll_rtn
 	}
 	
@@ -850,7 +850,7 @@ class Cimgui_AHK
 	igDebugNodeDrawCmdShowMeshAndBoundingBox(out_draw_list, draw_list, draw_cmd, show_mesh, show_aabb)
 	{
 		;void igDebugNodeDrawCmdShowMeshAndBoundingBox(ImDrawList* out_draw_list, const ImDrawList* draw_list, const ImDrawCmd* draw_cmd, bool show_mesh, bool show_aabb)
-	    dll_rtn := DllCall(Cimgui_dll.igDebugNodeDrawCmdShowMeshAndBoundingBox, "ptr", out_draw_list, "ptr", draw_list, "ptr", draw_cmd, "int", show_mesh, "int", show_aabb)
+	    dll_rtn := DllCall(Cimgui_dll.igDebugNodeDrawCmdShowMeshAndBoundingBox, "ptr", out_draw_list, "ptr", draw_list, "ptr", draw_cmd, "char", show_mesh, "char", show_aabb)
 	    return dll_rtn
 	}
 	
@@ -1067,7 +1067,7 @@ class Cimgui_AHK
 	igDockBuilderRemoveNodeDockedWindows(node_id, clear_settings_refs := true)
 	{
 		;void igDockBuilderRemoveNodeDockedWindows(ImGuiID node_id, bool clear_settings_refs)
-	    dll_rtn := DllCall(Cimgui_dll.igDockBuilderRemoveNodeDockedWindows, "uint", node_id, "int", clear_settings_refs)
+	    dll_rtn := DllCall(Cimgui_dll.igDockBuilderRemoveNodeDockedWindows, "uint", node_id, "char", clear_settings_refs)
 	    return dll_rtn
 	}
 	
@@ -1095,14 +1095,14 @@ class Cimgui_AHK
 	igDockContextCalcDropPosForDocking(target, target_node, payload_window, payload_node, split_dir, split_outer, out_pos)
 	{
 		;bool igDockContextCalcDropPosForDocking(ImGuiWindow* target, ImGuiDockNode* target_node, ImGuiWindow* payload_window, ImGuiDockNode* payload_node, ImGuiDir split_dir, bool split_outer, ImVec2* out_pos)
-	    dll_rtn := DllCall(Cimgui_dll.igDockContextCalcDropPosForDocking, "ptr", target, "ptr", target_node, "ptr", payload_window, "ptr", payload_node, "int", split_dir, "int", split_outer, "ptr", out_pos, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igDockContextCalcDropPosForDocking, "ptr", target, "ptr", target_node, "ptr", payload_window, "ptr", payload_node, "int", split_dir, "char", split_outer, "ptr", out_pos, "char")
 	    return dll_rtn
 	}
 	
 	igDockContextClearNodes(ctx, root_id, clear_settings_refs)
 	{
 		;void igDockContextClearNodes(ImGuiContext* ctx, ImGuiID root_id, bool clear_settings_refs)
-	    dll_rtn := DllCall(Cimgui_dll.igDockContextClearNodes, "ptr", ctx, "uint", root_id, "int", clear_settings_refs)
+	    dll_rtn := DllCall(Cimgui_dll.igDockContextClearNodes, "ptr", ctx, "uint", root_id, "char", clear_settings_refs)
 	    return dll_rtn
 	}
 	
@@ -1158,14 +1158,14 @@ class Cimgui_AHK
 	igDockContextProcessUndockWindow(ctx, window, clear_persistent_docking_ref := true)
 	{
 		;void igDockContextProcessUndockWindow(ImGuiContext* ctx, ImGuiWindow* window, bool clear_persistent_docking_ref)
-	    dll_rtn := DllCall(Cimgui_dll.igDockContextProcessUndockWindow, "ptr", ctx, "ptr", window, "int", clear_persistent_docking_ref)
+	    dll_rtn := DllCall(Cimgui_dll.igDockContextProcessUndockWindow, "ptr", ctx, "ptr", window, "char", clear_persistent_docking_ref)
 	    return dll_rtn
 	}
 	
 	igDockContextQueueDock(ctx, target, target_node, payload, split_dir, split_ratio, split_outer)
 	{
 		;void igDockContextQueueDock(ImGuiContext* ctx, ImGuiWindow* target, ImGuiDockNode* target_node, ImGuiWindow* payload, ImGuiDir split_dir, float split_ratio, bool split_outer)
-	    dll_rtn := DllCall(Cimgui_dll.igDockContextQueueDock, "ptr", ctx, "ptr", target, "ptr", target_node, "ptr", payload, "int", split_dir, "float", split_ratio, "int", split_outer)
+	    dll_rtn := DllCall(Cimgui_dll.igDockContextQueueDock, "ptr", ctx, "ptr", target, "ptr", target_node, "ptr", payload, "int", split_dir, "float", split_ratio, "char", split_outer)
 	    return dll_rtn
 	}
 	
@@ -1200,7 +1200,7 @@ class Cimgui_AHK
 	igDockNodeBeginAmendTabBar(node)
 	{
 		;bool igDockNodeBeginAmendTabBar(ImGuiDockNode* node)
-	    dll_rtn := DllCall(Cimgui_dll.igDockNodeBeginAmendTabBar, "ptr", node, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igDockNodeBeginAmendTabBar, "ptr", node, "char")
 	    return dll_rtn
 	}
 	
@@ -1235,7 +1235,7 @@ class Cimgui_AHK
 	igDockNodeIsInHierarchyOf(node, parent)
 	{
 		;bool igDockNodeIsInHierarchyOf(ImGuiDockNode* node, ImGuiDockNode* parent)
-	    dll_rtn := DllCall(Cimgui_dll.igDockNodeIsInHierarchyOf, "ptr", node, "ptr", parent, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igDockNodeIsInHierarchyOf, "ptr", node, "ptr", parent, "char")
 	    return dll_rtn
 	}
 	
@@ -1263,91 +1263,91 @@ class Cimgui_AHK
 	igDragBehavior(id, data_type, p_v, v_speed, p_min, p_max, format, flags)
 	{
 		;bool igDragBehavior(ImGuiID id, ImGuiDataType data_type, void* p_v, float v_speed, const void* p_min, const void* p_max, const char* format, ImGuiSliderFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igDragBehavior, "uint", id, "int", data_type, "ptr", p_v, "float", v_speed, "ptr", p_min, "ptr", p_max, "ptr", format, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igDragBehavior, "uint", id, "int", data_type, "ptr", p_v, "float", v_speed, "ptr", p_min, "ptr", p_max, "ptr", format, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igDragFloat(label, &v, v_speed := 1.0, v_min := 0.0, v_max := 0.0, format := "%.3f", flags := 0)
 	{
 		;bool igDragFloat(const char* label, float* v, float v_speed, float v_min, float v_max, const char* format, ImGuiSliderFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igDragFloat, "ptr", label, "float*", &v, "float", v_speed, "float", v_min, "float", v_max, "ptr", format, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igDragFloat, "ptr", label, "float*", &v, "float", v_speed, "float", v_min, "float", v_max, "ptr", format, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igDragFloat2(label, v, v_speed := 1.0, v_min := 0.0, v_max := 0.0, format := "%.3f", flags := 0)
 	{
 		;bool igDragFloat2(const char* label, float v[2], float v_speed, float v_min, float v_max, const char* format, ImGuiSliderFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igDragFloat2, "ptr", label, "ptr", v, "float", v_speed, "float", v_min, "float", v_max, "ptr", format, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igDragFloat2, "ptr", label, "ptr", v, "float", v_speed, "float", v_min, "float", v_max, "ptr", format, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igDragFloat3(label, v, v_speed := 1.0, v_min := 0.0, v_max := 0.0, format := "%.3f", flags := 0)
 	{
 		;bool igDragFloat3(const char* label, float v[3], float v_speed, float v_min, float v_max, const char* format, ImGuiSliderFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igDragFloat3, "ptr", label, "ptr", v, "float", v_speed, "float", v_min, "float", v_max, "ptr", format, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igDragFloat3, "ptr", label, "ptr", v, "float", v_speed, "float", v_min, "float", v_max, "ptr", format, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igDragFloat4(label, v, v_speed := 1.0, v_min := 0.0, v_max := 0.0, format := "%.3f", flags := 0)
 	{
 		;bool igDragFloat4(const char* label, float v[4], float v_speed, float v_min, float v_max, const char* format, ImGuiSliderFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igDragFloat4, "ptr", label, "ptr", v, "float", v_speed, "float", v_min, "float", v_max, "ptr", format, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igDragFloat4, "ptr", label, "ptr", v, "float", v_speed, "float", v_min, "float", v_max, "ptr", format, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igDragFloatRange2(label, &v_current_min, &v_current_max, v_speed := 1.0, v_min := 0.0, v_max := 0.0, format := "%.3f", format_max := 0, flags := 0)
 	{
 		;bool igDragFloatRange2(const char* label, float* v_current_min, float* v_current_max, float v_speed, float v_min, float v_max, const char* format, const char* format_max, ImGuiSliderFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igDragFloatRange2, "ptr", label, "float*", &v_current_min, "float*", &v_current_max, "float", v_speed, "float", v_min, "float", v_max, "ptr", format, "ptr", format_max, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igDragFloatRange2, "ptr", label, "float*", &v_current_min, "float*", &v_current_max, "float", v_speed, "float", v_min, "float", v_max, "ptr", format, "ptr", format_max, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igDragInt(label, &v, v_speed := 1.0, v_min := 0, v_max := 0, format := "%d", flags := 0)
 	{
 		;bool igDragInt(const char* label, int* v, float v_speed, int v_min, int v_max, const char* format, ImGuiSliderFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igDragInt, "ptr", label, "int*", &v, "float", v_speed, "int", v_min, "int", v_max, "ptr", format, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igDragInt, "ptr", label, "int*", &v, "float", v_speed, "int", v_min, "int", v_max, "ptr", format, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igDragInt2(label, v, v_speed := 1.0, v_min := 0, v_max := 0, format := "%d", flags := 0)
 	{
 		;bool igDragInt2(const char* label, int v[2], float v_speed, int v_min, int v_max, const char* format, ImGuiSliderFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igDragInt2, "ptr", label, "ptr", v, "float", v_speed, "int", v_min, "int", v_max, "ptr", format, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igDragInt2, "ptr", label, "ptr", v, "float", v_speed, "int", v_min, "int", v_max, "ptr", format, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igDragInt3(label, v, v_speed := 1.0, v_min := 0, v_max := 0, format := "%d", flags := 0)
 	{
 		;bool igDragInt3(const char* label, int v[3], float v_speed, int v_min, int v_max, const char* format, ImGuiSliderFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igDragInt3, "ptr", label, "ptr", v, "float", v_speed, "int", v_min, "int", v_max, "ptr", format, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igDragInt3, "ptr", label, "ptr", v, "float", v_speed, "int", v_min, "int", v_max, "ptr", format, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igDragInt4(label, v, v_speed := 1.0, v_min := 0, v_max := 0, format := "%d", flags := 0)
 	{
 		;bool igDragInt4(const char* label, int v[4], float v_speed, int v_min, int v_max, const char* format, ImGuiSliderFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igDragInt4, "ptr", label, "ptr", v, "float", v_speed, "int", v_min, "int", v_max, "ptr", format, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igDragInt4, "ptr", label, "ptr", v, "float", v_speed, "int", v_min, "int", v_max, "ptr", format, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igDragIntRange2(label, &v_current_min, &v_current_max, v_speed := 1.0, v_min := 0, v_max := 0, format := "%d", format_max := 0, flags := 0)
 	{
 		;bool igDragIntRange2(const char* label, int* v_current_min, int* v_current_max, float v_speed, int v_min, int v_max, const char* format, const char* format_max, ImGuiSliderFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igDragIntRange2, "ptr", label, "int*", &v_current_min, "int*", &v_current_max, "float", v_speed, "int", v_min, "int", v_max, "ptr", format, "ptr", format_max, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igDragIntRange2, "ptr", label, "int*", &v_current_min, "int*", &v_current_max, "float", v_speed, "int", v_min, "int", v_max, "ptr", format, "ptr", format_max, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igDragScalar(label, data_type, p_data, v_speed := 1.0, p_min := 0, p_max := 0, format := 0, flags := 0)
 	{
 		;bool igDragScalar(const char* label, ImGuiDataType data_type, void* p_data, float v_speed, const void* p_min, const void* p_max, const char* format, ImGuiSliderFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igDragScalar, "ptr", label, "int", data_type, "ptr", p_data, "float", v_speed, "ptr", p_min, "ptr", p_max, "ptr", format, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igDragScalar, "ptr", label, "int", data_type, "ptr", p_data, "float", v_speed, "ptr", p_min, "ptr", p_max, "ptr", format, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igDragScalarN(label, data_type, p_data, components, v_speed := 1.0, p_min := 0, p_max := 0, format := 0, flags := 0)
 	{
 		;bool igDragScalarN(const char* label, ImGuiDataType data_type, void* p_data, int components, float v_speed, const void* p_min, const void* p_max, const char* format, ImGuiSliderFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igDragScalarN, "ptr", label, "int", data_type, "ptr", p_data, "int", components, "float", v_speed, "ptr", p_min, "ptr", p_max, "ptr", format, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igDragScalarN, "ptr", label, "int", data_type, "ptr", p_data, "int", components, "float", v_speed, "ptr", p_min, "ptr", p_max, "ptr", format, "int", flags, "char")
 	    return dll_rtn
 	}
 	
@@ -2327,7 +2327,7 @@ class Cimgui_AHK
 	igGetWindowAlwaysWantOwnTabBar(window)
 	{
 		;bool igGetWindowAlwaysWantOwnTabBar(ImGuiWindow* window)
-	    dll_rtn := DllCall(Cimgui_dll.igGetWindowAlwaysWantOwnTabBar, "ptr", window, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igGetWindowAlwaysWantOwnTabBar, "ptr", window, "char")
 	    return dll_rtn
 	}
 	
@@ -2530,21 +2530,21 @@ class Cimgui_AHK
 	igImBitArrayTestBit(&arr, n)
 	{
 		;bool igImBitArrayTestBit(const ImU32* arr, int n)
-	    dll_rtn := DllCall(Cimgui_dll.igImBitArrayTestBit, "uint*", &arr, "int", n, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igImBitArrayTestBit, "uint*", &arr, "int", n, "char")
 	    return dll_rtn
 	}
 	
 	igImCharIsBlankA(c)
 	{
 		;bool igImCharIsBlankA(char c)
-	    dll_rtn := DllCall(Cimgui_dll.igImCharIsBlankA, "char", c, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igImCharIsBlankA, "char", c, "char")
 	    return dll_rtn
 	}
 	
 	igImCharIsBlankW(c)
 	{
 		;bool igImCharIsBlankW(unsigned int c)
-	    dll_rtn := DllCall(Cimgui_dll.igImCharIsBlankW, "uint", c, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igImCharIsBlankW, "uint", c, "char")
 	    return dll_rtn
 	}
 	
@@ -2572,7 +2572,7 @@ class Cimgui_AHK
 	igImFileClose(file)
 	{
 		;bool igImFileClose(ImFileHandle file)
-	    dll_rtn := DllCall(Cimgui_dll.igImFileClose, "ptr", file, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igImFileClose, "ptr", file, "char")
 	    return dll_rtn
 	}
 	
@@ -2705,14 +2705,14 @@ class Cimgui_AHK
 	igImFormatString(buf, buf_size, fmt, p*)
 	{
 		;int igImFormatString(char* buf, size_t buf_size, const char* fmt, ...)
-	    dll_rtn := DllCall(Cimgui_dll.igImFormatString, "ptr", buf, "uptr", buf_size, "ptr", fmt, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igImFormatString, "ptr", buf, "uptr", buf_size, "ptr", fmt, p*)
 	    return dll_rtn
 	}
 	
 	igImFormatStringToTempBuffer(out_buf, out_buf_end, fmt, p*)
 	{
 		;void igImFormatStringToTempBuffer(const char** out_buf, const char** out_buf_end, const char* fmt, ...)
-	    dll_rtn := DllCall(Cimgui_dll.igImFormatStringToTempBuffer, "ptr", out_buf, "ptr", out_buf_end, "ptr", fmt)
+	    dll_rtn := DllCall(Cimgui_dll.igImFormatStringToTempBuffer, "ptr", out_buf, "ptr", out_buf_end, "ptr", fmt, p*)
 	    return dll_rtn
 	}
 	
@@ -2754,21 +2754,21 @@ class Cimgui_AHK
 	igImIsFloatAboveGuaranteedIntegerPrecision(f)
 	{
 		;bool igImIsFloatAboveGuaranteedIntegerPrecision(float f)
-	    dll_rtn := DllCall(Cimgui_dll.igImIsFloatAboveGuaranteedIntegerPrecision, "float", f, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igImIsFloatAboveGuaranteedIntegerPrecision, "float", f, "char")
 	    return dll_rtn
 	}
 	
 	igImIsPowerOfTwo_Int(v)
 	{
 		;bool igImIsPowerOfTwo_Int(int v)
-	    dll_rtn := DllCall(Cimgui_dll.igImIsPowerOfTwo_Int, "int", v, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igImIsPowerOfTwo_Int, "int", v, "char")
 	    return dll_rtn
 	}
 	
 	igImIsPowerOfTwo_U64(v)
 	{
 		;bool igImIsPowerOfTwo_U64(ImU64 v)
-	    dll_rtn := DllCall(Cimgui_dll.igImIsPowerOfTwo_U64, "uint64", v, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igImIsPowerOfTwo_U64, "uint64", v, "char")
 	    return dll_rtn
 	}
 	
@@ -3132,7 +3132,7 @@ class Cimgui_AHK
 	igImTriangleContainsPoint(a, b, c, p)
 	{
 		;bool igImTriangleContainsPoint(const ImVec2 a, const ImVec2 b, const ImVec2 c, const ImVec2 p)
-	    dll_rtn := DllCall(Cimgui_dll.igImTriangleContainsPoint, "int64", NumGet(a, "int64"), "int64", NumGet(b, "int64"), "int64", NumGet(c, "int64"), "int64", NumGet(p, "int64"), "int")
+	    dll_rtn := DllCall(Cimgui_dll.igImTriangleContainsPoint, "int64", NumGet(a, "int64"), "int64", NumGet(b, "int64"), "int64", NumGet(c, "int64"), "int64", NumGet(p, "int64"), "char")
 	    return dll_rtn
 	}
 	
@@ -3153,14 +3153,14 @@ class Cimgui_AHK
 	igImageButton(str_id, user_texture_id, size, uv0 := ImVec2([0, 0]), uv1 := ImVec2([1, 1]), bg_col := ImVec4([0, 0, 0, 0]), tint_col := ImVec4([1, 1, 1, 1]))
 	{
 		;bool igImageButton(const char* str_id, ImTextureID user_texture_id, const ImVec2 size, const ImVec2 uv0, const ImVec2 uv1, const ImVec4 bg_col, const ImVec4 tint_col)
-	    dll_rtn := DllCall(Cimgui_dll.igImageButton, "ptr", str_id, "ptr", user_texture_id, "int64", NumGet(size, "int64"), "int64", NumGet(uv0, "int64"), "int64", NumGet(uv1, "int64"), "ptr", bg_col, "ptr", tint_col, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igImageButton, "ptr", str_id, "ptr", user_texture_id, "int64", NumGet(size, "int64"), "int64", NumGet(uv0, "int64"), "int64", NumGet(uv1, "int64"), "ptr", bg_col, "ptr", tint_col, "char")
 	    return dll_rtn
 	}
 	
 	igImageButtonEx(id, texture_id, size, uv0, uv1, bg_col, tint_col, flags := 0)
 	{
 		;bool igImageButtonEx(ImGuiID id, ImTextureID texture_id, const ImVec2 size, const ImVec2 uv0, const ImVec2 uv1, const ImVec4 bg_col, const ImVec4 tint_col, ImGuiButtonFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igImageButtonEx, "uint", id, "ptr", texture_id, "int64", NumGet(size, "int64"), "int64", NumGet(uv0, "int64"), "int64", NumGet(uv1, "int64"), "ptr", bg_col, "ptr", tint_col, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igImageButtonEx, "uint", id, "ptr", texture_id, "int64", NumGet(size, "int64"), "int64", NumGet(uv0, "int64"), "int64", NumGet(uv1, "int64"), "ptr", bg_col, "ptr", tint_col, "int", flags, "char")
 	    return dll_rtn
 	}
 	
@@ -3181,84 +3181,84 @@ class Cimgui_AHK
 	igInputDouble(label, &v, step := 0.0, step_fast := 0.0, format := "%.6f", flags := 0)
 	{
 		;bool igInputDouble(const char* label, double* v, double step, double step_fast, const char* format, ImGuiInputTextFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igInputDouble, "ptr", label, "double*", &v, "double", step, "double", step_fast, "ptr", format, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igInputDouble, "ptr", label, "double*", &v, "double", step, "double", step_fast, "ptr", format, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igInputFloat(label, &v, step := 0.0, step_fast := 0.0, format := "%.3f", flags := 0)
 	{
 		;bool igInputFloat(const char* label, float* v, float step, float step_fast, const char* format, ImGuiInputTextFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igInputFloat, "ptr", label, "float*", &v, "float", step, "float", step_fast, "ptr", format, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igInputFloat, "ptr", label, "float*", &v, "float", step, "float", step_fast, "ptr", format, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igInputFloat2(label, v, format := "%.3f", flags := 0)
 	{
 		;bool igInputFloat2(const char* label, float v[2], const char* format, ImGuiInputTextFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igInputFloat2, "ptr", label, "ptr", v, "ptr", format, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igInputFloat2, "ptr", label, "ptr", v, "ptr", format, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igInputFloat3(label, v, format := "%.3f", flags := 0)
 	{
 		;bool igInputFloat3(const char* label, float v[3], const char* format, ImGuiInputTextFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igInputFloat3, "ptr", label, "ptr", v, "ptr", format, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igInputFloat3, "ptr", label, "ptr", v, "ptr", format, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igInputFloat4(label, v, format := "%.3f", flags := 0)
 	{
 		;bool igInputFloat4(const char* label, float v[4], const char* format, ImGuiInputTextFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igInputFloat4, "ptr", label, "ptr", v, "ptr", format, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igInputFloat4, "ptr", label, "ptr", v, "ptr", format, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igInputInt(label, &v, step := 1, step_fast := 100, flags := 0)
 	{
 		;bool igInputInt(const char* label, int* v, int step, int step_fast, ImGuiInputTextFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igInputInt, "ptr", label, "int*", &v, "int", step, "int", step_fast, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igInputInt, "ptr", label, "int*", &v, "int", step, "int", step_fast, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igInputInt2(label, v, flags := 0)
 	{
 		;bool igInputInt2(const char* label, int v[2], ImGuiInputTextFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igInputInt2, "ptr", label, "ptr", v, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igInputInt2, "ptr", label, "ptr", v, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igInputInt3(label, v, flags := 0)
 	{
 		;bool igInputInt3(const char* label, int v[3], ImGuiInputTextFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igInputInt3, "ptr", label, "ptr", v, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igInputInt3, "ptr", label, "ptr", v, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igInputInt4(label, v, flags := 0)
 	{
 		;bool igInputInt4(const char* label, int v[4], ImGuiInputTextFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igInputInt4, "ptr", label, "ptr", v, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igInputInt4, "ptr", label, "ptr", v, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igInputScalar(label, data_type, p_data, p_step := 0, p_step_fast := 0, format := 0, flags := 0)
 	{
 		;bool igInputScalar(const char* label, ImGuiDataType data_type, void* p_data, const void* p_step, const void* p_step_fast, const char* format, ImGuiInputTextFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igInputScalar, "ptr", label, "int", data_type, "ptr", p_data, "ptr", p_step, "ptr", p_step_fast, "ptr", format, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igInputScalar, "ptr", label, "int", data_type, "ptr", p_data, "ptr", p_step, "ptr", p_step_fast, "ptr", format, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igInputScalarN(label, data_type, p_data, components, p_step := 0, p_step_fast := 0, format := 0, flags := 0)
 	{
 		;bool igInputScalarN(const char* label, ImGuiDataType data_type, void* p_data, int components, const void* p_step, const void* p_step_fast, const char* format, ImGuiInputTextFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igInputScalarN, "ptr", label, "int", data_type, "ptr", p_data, "int", components, "ptr", p_step, "ptr", p_step_fast, "ptr", format, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igInputScalarN, "ptr", label, "int", data_type, "ptr", p_data, "int", components, "ptr", p_step, "ptr", p_step_fast, "ptr", format, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igInputText(label, buf, buf_size, flags := 0, callback := 0, user_data := 0)
 	{
 		;bool igInputText(const char* label, char* buf, size_t buf_size, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback, void* user_data)
-	    dll_rtn := DllCall(Cimgui_dll.igInputText, "ptr", label, "ptr", buf, "uptr", buf_size, "int", flags, "ptr", callback, "ptr", user_data, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igInputText, "ptr", label, "ptr", buf, "uptr", buf_size, "int", flags, "ptr", callback, "ptr", user_data, "char")
 	    return dll_rtn
 	}
 	
@@ -3272,448 +3272,448 @@ class Cimgui_AHK
 	igInputTextEx(label, hint, buf, buf_size, size_arg, flags, callback := 0, user_data := 0)
 	{
 		;bool igInputTextEx(const char* label, const char* hint, char* buf, int buf_size, const ImVec2 size_arg, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback, void* user_data)
-	    dll_rtn := DllCall(Cimgui_dll.igInputTextEx, "ptr", label, "ptr", hint, "ptr", buf, "int", buf_size, "int64", NumGet(size_arg, "int64"), "int", flags, "ptr", callback, "ptr", user_data, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igInputTextEx, "ptr", label, "ptr", hint, "ptr", buf, "int", buf_size, "int64", NumGet(size_arg, "int64"), "int", flags, "ptr", callback, "ptr", user_data, "char")
 	    return dll_rtn
 	}
 	
 	igInputTextMultiline(label, buf, buf_size, size := ImVec2([0, 0]), flags := 0, callback := 0, user_data := 0)
 	{
 		;bool igInputTextMultiline(const char* label, char* buf, size_t buf_size, const ImVec2 size, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback, void* user_data)
-	    dll_rtn := DllCall(Cimgui_dll.igInputTextMultiline, "ptr", label, "ptr", buf, "uptr", buf_size, "int64", NumGet(size, "int64"), "int", flags, "ptr", callback, "ptr", user_data, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igInputTextMultiline, "ptr", label, "ptr", buf, "uptr", buf_size, "int64", NumGet(size, "int64"), "int", flags, "ptr", callback, "ptr", user_data, "char")
 	    return dll_rtn
 	}
 	
 	igInputTextWithHint(label, hint, buf, buf_size, flags := 0, callback := 0, user_data := 0)
 	{
 		;bool igInputTextWithHint(const char* label, const char* hint, char* buf, size_t buf_size, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback, void* user_data)
-	    dll_rtn := DllCall(Cimgui_dll.igInputTextWithHint, "ptr", label, "ptr", hint, "ptr", buf, "uptr", buf_size, "int", flags, "ptr", callback, "ptr", user_data, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igInputTextWithHint, "ptr", label, "ptr", hint, "ptr", buf, "uptr", buf_size, "int", flags, "ptr", callback, "ptr", user_data, "char")
 	    return dll_rtn
 	}
 	
 	igInvisibleButton(str_id, size, flags := 0)
 	{
 		;bool igInvisibleButton(const char* str_id, const ImVec2 size, ImGuiButtonFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igInvisibleButton, "ptr", str_id, "int64", NumGet(size, "int64"), "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igInvisibleButton, "ptr", str_id, "int64", NumGet(size, "int64"), "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igIsActiveIdUsingNavDir(dir)
 	{
 		;bool igIsActiveIdUsingNavDir(ImGuiDir dir)
-	    dll_rtn := DllCall(Cimgui_dll.igIsActiveIdUsingNavDir, "int", dir, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsActiveIdUsingNavDir, "int", dir, "char")
 	    return dll_rtn
 	}
 	
 	igIsAliasKey(key)
 	{
 		;bool igIsAliasKey(ImGuiKey key)
-	    dll_rtn := DllCall(Cimgui_dll.igIsAliasKey, "int", key, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsAliasKey, "int", key, "char")
 	    return dll_rtn
 	}
 	
 	igIsAnyItemActive()
 	{
 		;bool igIsAnyItemActive()
-	    dll_rtn := DllCall(Cimgui_dll.igIsAnyItemActive, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsAnyItemActive, "char")
 	    return dll_rtn
 	}
 	
 	igIsAnyItemFocused()
 	{
 		;bool igIsAnyItemFocused()
-	    dll_rtn := DllCall(Cimgui_dll.igIsAnyItemFocused, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsAnyItemFocused, "char")
 	    return dll_rtn
 	}
 	
 	igIsAnyItemHovered()
 	{
 		;bool igIsAnyItemHovered()
-	    dll_rtn := DllCall(Cimgui_dll.igIsAnyItemHovered, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsAnyItemHovered, "char")
 	    return dll_rtn
 	}
 	
 	igIsAnyMouseDown()
 	{
 		;bool igIsAnyMouseDown()
-	    dll_rtn := DllCall(Cimgui_dll.igIsAnyMouseDown, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsAnyMouseDown, "char")
 	    return dll_rtn
 	}
 	
 	igIsClippedEx(bb, id)
 	{
 		;bool igIsClippedEx(const ImRect bb, ImGuiID id)
-	    dll_rtn := DllCall(Cimgui_dll.igIsClippedEx, "ptr", bb, "uint", id, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsClippedEx, "ptr", bb, "uint", id, "char")
 	    return dll_rtn
 	}
 	
 	igIsDragDropActive()
 	{
 		;bool igIsDragDropActive()
-	    dll_rtn := DllCall(Cimgui_dll.igIsDragDropActive, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsDragDropActive, "char")
 	    return dll_rtn
 	}
 	
 	igIsDragDropPayloadBeingAccepted()
 	{
 		;bool igIsDragDropPayloadBeingAccepted()
-	    dll_rtn := DllCall(Cimgui_dll.igIsDragDropPayloadBeingAccepted, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsDragDropPayloadBeingAccepted, "char")
 	    return dll_rtn
 	}
 	
 	igIsGamepadKey(key)
 	{
 		;bool igIsGamepadKey(ImGuiKey key)
-	    dll_rtn := DllCall(Cimgui_dll.igIsGamepadKey, "int", key, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsGamepadKey, "int", key, "char")
 	    return dll_rtn
 	}
 	
 	igIsItemActivated()
 	{
 		;bool igIsItemActivated()
-	    dll_rtn := DllCall(Cimgui_dll.igIsItemActivated, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsItemActivated, "char")
 	    return dll_rtn
 	}
 	
 	igIsItemActive()
 	{
 		;bool igIsItemActive()
-	    dll_rtn := DllCall(Cimgui_dll.igIsItemActive, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsItemActive, "char")
 	    return dll_rtn
 	}
 	
 	igIsItemClicked(mouse_button := 0)
 	{
 		;bool igIsItemClicked(ImGuiMouseButton mouse_button)
-	    dll_rtn := DllCall(Cimgui_dll.igIsItemClicked, "int", mouse_button, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsItemClicked, "int", mouse_button, "char")
 	    return dll_rtn
 	}
 	
 	igIsItemDeactivated()
 	{
 		;bool igIsItemDeactivated()
-	    dll_rtn := DllCall(Cimgui_dll.igIsItemDeactivated, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsItemDeactivated, "char")
 	    return dll_rtn
 	}
 	
 	igIsItemDeactivatedAfterEdit()
 	{
 		;bool igIsItemDeactivatedAfterEdit()
-	    dll_rtn := DllCall(Cimgui_dll.igIsItemDeactivatedAfterEdit, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsItemDeactivatedAfterEdit, "char")
 	    return dll_rtn
 	}
 	
 	igIsItemEdited()
 	{
 		;bool igIsItemEdited()
-	    dll_rtn := DllCall(Cimgui_dll.igIsItemEdited, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsItemEdited, "char")
 	    return dll_rtn
 	}
 	
 	igIsItemFocused()
 	{
 		;bool igIsItemFocused()
-	    dll_rtn := DllCall(Cimgui_dll.igIsItemFocused, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsItemFocused, "char")
 	    return dll_rtn
 	}
 	
 	igIsItemHovered(flags := 0)
 	{
 		;bool igIsItemHovered(ImGuiHoveredFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igIsItemHovered, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsItemHovered, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igIsItemToggledOpen()
 	{
 		;bool igIsItemToggledOpen()
-	    dll_rtn := DllCall(Cimgui_dll.igIsItemToggledOpen, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsItemToggledOpen, "char")
 	    return dll_rtn
 	}
 	
 	igIsItemToggledSelection()
 	{
 		;bool igIsItemToggledSelection()
-	    dll_rtn := DllCall(Cimgui_dll.igIsItemToggledSelection, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsItemToggledSelection, "char")
 	    return dll_rtn
 	}
 	
 	igIsItemVisible()
 	{
 		;bool igIsItemVisible()
-	    dll_rtn := DllCall(Cimgui_dll.igIsItemVisible, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsItemVisible, "char")
 	    return dll_rtn
 	}
 	
 	igIsKeyDown_Nil(key)
 	{
 		;bool igIsKeyDown_Nil(ImGuiKey key)
-	    dll_rtn := DllCall(Cimgui_dll.igIsKeyDown_Nil, "int", key, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsKeyDown_Nil, "int", key, "char")
 	    return dll_rtn
 	}
 	
 	igIsKeyDown_ID(key, owner_id)
 	{
 		;bool igIsKeyDown_ID(ImGuiKey key, ImGuiID owner_id)
-	    dll_rtn := DllCall(Cimgui_dll.igIsKeyDown_ID, "int", key, "uint", owner_id, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsKeyDown_ID, "int", key, "uint", owner_id, "char")
 	    return dll_rtn
 	}
 	
 	igIsKeyPressed_Bool(key, repeat := true)
 	{
 		;bool igIsKeyPressed_Bool(ImGuiKey key, bool repeat)
-	    dll_rtn := DllCall(Cimgui_dll.igIsKeyPressed_Bool, "int", key, "int", repeat, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsKeyPressed_Bool, "int", key, "char", repeat, "char")
 	    return dll_rtn
 	}
 	
 	igIsKeyPressed_ID(key, owner_id, flags := 0)
 	{
 		;bool igIsKeyPressed_ID(ImGuiKey key, ImGuiID owner_id, ImGuiInputFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igIsKeyPressed_ID, "int", key, "uint", owner_id, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsKeyPressed_ID, "int", key, "uint", owner_id, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igIsKeyPressedMap(key, repeat := true)
 	{
 		;bool igIsKeyPressedMap(ImGuiKey key, bool repeat)
-	    dll_rtn := DllCall(Cimgui_dll.igIsKeyPressedMap, "int", key, "int", repeat, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsKeyPressedMap, "int", key, "char", repeat, "char")
 	    return dll_rtn
 	}
 	
 	igIsKeyReleased_Nil(key)
 	{
 		;bool igIsKeyReleased_Nil(ImGuiKey key)
-	    dll_rtn := DllCall(Cimgui_dll.igIsKeyReleased_Nil, "int", key, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsKeyReleased_Nil, "int", key, "char")
 	    return dll_rtn
 	}
 	
 	igIsKeyReleased_ID(key, owner_id)
 	{
 		;bool igIsKeyReleased_ID(ImGuiKey key, ImGuiID owner_id)
-	    dll_rtn := DllCall(Cimgui_dll.igIsKeyReleased_ID, "int", key, "uint", owner_id, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsKeyReleased_ID, "int", key, "uint", owner_id, "char")
 	    return dll_rtn
 	}
 	
 	igIsKeyboardKey(key)
 	{
 		;bool igIsKeyboardKey(ImGuiKey key)
-	    dll_rtn := DllCall(Cimgui_dll.igIsKeyboardKey, "int", key, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsKeyboardKey, "int", key, "char")
 	    return dll_rtn
 	}
 	
 	igIsLegacyKey(key)
 	{
 		;bool igIsLegacyKey(ImGuiKey key)
-	    dll_rtn := DllCall(Cimgui_dll.igIsLegacyKey, "int", key, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsLegacyKey, "int", key, "char")
 	    return dll_rtn
 	}
 	
 	igIsMouseClicked_Bool(button, repeat := false)
 	{
 		;bool igIsMouseClicked_Bool(ImGuiMouseButton button, bool repeat)
-	    dll_rtn := DllCall(Cimgui_dll.igIsMouseClicked_Bool, "int", button, "int", repeat, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsMouseClicked_Bool, "int", button, "char", repeat, "char")
 	    return dll_rtn
 	}
 	
 	igIsMouseClicked_ID(button, owner_id, flags := 0)
 	{
 		;bool igIsMouseClicked_ID(ImGuiMouseButton button, ImGuiID owner_id, ImGuiInputFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igIsMouseClicked_ID, "int", button, "uint", owner_id, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsMouseClicked_ID, "int", button, "uint", owner_id, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igIsMouseDoubleClicked(button)
 	{
 		;bool igIsMouseDoubleClicked(ImGuiMouseButton button)
-	    dll_rtn := DllCall(Cimgui_dll.igIsMouseDoubleClicked, "int", button, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsMouseDoubleClicked, "int", button, "char")
 	    return dll_rtn
 	}
 	
 	igIsMouseDown_Nil(button)
 	{
 		;bool igIsMouseDown_Nil(ImGuiMouseButton button)
-	    dll_rtn := DllCall(Cimgui_dll.igIsMouseDown_Nil, "int", button, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsMouseDown_Nil, "int", button, "char")
 	    return dll_rtn
 	}
 	
 	igIsMouseDown_ID(button, owner_id)
 	{
 		;bool igIsMouseDown_ID(ImGuiMouseButton button, ImGuiID owner_id)
-	    dll_rtn := DllCall(Cimgui_dll.igIsMouseDown_ID, "int", button, "uint", owner_id, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsMouseDown_ID, "int", button, "uint", owner_id, "char")
 	    return dll_rtn
 	}
 	
 	igIsMouseDragPastThreshold(button, lock_threshold := -1.0)
 	{
 		;bool igIsMouseDragPastThreshold(ImGuiMouseButton button, float lock_threshold)
-	    dll_rtn := DllCall(Cimgui_dll.igIsMouseDragPastThreshold, "int", button, "float", lock_threshold, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsMouseDragPastThreshold, "int", button, "float", lock_threshold, "char")
 	    return dll_rtn
 	}
 	
 	igIsMouseDragging(button, lock_threshold := -1.0)
 	{
 		;bool igIsMouseDragging(ImGuiMouseButton button, float lock_threshold)
-	    dll_rtn := DllCall(Cimgui_dll.igIsMouseDragging, "int", button, "float", lock_threshold, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsMouseDragging, "int", button, "float", lock_threshold, "char")
 	    return dll_rtn
 	}
 	
 	igIsMouseHoveringRect(r_min, r_max, clip := true)
 	{
 		;bool igIsMouseHoveringRect(const ImVec2 r_min, const ImVec2 r_max, bool clip)
-	    dll_rtn := DllCall(Cimgui_dll.igIsMouseHoveringRect, "int64", NumGet(r_min, "int64"), "int64", NumGet(r_max, "int64"), "int", clip, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsMouseHoveringRect, "int64", NumGet(r_min, "int64"), "int64", NumGet(r_max, "int64"), "char", clip, "char")
 	    return dll_rtn
 	}
 	
 	igIsMouseKey(key)
 	{
 		;bool igIsMouseKey(ImGuiKey key)
-	    dll_rtn := DllCall(Cimgui_dll.igIsMouseKey, "int", key, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsMouseKey, "int", key, "char")
 	    return dll_rtn
 	}
 	
 	igIsMousePosValid(mouse_pos := 0)
 	{
 		;bool igIsMousePosValid(const ImVec2* mouse_pos)
-	    dll_rtn := DllCall(Cimgui_dll.igIsMousePosValid, "ptr", mouse_pos, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsMousePosValid, "ptr", mouse_pos, "char")
 	    return dll_rtn
 	}
 	
 	igIsMouseReleased_Nil(button)
 	{
 		;bool igIsMouseReleased_Nil(ImGuiMouseButton button)
-	    dll_rtn := DllCall(Cimgui_dll.igIsMouseReleased_Nil, "int", button, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsMouseReleased_Nil, "int", button, "char")
 	    return dll_rtn
 	}
 	
 	igIsMouseReleased_ID(button, owner_id)
 	{
 		;bool igIsMouseReleased_ID(ImGuiMouseButton button, ImGuiID owner_id)
-	    dll_rtn := DllCall(Cimgui_dll.igIsMouseReleased_ID, "int", button, "uint", owner_id, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsMouseReleased_ID, "int", button, "uint", owner_id, "char")
 	    return dll_rtn
 	}
 	
 	igIsNamedKey(key)
 	{
 		;bool igIsNamedKey(ImGuiKey key)
-	    dll_rtn := DllCall(Cimgui_dll.igIsNamedKey, "int", key, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsNamedKey, "int", key, "char")
 	    return dll_rtn
 	}
 	
 	igIsNamedKeyOrModKey(key)
 	{
 		;bool igIsNamedKeyOrModKey(ImGuiKey key)
-	    dll_rtn := DllCall(Cimgui_dll.igIsNamedKeyOrModKey, "int", key, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsNamedKeyOrModKey, "int", key, "char")
 	    return dll_rtn
 	}
 	
 	igIsPopupOpen_Str(str_id, flags := 0)
 	{
 		;bool igIsPopupOpen_Str(const char* str_id, ImGuiPopupFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igIsPopupOpen_Str, "ptr", str_id, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsPopupOpen_Str, "ptr", str_id, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igIsPopupOpen_ID(id, popup_flags)
 	{
 		;bool igIsPopupOpen_ID(ImGuiID id, ImGuiPopupFlags popup_flags)
-	    dll_rtn := DllCall(Cimgui_dll.igIsPopupOpen_ID, "uint", id, "int", popup_flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsPopupOpen_ID, "uint", id, "int", popup_flags, "char")
 	    return dll_rtn
 	}
 	
 	igIsRectVisible_Nil(size)
 	{
 		;bool igIsRectVisible_Nil(const ImVec2 size)
-	    dll_rtn := DllCall(Cimgui_dll.igIsRectVisible_Nil, "int64", NumGet(size, "int64"), "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsRectVisible_Nil, "int64", NumGet(size, "int64"), "char")
 	    return dll_rtn
 	}
 	
 	igIsRectVisible_Vec2(rect_min, rect_max)
 	{
 		;bool igIsRectVisible_Vec2(const ImVec2 rect_min, const ImVec2 rect_max)
-	    dll_rtn := DllCall(Cimgui_dll.igIsRectVisible_Vec2, "int64", NumGet(rect_min, "int64"), "int64", NumGet(rect_max, "int64"), "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsRectVisible_Vec2, "int64", NumGet(rect_min, "int64"), "int64", NumGet(rect_max, "int64"), "char")
 	    return dll_rtn
 	}
 	
 	igIsWindowAbove(potential_above, potential_below)
 	{
 		;bool igIsWindowAbove(ImGuiWindow* potential_above, ImGuiWindow* potential_below)
-	    dll_rtn := DllCall(Cimgui_dll.igIsWindowAbove, "ptr", potential_above, "ptr", potential_below, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsWindowAbove, "ptr", potential_above, "ptr", potential_below, "char")
 	    return dll_rtn
 	}
 	
 	igIsWindowAppearing()
 	{
 		;bool igIsWindowAppearing()
-	    dll_rtn := DllCall(Cimgui_dll.igIsWindowAppearing, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsWindowAppearing, "char")
 	    return dll_rtn
 	}
 	
 	igIsWindowChildOf(window, potential_parent, popup_hierarchy, dock_hierarchy)
 	{
 		;bool igIsWindowChildOf(ImGuiWindow* window, ImGuiWindow* potential_parent, bool popup_hierarchy, bool dock_hierarchy)
-	    dll_rtn := DllCall(Cimgui_dll.igIsWindowChildOf, "ptr", window, "ptr", potential_parent, "int", popup_hierarchy, "int", dock_hierarchy, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsWindowChildOf, "ptr", window, "ptr", potential_parent, "char", popup_hierarchy, "char", dock_hierarchy, "char")
 	    return dll_rtn
 	}
 	
 	igIsWindowCollapsed()
 	{
 		;bool igIsWindowCollapsed()
-	    dll_rtn := DllCall(Cimgui_dll.igIsWindowCollapsed, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsWindowCollapsed, "char")
 	    return dll_rtn
 	}
 	
 	igIsWindowContentHoverable(window, flags := 0)
 	{
 		;bool igIsWindowContentHoverable(ImGuiWindow* window, ImGuiHoveredFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igIsWindowContentHoverable, "ptr", window, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsWindowContentHoverable, "ptr", window, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igIsWindowDocked()
 	{
 		;bool igIsWindowDocked()
-	    dll_rtn := DllCall(Cimgui_dll.igIsWindowDocked, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsWindowDocked, "char")
 	    return dll_rtn
 	}
 	
 	igIsWindowFocused(flags := 0)
 	{
 		;bool igIsWindowFocused(ImGuiFocusedFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igIsWindowFocused, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsWindowFocused, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igIsWindowHovered(flags := 0)
 	{
 		;bool igIsWindowHovered(ImGuiHoveredFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igIsWindowHovered, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsWindowHovered, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igIsWindowNavFocusable(window)
 	{
 		;bool igIsWindowNavFocusable(ImGuiWindow* window)
-	    dll_rtn := DllCall(Cimgui_dll.igIsWindowNavFocusable, "ptr", window, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsWindowNavFocusable, "ptr", window, "char")
 	    return dll_rtn
 	}
 	
 	igIsWindowWithinBeginStackOf(window, potential_parent)
 	{
 		;bool igIsWindowWithinBeginStackOf(ImGuiWindow* window, ImGuiWindow* potential_parent)
-	    dll_rtn := DllCall(Cimgui_dll.igIsWindowWithinBeginStackOf, "ptr", window, "ptr", potential_parent, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igIsWindowWithinBeginStackOf, "ptr", window, "ptr", potential_parent, "char")
 	    return dll_rtn
 	}
 	
 	igItemAdd(bb, id, nav_bb := 0, extra_flags := 0)
 	{
 		;bool igItemAdd(const ImRect bb, ImGuiID id, const ImRect* nav_bb, ImGuiItemFlags extra_flags)
-	    dll_rtn := DllCall(Cimgui_dll.igItemAdd, "ptr", bb, "uint", id, "ptr", nav_bb, "int", extra_flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igItemAdd, "ptr", bb, "uint", id, "ptr", nav_bb, "int", extra_flags, "char")
 	    return dll_rtn
 	}
 	
 	igItemHoverable(bb, id, item_flags)
 	{
 		;bool igItemHoverable(const ImRect bb, ImGuiID id, ImGuiItemFlags item_flags)
-	    dll_rtn := DllCall(Cimgui_dll.igItemHoverable, "ptr", bb, "uint", id, "int", item_flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igItemHoverable, "ptr", bb, "uint", id, "int", item_flags, "char")
 	    return dll_rtn
 	}
 	
@@ -3741,7 +3741,7 @@ class Cimgui_AHK
 	igLabelText(label, fmt, p*)
 	{
 		;void igLabelText(const char* label, const char* fmt, ...)
-	    dll_rtn := DllCall(Cimgui_dll.igLabelText, "ptr", label, "ptr", fmt)
+	    dll_rtn := DllCall(Cimgui_dll.igLabelText, "ptr", label, "ptr", fmt, p*)
 	    return dll_rtn
 	}
 	
@@ -3755,14 +3755,14 @@ class Cimgui_AHK
 	igListBox_Str_arr(label, &current_item, items, items_count, height_in_items := -1)
 	{
 		;bool igListBox_Str_arr(const char* label, int* current_item, const char* const items[], int items_count, int height_in_items)
-	    dll_rtn := DllCall(Cimgui_dll.igListBox_Str_arr, "ptr", label, "int*", &current_item, "ptr", items, "int", items_count, "int", height_in_items, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igListBox_Str_arr, "ptr", label, "int*", &current_item, "ptr", items, "int", items_count, "int", height_in_items, "char")
 	    return dll_rtn
 	}
 	
 	igListBox_FnBoolPtr(label, &current_item, items_getter, data, items_count, height_in_items := -1)
 	{
 		;bool igListBox_FnBoolPtr(const char* label, int* current_item, bool(*items_getter)(void* data, int idx, const char** out_text), void* data, int items_count, int height_in_items)
-	    dll_rtn := DllCall(Cimgui_dll.igListBox_FnBoolPtr, "ptr", label, "int*", &current_item, "ptr", items_getter, "ptr", data, "int", items_count, "int", height_in_items, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igListBox_FnBoolPtr, "ptr", label, "int*", &current_item, "ptr", items_getter, "ptr", data, "int", items_count, "int", height_in_items, "char")
 	    return dll_rtn
 	}
 	
@@ -3832,7 +3832,7 @@ class Cimgui_AHK
 	igLogText(fmt, p*)
 	{
 		;void igLogText(const char* fmt, ...)
-	    dll_rtn := DllCall(Cimgui_dll.igLogText, "ptr", fmt)
+	    dll_rtn := DllCall(Cimgui_dll.igLogText, "ptr", fmt, p*)
 	    return dll_rtn
 	}
 	
@@ -3909,21 +3909,21 @@ class Cimgui_AHK
 	igMenuItem_Bool(label, shortcut := 0, selected := false, enabled := true)
 	{
 		;bool igMenuItem_Bool(const char* label, const char* shortcut, bool selected, bool enabled)
-	    dll_rtn := DllCall(Cimgui_dll.igMenuItem_Bool, "ptr", label, "ptr", shortcut, "int", selected, "int", enabled, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igMenuItem_Bool, "ptr", label, "ptr", shortcut, "char", selected, "char", enabled, "char")
 	    return dll_rtn
 	}
 	
 	igMenuItem_BoolPtr(label, shortcut, &p_selected, enabled := true)
 	{
 		;bool igMenuItem_BoolPtr(const char* label, const char* shortcut, bool* p_selected, bool enabled)
-	    dll_rtn := DllCall(Cimgui_dll.igMenuItem_BoolPtr, "ptr", label, "ptr", shortcut, "int*", &p_selected, "int", enabled, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igMenuItem_BoolPtr, "ptr", label, "ptr", shortcut, "char*", &p_selected, "char", enabled, "char")
 	    return dll_rtn
 	}
 	
 	igMenuItemEx(label, icon, shortcut := 0, selected := false, enabled := true)
 	{
 		;bool igMenuItemEx(const char* label, const char* icon, const char* shortcut, bool selected, bool enabled)
-	    dll_rtn := DllCall(Cimgui_dll.igMenuItemEx, "ptr", label, "ptr", icon, "ptr", shortcut, "int", selected, "int", enabled, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igMenuItemEx, "ptr", label, "ptr", icon, "ptr", shortcut, "char", selected, "char", enabled, "char")
 	    return dll_rtn
 	}
 	
@@ -3951,7 +3951,7 @@ class Cimgui_AHK
 	igNavInitWindow(window, force_reinit)
 	{
 		;void igNavInitWindow(ImGuiWindow* window, bool force_reinit)
-	    dll_rtn := DllCall(Cimgui_dll.igNavInitWindow, "ptr", window, "int", force_reinit)
+	    dll_rtn := DllCall(Cimgui_dll.igNavInitWindow, "ptr", window, "char", force_reinit)
 	    return dll_rtn
 	}
 	
@@ -3965,7 +3965,7 @@ class Cimgui_AHK
 	igNavMoveRequestButNoResultYet()
 	{
 		;bool igNavMoveRequestButNoResultYet()
-	    dll_rtn := DllCall(Cimgui_dll.igNavMoveRequestButNoResultYet, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igNavMoveRequestButNoResultYet, "char")
 	    return dll_rtn
 	}
 	
@@ -4196,14 +4196,14 @@ class Cimgui_AHK
 	igPushButtonRepeat(repeat)
 	{
 		;void igPushButtonRepeat(bool repeat)
-	    dll_rtn := DllCall(Cimgui_dll.igPushButtonRepeat, "int", repeat)
+	    dll_rtn := DllCall(Cimgui_dll.igPushButtonRepeat, "char", repeat)
 	    return dll_rtn
 	}
 	
 	igPushClipRect(clip_rect_min, clip_rect_max, intersect_with_current_clip_rect)
 	{
 		;void igPushClipRect(const ImVec2 clip_rect_min, const ImVec2 clip_rect_max, bool intersect_with_current_clip_rect)
-	    dll_rtn := DllCall(Cimgui_dll.igPushClipRect, "int64", NumGet(clip_rect_min, "int64"), "int64", NumGet(clip_rect_max, "int64"), "int", intersect_with_current_clip_rect)
+	    dll_rtn := DllCall(Cimgui_dll.igPushClipRect, "int64", NumGet(clip_rect_min, "int64"), "int64", NumGet(clip_rect_max, "int64"), "char", intersect_with_current_clip_rect)
 	    return dll_rtn
 	}
 	
@@ -4266,7 +4266,7 @@ class Cimgui_AHK
 	igPushItemFlag(option, enabled)
 	{
 		;void igPushItemFlag(ImGuiItemFlags option, bool enabled)
-	    dll_rtn := DllCall(Cimgui_dll.igPushItemFlag, "int", option, "int", enabled)
+	    dll_rtn := DllCall(Cimgui_dll.igPushItemFlag, "int", option, "char", enabled)
 	    return dll_rtn
 	}
 	
@@ -4322,7 +4322,7 @@ class Cimgui_AHK
 	igPushTabStop(tab_stop)
 	{
 		;void igPushTabStop(bool tab_stop)
-	    dll_rtn := DllCall(Cimgui_dll.igPushTabStop, "int", tab_stop)
+	    dll_rtn := DllCall(Cimgui_dll.igPushTabStop, "char", tab_stop)
 	    return dll_rtn
 	}
 	
@@ -4336,14 +4336,14 @@ class Cimgui_AHK
 	igRadioButton_Bool(label, active)
 	{
 		;bool igRadioButton_Bool(const char* label, bool active)
-	    dll_rtn := DllCall(Cimgui_dll.igRadioButton_Bool, "ptr", label, "int", active, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igRadioButton_Bool, "ptr", label, "char", active, "char")
 	    return dll_rtn
 	}
 	
 	igRadioButton_IntPtr(label, &v, v_button)
 	{
 		;bool igRadioButton_IntPtr(const char* label, int* v, int v_button)
-	    dll_rtn := DllCall(Cimgui_dll.igRadioButton_IntPtr, "ptr", label, "int*", &v, "int", v_button, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igRadioButton_IntPtr, "ptr", label, "int*", &v, "int", v_button, "char")
 	    return dll_rtn
 	}
 	
@@ -4420,7 +4420,7 @@ class Cimgui_AHK
 	igRenderFrame(p_min, p_max, fill_col, border := true, rounding := 0.0)
 	{
 		;void igRenderFrame(ImVec2 p_min, ImVec2 p_max, ImU32 fill_col, bool border, float rounding)
-	    dll_rtn := DllCall(Cimgui_dll.igRenderFrame, "int64", NumGet(p_min, "int64"), "int64", NumGet(p_max, "int64"), "uint", fill_col, "int", border, "float", rounding)
+	    dll_rtn := DllCall(Cimgui_dll.igRenderFrame, "int64", NumGet(p_min, "int64"), "int64", NumGet(p_max, "int64"), "uint", fill_col, "char", border, "float", rounding)
 	    return dll_rtn
 	}
 	
@@ -4469,7 +4469,7 @@ class Cimgui_AHK
 	igRenderText(pos, text, text_end := 0, hide_text_after_hash := true)
 	{
 		;void igRenderText(ImVec2 pos, const char* text, const char* text_end, bool hide_text_after_hash)
-	    dll_rtn := DllCall(Cimgui_dll.igRenderText, "int64", NumGet(pos, "int64"), "ptr", text, "ptr", text_end, "int", hide_text_after_hash)
+	    dll_rtn := DllCall(Cimgui_dll.igRenderText, "int64", NumGet(pos, "int64"), "ptr", text, "ptr", text_end, "char", hide_text_after_hash)
 	    return dll_rtn
 	}
 	
@@ -4574,21 +4574,21 @@ class Cimgui_AHK
 	igScrollbarEx(bb, id, axis, &p_scroll_v, avail_v, contents_v, flags)
 	{
 		;bool igScrollbarEx(const ImRect bb, ImGuiID id, ImGuiAxis axis, ImS64* p_scroll_v, ImS64 avail_v, ImS64 contents_v, ImDrawFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igScrollbarEx, "ptr", bb, "uint", id, "int", axis, "int64*", &p_scroll_v, "int64", avail_v, "int64", contents_v, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igScrollbarEx, "ptr", bb, "uint", id, "int", axis, "int64*", &p_scroll_v, "int64", avail_v, "int64", contents_v, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igSelectable_Bool(label, selected := false, flags := 0, size := ImVec2([0, 0]))
 	{
 		;bool igSelectable_Bool(const char* label, bool selected, ImGuiSelectableFlags flags, const ImVec2 size)
-	    dll_rtn := DllCall(Cimgui_dll.igSelectable_Bool, "ptr", label, "int", selected, "int", flags, "int64", NumGet(size, "int64"), "int")
+	    dll_rtn := DllCall(Cimgui_dll.igSelectable_Bool, "ptr", label, "char", selected, "int", flags, "int64", NumGet(size, "int64"), "char")
 	    return dll_rtn
 	}
 	
 	igSelectable_BoolPtr(label, &p_selected, flags := 0, size := ImVec2([0, 0]))
 	{
 		;bool igSelectable_BoolPtr(const char* label, bool* p_selected, ImGuiSelectableFlags flags, const ImVec2 size)
-	    dll_rtn := DllCall(Cimgui_dll.igSelectable_BoolPtr, "ptr", label, "int*", &p_selected, "int", flags, "int64", NumGet(size, "int64"), "int")
+	    dll_rtn := DllCall(Cimgui_dll.igSelectable_BoolPtr, "ptr", label, "char*", &p_selected, "int", flags, "int64", NumGet(size, "int64"), "char")
 	    return dll_rtn
 	}
 	
@@ -4721,7 +4721,7 @@ class Cimgui_AHK
 	igSetDragDropPayload(type, data, sz, cond := 0)
 	{
 		;bool igSetDragDropPayload(const char* type, const void* data, size_t sz, ImGuiCond cond)
-	    dll_rtn := DllCall(Cimgui_dll.igSetDragDropPayload, "ptr", type, "ptr", data, "uptr", sz, "int", cond, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igSetDragDropPayload, "ptr", type, "ptr", data, "uptr", sz, "int", cond, "char")
 	    return dll_rtn
 	}
 	
@@ -4756,7 +4756,7 @@ class Cimgui_AHK
 	igSetItemTooltip(fmt, p*)
 	{
 		;void igSetItemTooltip(const char* fmt, ...)
-	    dll_rtn := DllCall(Cimgui_dll.igSetItemTooltip, "ptr", fmt)
+	    dll_rtn := DllCall(Cimgui_dll.igSetItemTooltip, "ptr", fmt, p*)
 	    return dll_rtn
 	}
 	
@@ -4819,14 +4819,14 @@ class Cimgui_AHK
 	igSetNextFrameWantCaptureKeyboard(want_capture_keyboard)
 	{
 		;void igSetNextFrameWantCaptureKeyboard(bool want_capture_keyboard)
-	    dll_rtn := DllCall(Cimgui_dll.igSetNextFrameWantCaptureKeyboard, "int", want_capture_keyboard)
+	    dll_rtn := DllCall(Cimgui_dll.igSetNextFrameWantCaptureKeyboard, "char", want_capture_keyboard)
 	    return dll_rtn
 	}
 	
 	igSetNextFrameWantCaptureMouse(want_capture_mouse)
 	{
 		;void igSetNextFrameWantCaptureMouse(bool want_capture_mouse)
-	    dll_rtn := DllCall(Cimgui_dll.igSetNextFrameWantCaptureMouse, "int", want_capture_mouse)
+	    dll_rtn := DllCall(Cimgui_dll.igSetNextFrameWantCaptureMouse, "char", want_capture_mouse)
 	    return dll_rtn
 	}
 	
@@ -4840,7 +4840,7 @@ class Cimgui_AHK
 	igSetNextItemOpen(is_open, cond := 0)
 	{
 		;void igSetNextItemOpen(bool is_open, ImGuiCond cond)
-	    dll_rtn := DllCall(Cimgui_dll.igSetNextItemOpen, "int", is_open, "int", cond)
+	    dll_rtn := DllCall(Cimgui_dll.igSetNextItemOpen, "char", is_open, "int", cond)
 	    return dll_rtn
 	}
 	
@@ -4868,7 +4868,7 @@ class Cimgui_AHK
 	igSetNextWindowCollapsed(collapsed, cond := 0)
 	{
 		;void igSetNextWindowCollapsed(bool collapsed, ImGuiCond cond)
-	    dll_rtn := DllCall(Cimgui_dll.igSetNextWindowCollapsed, "int", collapsed, "int", cond)
+	    dll_rtn := DllCall(Cimgui_dll.igSetNextWindowCollapsed, "char", collapsed, "int", cond)
 	    return dll_rtn
 	}
 	
@@ -5001,7 +5001,7 @@ class Cimgui_AHK
 	igSetShortcutRouting(key_chord, owner_id := 0, flags := 0)
 	{
 		;bool igSetShortcutRouting(ImGuiKeyChord key_chord, ImGuiID owner_id, ImGuiInputFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igSetShortcutRouting, "int", key_chord, "uint", owner_id, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igSetShortcutRouting, "int", key_chord, "uint", owner_id, "int", flags, "char")
 	    return dll_rtn
 	}
 	
@@ -5022,7 +5022,7 @@ class Cimgui_AHK
 	igSetTooltip(fmt, p*)
 	{
 		;void igSetTooltip(const char* fmt, ...)
-	    dll_rtn := DllCall(Cimgui_dll.igSetTooltip, "ptr", fmt)
+	    dll_rtn := DllCall(Cimgui_dll.igSetTooltip, "ptr", fmt, p*)
 	    return dll_rtn
 	}
 	
@@ -5043,21 +5043,21 @@ class Cimgui_AHK
 	igSetWindowCollapsed_Bool(collapsed, cond := 0)
 	{
 		;void igSetWindowCollapsed_Bool(bool collapsed, ImGuiCond cond)
-	    dll_rtn := DllCall(Cimgui_dll.igSetWindowCollapsed_Bool, "int", collapsed, "int", cond)
+	    dll_rtn := DllCall(Cimgui_dll.igSetWindowCollapsed_Bool, "char", collapsed, "int", cond)
 	    return dll_rtn
 	}
 	
 	igSetWindowCollapsed_Str(name, collapsed, cond := 0)
 	{
 		;void igSetWindowCollapsed_Str(const char* name, bool collapsed, ImGuiCond cond)
-	    dll_rtn := DllCall(Cimgui_dll.igSetWindowCollapsed_Str, "ptr", name, "int", collapsed, "int", cond)
+	    dll_rtn := DllCall(Cimgui_dll.igSetWindowCollapsed_Str, "ptr", name, "char", collapsed, "int", cond)
 	    return dll_rtn
 	}
 	
 	igSetWindowCollapsed_WindowPtr(window, collapsed, cond := 0)
 	{
 		;void igSetWindowCollapsed_WindowPtr(ImGuiWindow* window, bool collapsed, ImGuiCond cond)
-	    dll_rtn := DllCall(Cimgui_dll.igSetWindowCollapsed_WindowPtr, "ptr", window, "int", collapsed, "int", cond)
+	    dll_rtn := DllCall(Cimgui_dll.igSetWindowCollapsed_WindowPtr, "ptr", window, "char", collapsed, "int", cond)
 	    return dll_rtn
 	}
 	
@@ -5162,35 +5162,35 @@ class Cimgui_AHK
 	igShadeVertsLinearUV(draw_list, vert_start_idx, vert_end_idx, a, b, uv_a, uv_b, clamp)
 	{
 		;void igShadeVertsLinearUV(ImDrawList* draw_list, int vert_start_idx, int vert_end_idx, const ImVec2 a, const ImVec2 b, const ImVec2 uv_a, const ImVec2 uv_b, bool clamp)
-	    dll_rtn := DllCall(Cimgui_dll.igShadeVertsLinearUV, "ptr", draw_list, "int", vert_start_idx, "int", vert_end_idx, "int64", NumGet(a, "int64"), "int64", NumGet(b, "int64"), "int64", NumGet(uv_a, "int64"), "int64", NumGet(uv_b, "int64"), "int", clamp)
+	    dll_rtn := DllCall(Cimgui_dll.igShadeVertsLinearUV, "ptr", draw_list, "int", vert_start_idx, "int", vert_end_idx, "int64", NumGet(a, "int64"), "int64", NumGet(b, "int64"), "int64", NumGet(uv_a, "int64"), "int64", NumGet(uv_b, "int64"), "char", clamp)
 	    return dll_rtn
 	}
 	
 	igShortcut(key_chord, owner_id := 0, flags := 0)
 	{
 		;bool igShortcut(ImGuiKeyChord key_chord, ImGuiID owner_id, ImGuiInputFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igShortcut, "int", key_chord, "uint", owner_id, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igShortcut, "int", key_chord, "uint", owner_id, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igShowAboutWindow(&p_open := 0)
 	{
 		;void igShowAboutWindow(bool* p_open)
-	    dll_rtn := DllCall(Cimgui_dll.igShowAboutWindow, "int*", &p_open)
+	    dll_rtn := DllCall(Cimgui_dll.igShowAboutWindow, "char*", &p_open)
 	    return dll_rtn
 	}
 	
 	igShowDebugLogWindow(&p_open := 0)
 	{
 		;void igShowDebugLogWindow(bool* p_open)
-	    dll_rtn := DllCall(Cimgui_dll.igShowDebugLogWindow, "int*", &p_open)
+	    dll_rtn := DllCall(Cimgui_dll.igShowDebugLogWindow, "char*", &p_open)
 	    return dll_rtn
 	}
 	
 	igShowDemoWindow(&p_open := 0)
 	{
 		;void igShowDemoWindow(bool* p_open)
-	    dll_rtn := DllCall(Cimgui_dll.igShowDemoWindow, "int*", &p_open)
+	    dll_rtn := DllCall(Cimgui_dll.igShowDemoWindow, "char*", &p_open)
 	    return dll_rtn
 	}
 	
@@ -5211,14 +5211,14 @@ class Cimgui_AHK
 	igShowMetricsWindow(&p_open := 0)
 	{
 		;void igShowMetricsWindow(bool* p_open)
-	    dll_rtn := DllCall(Cimgui_dll.igShowMetricsWindow, "int*", &p_open)
+	    dll_rtn := DllCall(Cimgui_dll.igShowMetricsWindow, "char*", &p_open)
 	    return dll_rtn
 	}
 	
 	igShowStackToolWindow(&p_open := 0)
 	{
 		;void igShowStackToolWindow(bool* p_open)
-	    dll_rtn := DllCall(Cimgui_dll.igShowStackToolWindow, "int*", &p_open)
+	    dll_rtn := DllCall(Cimgui_dll.igShowStackToolWindow, "char*", &p_open)
 	    return dll_rtn
 	}
 	
@@ -5232,7 +5232,7 @@ class Cimgui_AHK
 	igShowStyleSelector(label)
 	{
 		;bool igShowStyleSelector(const char* label)
-	    dll_rtn := DllCall(Cimgui_dll.igShowStyleSelector, "ptr", label, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igShowStyleSelector, "ptr", label, "char")
 	    return dll_rtn
 	}
 	
@@ -5260,91 +5260,91 @@ class Cimgui_AHK
 	igSliderAngle(label, &v_rad, v_degrees_min := -360.0, v_degrees_max := +360.0, format := "%.0f deg", flags := 0)
 	{
 		;bool igSliderAngle(const char* label, float* v_rad, float v_degrees_min, float v_degrees_max, const char* format, ImGuiSliderFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igSliderAngle, "ptr", label, "float*", &v_rad, "float", v_degrees_min, "float", v_degrees_max, "ptr", format, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igSliderAngle, "ptr", label, "float*", &v_rad, "float", v_degrees_min, "float", v_degrees_max, "ptr", format, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igSliderBehavior(bb, id, data_type, p_v, p_min, p_max, format, flags, out_grab_bb)
 	{
 		;bool igSliderBehavior(const ImRect bb, ImGuiID id, ImGuiDataType data_type, void* p_v, const void* p_min, const void* p_max, const char* format, ImGuiSliderFlags flags, ImRect* out_grab_bb)
-	    dll_rtn := DllCall(Cimgui_dll.igSliderBehavior, "ptr", bb, "uint", id, "int", data_type, "ptr", p_v, "ptr", p_min, "ptr", p_max, "ptr", format, "int", flags, "ptr", out_grab_bb, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igSliderBehavior, "ptr", bb, "uint", id, "int", data_type, "ptr", p_v, "ptr", p_min, "ptr", p_max, "ptr", format, "int", flags, "ptr", out_grab_bb, "char")
 	    return dll_rtn
 	}
 	
 	igSliderFloat(label, &v, v_min, v_max, format := "%.3f", flags := 0)
 	{
 		;bool igSliderFloat(const char* label, float* v, float v_min, float v_max, const char* format, ImGuiSliderFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igSliderFloat, "ptr", label, "float*", &v, "float", v_min, "float", v_max, "ptr", format, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igSliderFloat, "ptr", label, "float*", &v, "float", v_min, "float", v_max, "ptr", format, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igSliderFloat2(label, v, v_min, v_max, format := "%.3f", flags := 0)
 	{
 		;bool igSliderFloat2(const char* label, float v[2], float v_min, float v_max, const char* format, ImGuiSliderFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igSliderFloat2, "ptr", label, "ptr", v, "float", v_min, "float", v_max, "ptr", format, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igSliderFloat2, "ptr", label, "ptr", v, "float", v_min, "float", v_max, "ptr", format, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igSliderFloat3(label, v, v_min, v_max, format := "%.3f", flags := 0)
 	{
 		;bool igSliderFloat3(const char* label, float v[3], float v_min, float v_max, const char* format, ImGuiSliderFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igSliderFloat3, "ptr", label, "ptr", v, "float", v_min, "float", v_max, "ptr", format, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igSliderFloat3, "ptr", label, "ptr", v, "float", v_min, "float", v_max, "ptr", format, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igSliderFloat4(label, v, v_min, v_max, format := "%.3f", flags := 0)
 	{
 		;bool igSliderFloat4(const char* label, float v[4], float v_min, float v_max, const char* format, ImGuiSliderFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igSliderFloat4, "ptr", label, "ptr", v, "float", v_min, "float", v_max, "ptr", format, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igSliderFloat4, "ptr", label, "ptr", v, "float", v_min, "float", v_max, "ptr", format, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igSliderInt(label, &v, v_min, v_max, format := "%d", flags := 0)
 	{
 		;bool igSliderInt(const char* label, int* v, int v_min, int v_max, const char* format, ImGuiSliderFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igSliderInt, "ptr", label, "int*", &v, "int", v_min, "int", v_max, "ptr", format, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igSliderInt, "ptr", label, "int*", &v, "int", v_min, "int", v_max, "ptr", format, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igSliderInt2(label, v, v_min, v_max, format := "%d", flags := 0)
 	{
 		;bool igSliderInt2(const char* label, int v[2], int v_min, int v_max, const char* format, ImGuiSliderFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igSliderInt2, "ptr", label, "ptr", v, "int", v_min, "int", v_max, "ptr", format, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igSliderInt2, "ptr", label, "ptr", v, "int", v_min, "int", v_max, "ptr", format, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igSliderInt3(label, v, v_min, v_max, format := "%d", flags := 0)
 	{
 		;bool igSliderInt3(const char* label, int v[3], int v_min, int v_max, const char* format, ImGuiSliderFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igSliderInt3, "ptr", label, "ptr", v, "int", v_min, "int", v_max, "ptr", format, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igSliderInt3, "ptr", label, "ptr", v, "int", v_min, "int", v_max, "ptr", format, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igSliderInt4(label, v, v_min, v_max, format := "%d", flags := 0)
 	{
 		;bool igSliderInt4(const char* label, int v[4], int v_min, int v_max, const char* format, ImGuiSliderFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igSliderInt4, "ptr", label, "ptr", v, "int", v_min, "int", v_max, "ptr", format, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igSliderInt4, "ptr", label, "ptr", v, "int", v_min, "int", v_max, "ptr", format, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igSliderScalar(label, data_type, p_data, p_min, p_max, format := 0, flags := 0)
 	{
 		;bool igSliderScalar(const char* label, ImGuiDataType data_type, void* p_data, const void* p_min, const void* p_max, const char* format, ImGuiSliderFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igSliderScalar, "ptr", label, "int", data_type, "ptr", p_data, "ptr", p_min, "ptr", p_max, "ptr", format, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igSliderScalar, "ptr", label, "int", data_type, "ptr", p_data, "ptr", p_min, "ptr", p_max, "ptr", format, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igSliderScalarN(label, data_type, p_data, components, p_min, p_max, format := 0, flags := 0)
 	{
 		;bool igSliderScalarN(const char* label, ImGuiDataType data_type, void* p_data, int components, const void* p_min, const void* p_max, const char* format, ImGuiSliderFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igSliderScalarN, "ptr", label, "int", data_type, "ptr", p_data, "int", components, "ptr", p_min, "ptr", p_max, "ptr", format, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igSliderScalarN, "ptr", label, "int", data_type, "ptr", p_data, "int", components, "ptr", p_min, "ptr", p_max, "ptr", format, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igSmallButton(label)
 	{
 		;bool igSmallButton(const char* label)
-	    dll_rtn := DllCall(Cimgui_dll.igSmallButton, "ptr", label, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igSmallButton, "ptr", label, "char")
 	    return dll_rtn
 	}
 	
@@ -5358,7 +5358,7 @@ class Cimgui_AHK
 	igSplitterBehavior(bb, id, axis, &size1, &size2, min_size1, min_size2, hover_extend := 0.0, hover_visibility_delay := 0.0, bg_col := 0)
 	{
 		;bool igSplitterBehavior(const ImRect bb, ImGuiID id, ImGuiAxis axis, float* size1, float* size2, float min_size1, float min_size2, float hover_extend, float hover_visibility_delay, ImU32 bg_col)
-	    dll_rtn := DllCall(Cimgui_dll.igSplitterBehavior, "ptr", bb, "uint", id, "int", axis, "float*", &size1, "float*", &size2, "float", min_size1, "float", min_size2, "float", hover_extend, "float", hover_visibility_delay, "uint", bg_col, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igSplitterBehavior, "ptr", bb, "uint", id, "int", axis, "float*", &size1, "float*", &size2, "float", min_size1, "float", min_size2, "float", hover_extend, "float", hover_visibility_delay, "uint", bg_col, "char")
 	    return dll_rtn
 	}
 	
@@ -5372,7 +5372,7 @@ class Cimgui_AHK
 	igStartMouseMovingWindowOrNode(window, node, undock_floating_node)
 	{
 		;void igStartMouseMovingWindowOrNode(ImGuiWindow* window, ImGuiDockNode* node, bool undock_floating_node)
-	    dll_rtn := DllCall(Cimgui_dll.igStartMouseMovingWindowOrNode, "ptr", window, "ptr", node, "int", undock_floating_node)
+	    dll_rtn := DllCall(Cimgui_dll.igStartMouseMovingWindowOrNode, "ptr", window, "ptr", node, "char", undock_floating_node)
 	    return dll_rtn
 	}
 	
@@ -5456,7 +5456,7 @@ class Cimgui_AHK
 	igTabBarProcessReorder(tab_bar)
 	{
 		;bool igTabBarProcessReorder(ImGuiTabBar* tab_bar)
-	    dll_rtn := DllCall(Cimgui_dll.igTabBarProcessReorder, "ptr", tab_bar, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igTabBarProcessReorder, "ptr", tab_bar, "char")
 	    return dll_rtn
 	}
 	
@@ -5498,14 +5498,14 @@ class Cimgui_AHK
 	igTabItemButton(label, flags := 0)
 	{
 		;bool igTabItemButton(const char* label, ImGuiTabItemFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igTabItemButton, "ptr", label, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igTabItemButton, "ptr", label, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igTabItemCalcSize_Str(pOut, label, has_close_button_or_unsaved_marker)
 	{
 		;void igTabItemCalcSize_Str(ImVec2 *pOut, const char* label, bool has_close_button_or_unsaved_marker)
-	    dll_rtn := DllCall(Cimgui_dll.igTabItemCalcSize_Str, "ptr", pOut, "ptr", label, "int", has_close_button_or_unsaved_marker)
+	    dll_rtn := DllCall(Cimgui_dll.igTabItemCalcSize_Str, "ptr", pOut, "ptr", label, "char", has_close_button_or_unsaved_marker)
 	    return dll_rtn
 	}
 	
@@ -5519,14 +5519,14 @@ class Cimgui_AHK
 	igTabItemEx(tab_bar, label, &p_open, flags, docked_window)
 	{
 		;bool igTabItemEx(ImGuiTabBar* tab_bar, const char* label, bool* p_open, ImGuiTabItemFlags flags, ImGuiWindow* docked_window)
-	    dll_rtn := DllCall(Cimgui_dll.igTabItemEx, "ptr", tab_bar, "ptr", label, "int*", &p_open, "int", flags, "ptr", docked_window, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igTabItemEx, "ptr", tab_bar, "ptr", label, "char*", &p_open, "int", flags, "ptr", docked_window, "char")
 	    return dll_rtn
 	}
 	
 	igTabItemLabelAndCloseButton(draw_list, bb, flags, frame_padding, label, tab_id, close_button_id, is_contents_visible, &out_just_closed, &out_text_clipped)
 	{
 		;void igTabItemLabelAndCloseButton(ImDrawList* draw_list, const ImRect bb, ImGuiTabItemFlags flags, ImVec2 frame_padding, const char* label, ImGuiID tab_id, ImGuiID close_button_id, bool is_contents_visible, bool* out_just_closed, bool* out_text_clipped)
-	    dll_rtn := DllCall(Cimgui_dll.igTabItemLabelAndCloseButton, "ptr", draw_list, "ptr", bb, "int", flags, "int64", NumGet(frame_padding, "int64"), "ptr", label, "uint", tab_id, "uint", close_button_id, "int", is_contents_visible, "int*", &out_just_closed, "int*", &out_text_clipped)
+	    dll_rtn := DllCall(Cimgui_dll.igTabItemLabelAndCloseButton, "ptr", draw_list, "ptr", bb, "int", flags, "int64", NumGet(frame_padding, "int64"), "ptr", label, "uint", tab_id, "uint", close_button_id, "char", is_contents_visible, "char*", &out_just_closed, "char*", &out_text_clipped)
 	    return dll_rtn
 	}
 	
@@ -5547,7 +5547,7 @@ class Cimgui_AHK
 	igTableBeginContextMenuPopup(table)
 	{
 		;bool igTableBeginContextMenuPopup(ImGuiTable* table)
-	    dll_rtn := DllCall(Cimgui_dll.igTableBeginContextMenuPopup, "ptr", table, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igTableBeginContextMenuPopup, "ptr", table, "char")
 	    return dll_rtn
 	}
 	
@@ -5785,7 +5785,7 @@ class Cimgui_AHK
 	igTableNextColumn()
 	{
 		;bool igTableNextColumn()
-	    dll_rtn := DllCall(Cimgui_dll.igTableNextColumn, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igTableNextColumn, "char")
 	    return dll_rtn
 	}
 	
@@ -5848,21 +5848,21 @@ class Cimgui_AHK
 	igTableSetColumnEnabled(column_n, v)
 	{
 		;void igTableSetColumnEnabled(int column_n, bool v)
-	    dll_rtn := DllCall(Cimgui_dll.igTableSetColumnEnabled, "int", column_n, "int", v)
+	    dll_rtn := DllCall(Cimgui_dll.igTableSetColumnEnabled, "int", column_n, "char", v)
 	    return dll_rtn
 	}
 	
 	igTableSetColumnIndex(column_n)
 	{
 		;bool igTableSetColumnIndex(int column_n)
-	    dll_rtn := DllCall(Cimgui_dll.igTableSetColumnIndex, "int", column_n, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igTableSetColumnIndex, "int", column_n, "char")
 	    return dll_rtn
 	}
 	
 	igTableSetColumnSortDirection(column_n, sort_direction, append_to_sort_specs)
 	{
 		;void igTableSetColumnSortDirection(int column_n, ImGuiSortDirection sort_direction, bool append_to_sort_specs)
-	    dll_rtn := DllCall(Cimgui_dll.igTableSetColumnSortDirection, "int", column_n, "int", sort_direction, "int", append_to_sort_specs)
+	    dll_rtn := DllCall(Cimgui_dll.igTableSetColumnSortDirection, "int", column_n, "int", sort_direction, "char", append_to_sort_specs)
 	    return dll_rtn
 	}
 	
@@ -5967,49 +5967,49 @@ class Cimgui_AHK
 	igTempInputIsActive(id)
 	{
 		;bool igTempInputIsActive(ImGuiID id)
-	    dll_rtn := DllCall(Cimgui_dll.igTempInputIsActive, "uint", id, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igTempInputIsActive, "uint", id, "char")
 	    return dll_rtn
 	}
 	
 	igTempInputScalar(bb, id, label, data_type, p_data, format, p_clamp_min := 0, p_clamp_max := 0)
 	{
 		;bool igTempInputScalar(const ImRect bb, ImGuiID id, const char* label, ImGuiDataType data_type, void* p_data, const char* format, const void* p_clamp_min, const void* p_clamp_max)
-	    dll_rtn := DllCall(Cimgui_dll.igTempInputScalar, "ptr", bb, "uint", id, "ptr", label, "int", data_type, "ptr", p_data, "ptr", format, "ptr", p_clamp_min, "ptr", p_clamp_max, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igTempInputScalar, "ptr", bb, "uint", id, "ptr", label, "int", data_type, "ptr", p_data, "ptr", format, "ptr", p_clamp_min, "ptr", p_clamp_max, "char")
 	    return dll_rtn
 	}
 	
 	igTempInputText(bb, id, label, buf, buf_size, flags)
 	{
 		;bool igTempInputText(const ImRect bb, ImGuiID id, const char* label, char* buf, int buf_size, ImGuiInputTextFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igTempInputText, "ptr", bb, "uint", id, "ptr", label, "ptr", buf, "int", buf_size, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igTempInputText, "ptr", bb, "uint", id, "ptr", label, "ptr", buf, "int", buf_size, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igTestKeyOwner(key, owner_id)
 	{
 		;bool igTestKeyOwner(ImGuiKey key, ImGuiID owner_id)
-	    dll_rtn := DllCall(Cimgui_dll.igTestKeyOwner, "int", key, "uint", owner_id, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igTestKeyOwner, "int", key, "uint", owner_id, "char")
 	    return dll_rtn
 	}
 	
 	igTestShortcutRouting(key_chord, owner_id)
 	{
 		;bool igTestShortcutRouting(ImGuiKeyChord key_chord, ImGuiID owner_id)
-	    dll_rtn := DllCall(Cimgui_dll.igTestShortcutRouting, "int", key_chord, "uint", owner_id, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igTestShortcutRouting, "int", key_chord, "uint", owner_id, "char")
 	    return dll_rtn
 	}
 	
 	igText(fmt, p*)
 	{
 		;void igText(const char* fmt, ...)
-	    dll_rtn := DllCall(Cimgui_dll.igText, "ptr", fmt)
+	    dll_rtn := DllCall(Cimgui_dll.igText, "ptr", fmt, p*)
 	    return dll_rtn
 	}
 	
 	igTextColored(col, fmt, p*)
 	{
 		;void igTextColored(const ImVec4 col, const char* fmt, ...)
-	    dll_rtn := DllCall(Cimgui_dll.igTextColored, "ptr", col, "ptr", fmt)
+	    dll_rtn := DllCall(Cimgui_dll.igTextColored, "ptr", col, "ptr", fmt, p*)
 	    return dll_rtn
 	}
 	
@@ -6023,7 +6023,7 @@ class Cimgui_AHK
 	igTextDisabled(fmt, p*)
 	{
 		;void igTextDisabled(const char* fmt, ...)
-	    dll_rtn := DllCall(Cimgui_dll.igTextDisabled, "ptr", fmt)
+	    dll_rtn := DllCall(Cimgui_dll.igTextDisabled, "ptr", fmt, p*)
 	    return dll_rtn
 	}
 	
@@ -6058,7 +6058,7 @@ class Cimgui_AHK
 	igTextWrapped(fmt, p*)
 	{
 		;void igTextWrapped(const char* fmt, ...)
-	    dll_rtn := DllCall(Cimgui_dll.igTextWrapped, "ptr", fmt)
+	    dll_rtn := DllCall(Cimgui_dll.igTextWrapped, "ptr", fmt, p*)
 	    return dll_rtn
 	}
 	
@@ -6079,91 +6079,91 @@ class Cimgui_AHK
 	igTreeNode_Str(label)
 	{
 		;bool igTreeNode_Str(const char* label)
-	    dll_rtn := DllCall(Cimgui_dll.igTreeNode_Str, "ptr", label, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igTreeNode_Str, "ptr", label, "char")
 	    return dll_rtn
 	}
 	
 	igTreeNode_StrStr(str_id, fmt, p*)
 	{
 		;bool igTreeNode_StrStr(const char* str_id, const char* fmt, ...)
-	    dll_rtn := DllCall(Cimgui_dll.igTreeNode_StrStr, "ptr", str_id, "ptr", fmt, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igTreeNode_StrStr, "ptr", str_id, "ptr", fmt, p*)
 	    return dll_rtn
 	}
 	
 	igTreeNode_Ptr(ptr_id, fmt, p*)
 	{
 		;bool igTreeNode_Ptr(const void* ptr_id, const char* fmt, ...)
-	    dll_rtn := DllCall(Cimgui_dll.igTreeNode_Ptr, "ptr", ptr_id, "ptr", fmt, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igTreeNode_Ptr, "ptr", ptr_id, "ptr", fmt, p*)
 	    return dll_rtn
 	}
 	
 	igTreeNodeBehavior(id, flags, label, label_end := 0)
 	{
 		;bool igTreeNodeBehavior(ImGuiID id, ImGuiTreeNodeFlags flags, const char* label, const char* label_end)
-	    dll_rtn := DllCall(Cimgui_dll.igTreeNodeBehavior, "uint", id, "int", flags, "ptr", label, "ptr", label_end, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igTreeNodeBehavior, "uint", id, "int", flags, "ptr", label, "ptr", label_end, "char")
 	    return dll_rtn
 	}
 	
 	igTreeNodeEx_Str(label, flags := 0)
 	{
 		;bool igTreeNodeEx_Str(const char* label, ImGuiTreeNodeFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igTreeNodeEx_Str, "ptr", label, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igTreeNodeEx_Str, "ptr", label, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igTreeNodeEx_StrStr(str_id, flags, fmt, p*)
 	{
 		;bool igTreeNodeEx_StrStr(const char* str_id, ImGuiTreeNodeFlags flags, const char* fmt, ...)
-	    dll_rtn := DllCall(Cimgui_dll.igTreeNodeEx_StrStr, "ptr", str_id, "int", flags, "ptr", fmt, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igTreeNodeEx_StrStr, "ptr", str_id, "int", flags, "ptr", fmt, p*)
 	    return dll_rtn
 	}
 	
 	igTreeNodeEx_Ptr(ptr_id, flags, fmt, p*)
 	{
 		;bool igTreeNodeEx_Ptr(const void* ptr_id, ImGuiTreeNodeFlags flags, const char* fmt, ...)
-	    dll_rtn := DllCall(Cimgui_dll.igTreeNodeEx_Ptr, "ptr", ptr_id, "int", flags, "ptr", fmt, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igTreeNodeEx_Ptr, "ptr", ptr_id, "int", flags, "ptr", fmt, p*)
 	    return dll_rtn
 	}
 	
 	igTreeNodeExV_Str(str_id, flags, fmt, args)
 	{
 		;bool igTreeNodeExV_Str(const char* str_id, ImGuiTreeNodeFlags flags, const char* fmt, va_list args)
-	    dll_rtn := DllCall(Cimgui_dll.igTreeNodeExV_Str, "ptr", str_id, "int", flags, "ptr", fmt, "ptr", args, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igTreeNodeExV_Str, "ptr", str_id, "int", flags, "ptr", fmt, "ptr", args, "char")
 	    return dll_rtn
 	}
 	
 	igTreeNodeExV_Ptr(ptr_id, flags, fmt, args)
 	{
 		;bool igTreeNodeExV_Ptr(const void* ptr_id, ImGuiTreeNodeFlags flags, const char* fmt, va_list args)
-	    dll_rtn := DllCall(Cimgui_dll.igTreeNodeExV_Ptr, "ptr", ptr_id, "int", flags, "ptr", fmt, "ptr", args, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igTreeNodeExV_Ptr, "ptr", ptr_id, "int", flags, "ptr", fmt, "ptr", args, "char")
 	    return dll_rtn
 	}
 	
 	igTreeNodeSetOpen(id, open)
 	{
 		;void igTreeNodeSetOpen(ImGuiID id, bool open)
-	    dll_rtn := DllCall(Cimgui_dll.igTreeNodeSetOpen, "uint", id, "int", open)
+	    dll_rtn := DllCall(Cimgui_dll.igTreeNodeSetOpen, "uint", id, "char", open)
 	    return dll_rtn
 	}
 	
 	igTreeNodeUpdateNextOpen(id, flags)
 	{
 		;bool igTreeNodeUpdateNextOpen(ImGuiID id, ImGuiTreeNodeFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igTreeNodeUpdateNextOpen, "uint", id, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igTreeNodeUpdateNextOpen, "uint", id, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igTreeNodeV_Str(str_id, fmt, args)
 	{
 		;bool igTreeNodeV_Str(const char* str_id, const char* fmt, va_list args)
-	    dll_rtn := DllCall(Cimgui_dll.igTreeNodeV_Str, "ptr", str_id, "ptr", fmt, "ptr", args, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igTreeNodeV_Str, "ptr", str_id, "ptr", fmt, "ptr", args, "char")
 	    return dll_rtn
 	}
 	
 	igTreeNodeV_Ptr(ptr_id, fmt, args)
 	{
 		;bool igTreeNodeV_Ptr(const void* ptr_id, const char* fmt, va_list args)
-	    dll_rtn := DllCall(Cimgui_dll.igTreeNodeV_Ptr, "ptr", ptr_id, "ptr", fmt, "ptr", args, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igTreeNodeV_Ptr, "ptr", ptr_id, "ptr", fmt, "ptr", args, "char")
 	    return dll_rtn
 	}
 	
@@ -6212,7 +6212,7 @@ class Cimgui_AHK
 	igUpdateInputEvents(trickle_fast_inputs)
 	{
 		;void igUpdateInputEvents(bool trickle_fast_inputs)
-	    dll_rtn := DllCall(Cimgui_dll.igUpdateInputEvents, "int", trickle_fast_inputs)
+	    dll_rtn := DllCall(Cimgui_dll.igUpdateInputEvents, "char", trickle_fast_inputs)
 	    return dll_rtn
 	}
 	
@@ -6247,28 +6247,28 @@ class Cimgui_AHK
 	igVSliderFloat(label, size, &v, v_min, v_max, format := "%.3f", flags := 0)
 	{
 		;bool igVSliderFloat(const char* label, const ImVec2 size, float* v, float v_min, float v_max, const char* format, ImGuiSliderFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igVSliderFloat, "ptr", label, "int64", NumGet(size, "int64"), "float*", &v, "float", v_min, "float", v_max, "ptr", format, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igVSliderFloat, "ptr", label, "int64", NumGet(size, "int64"), "float*", &v, "float", v_min, "float", v_max, "ptr", format, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igVSliderInt(label, size, &v, v_min, v_max, format := "%d", flags := 0)
 	{
 		;bool igVSliderInt(const char* label, const ImVec2 size, int* v, int v_min, int v_max, const char* format, ImGuiSliderFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igVSliderInt, "ptr", label, "int64", NumGet(size, "int64"), "int*", &v, "int", v_min, "int", v_max, "ptr", format, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igVSliderInt, "ptr", label, "int64", NumGet(size, "int64"), "int*", &v, "int", v_min, "int", v_max, "ptr", format, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igVSliderScalar(label, size, data_type, p_data, p_min, p_max, format := 0, flags := 0)
 	{
 		;bool igVSliderScalar(const char* label, const ImVec2 size, ImGuiDataType data_type, void* p_data, const void* p_min, const void* p_max, const char* format, ImGuiSliderFlags flags)
-	    dll_rtn := DllCall(Cimgui_dll.igVSliderScalar, "ptr", label, "int64", NumGet(size, "int64"), "int", data_type, "ptr", p_data, "ptr", p_min, "ptr", p_max, "ptr", format, "int", flags, "int")
+	    dll_rtn := DllCall(Cimgui_dll.igVSliderScalar, "ptr", label, "int64", NumGet(size, "int64"), "int", data_type, "ptr", p_data, "ptr", p_min, "ptr", p_max, "ptr", format, "int", flags, "char")
 	    return dll_rtn
 	}
 	
 	igValue_Bool(prefix, b)
 	{
 		;void igValue_Bool(const char* prefix, bool b)
-	    dll_rtn := DllCall(Cimgui_dll.igValue_Bool, "ptr", prefix, "int", b)
+	    dll_rtn := DllCall(Cimgui_dll.igValue_Bool, "ptr", prefix, "char", b)
 	    return dll_rtn
 	}
 	
@@ -6348,7 +6348,7 @@ class ImBitVector_AHK extends ImBitVector
 	TestBit(n)
 	{
 		;bool ImBitVector_TestBit(ImBitVector* this, int n)
-	    dll_rtn := DllCall(Cimgui_dll.ImBitVector_TestBit, "ptr", this, "int", n, "int")
+	    dll_rtn := DllCall(Cimgui_dll.ImBitVector_TestBit, "ptr", this, "int", n, "char")
 	    return dll_rtn
 	}
 	
@@ -6854,7 +6854,7 @@ class ImDrawList_AHK extends ImDrawList
 	PushClipRect(clip_rect_min, clip_rect_max, intersect_with_current_clip_rect := false)
 	{
 		;void ImDrawList_PushClipRect(ImDrawList* this, const ImVec2 clip_rect_min, const ImVec2 clip_rect_max, bool intersect_with_current_clip_rect)
-	    dll_rtn := DllCall(Cimgui_dll.ImDrawList_PushClipRect, "ptr", this, "int64", NumGet(clip_rect_min, "int64"), "int64", NumGet(clip_rect_max, "int64"), "int", intersect_with_current_clip_rect)
+	    dll_rtn := DllCall(Cimgui_dll.ImDrawList_PushClipRect, "ptr", this, "int64", NumGet(clip_rect_min, "int64"), "int64", NumGet(clip_rect_max, "int64"), "char", intersect_with_current_clip_rect)
 	    return dll_rtn
 	}
 	
@@ -7044,7 +7044,7 @@ class ImFont_AHK extends ImFont
 	AddRemapChar(dst, src, overwrite_dst := true)
 	{
 		;void ImFont_AddRemapChar(ImFont* this, ImWchar dst, ImWchar src, bool overwrite_dst)
-	    dll_rtn := DllCall(Cimgui_dll.ImFont_AddRemapChar, "ptr", this, "ushort", dst, "ushort", src, "int", overwrite_dst)
+	    dll_rtn := DllCall(Cimgui_dll.ImFont_AddRemapChar, "ptr", this, "ushort", dst, "ushort", src, "char", overwrite_dst)
 	    return dll_rtn
 	}
 	
@@ -7121,14 +7121,14 @@ class ImFont_AHK extends ImFont
 	IsGlyphRangeUnused(c_begin, c_last)
 	{
 		;bool ImFont_IsGlyphRangeUnused(ImFont* this, unsigned int c_begin, unsigned int c_last)
-	    dll_rtn := DllCall(Cimgui_dll.ImFont_IsGlyphRangeUnused, "ptr", this, "uint", c_begin, "uint", c_last, "int")
+	    dll_rtn := DllCall(Cimgui_dll.ImFont_IsGlyphRangeUnused, "ptr", this, "uint", c_begin, "uint", c_last, "char")
 	    return dll_rtn
 	}
 	
 	IsLoaded()
 	{
 		;bool ImFont_IsLoaded(ImFont* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImFont_IsLoaded, "ptr", this, "int")
+	    dll_rtn := DllCall(Cimgui_dll.ImFont_IsLoaded, "ptr", this, "char")
 	    return dll_rtn
 	}
 	
@@ -7142,14 +7142,14 @@ class ImFont_AHK extends ImFont
 	RenderText(draw_list, size, pos, col, clip_rect, text_begin, text_end, wrap_width := 0.0, cpu_fine_clip := false)
 	{
 		;void ImFont_RenderText(ImFont* this, ImDrawList* draw_list, float size, const ImVec2 pos, ImU32 col, const ImVec4 clip_rect, const char* text_begin, const char* text_end, float wrap_width, bool cpu_fine_clip)
-	    dll_rtn := DllCall(Cimgui_dll.ImFont_RenderText, "ptr", this, "ptr", draw_list, "float", size, "int64", NumGet(pos, "int64"), "uint", col, "ptr", clip_rect, "ptr", text_begin, "ptr", text_end, "float", wrap_width, "int", cpu_fine_clip)
+	    dll_rtn := DllCall(Cimgui_dll.ImFont_RenderText, "ptr", this, "ptr", draw_list, "float", size, "int64", NumGet(pos, "int64"), "uint", col, "ptr", clip_rect, "ptr", text_begin, "ptr", text_end, "float", wrap_width, "char", cpu_fine_clip)
 	    return dll_rtn
 	}
 	
 	SetGlyphVisible(c, visible)
 	{
 		;void ImFont_SetGlyphVisible(ImFont* this, ImWchar c, bool visible)
-	    dll_rtn := DllCall(Cimgui_dll.ImFont_SetGlyphVisible, "ptr", this, "ushort", c, "int", visible)
+	    dll_rtn := DllCall(Cimgui_dll.ImFont_SetGlyphVisible, "ptr", this, "ushort", c, "char", visible)
 	    return dll_rtn
 	}
 	
@@ -7224,7 +7224,7 @@ class ImFontAtlas_AHK extends ImFontAtlas
 	Build()
 	{
 		;bool ImFontAtlas_Build(ImFontAtlas* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImFontAtlas_Build, "ptr", this, "int")
+	    dll_rtn := DllCall(Cimgui_dll.ImFontAtlas_Build, "ptr", this, "char")
 	    return dll_rtn
 	}
 	
@@ -7336,7 +7336,7 @@ class ImFontAtlas_AHK extends ImFontAtlas
 	GetMouseCursorTexData(cursor, out_offset, out_size, out_uv_border, out_uv_fill)
 	{
 		;bool ImFontAtlas_GetMouseCursorTexData(ImFontAtlas* this, ImGuiMouseCursor cursor, ImVec2* out_offset, ImVec2* out_size, ImVec2 out_uv_border[2], ImVec2 out_uv_fill[2])
-	    dll_rtn := DllCall(Cimgui_dll.ImFontAtlas_GetMouseCursorTexData, "ptr", this, "int", cursor, "ptr", out_offset, "ptr", out_size, "ptr", out_uv_border, "ptr", out_uv_fill, "int")
+	    dll_rtn := DllCall(Cimgui_dll.ImFontAtlas_GetMouseCursorTexData, "ptr", this, "int", cursor, "ptr", out_offset, "ptr", out_size, "ptr", out_uv_border, "ptr", out_uv_fill, "char")
 	    return dll_rtn
 	}
 	
@@ -7364,7 +7364,7 @@ class ImFontAtlas_AHK extends ImFontAtlas
 	IsBuilt()
 	{
 		;bool ImFontAtlas_IsBuilt(ImFontAtlas* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImFontAtlas_IsBuilt, "ptr", this, "int")
+	    dll_rtn := DllCall(Cimgui_dll.ImFontAtlas_IsBuilt, "ptr", this, "char")
 	    return dll_rtn
 	}
 	
@@ -7397,7 +7397,7 @@ class ImFontAtlasCustomRect_AHK extends ImFontAtlasCustomRect
 	IsPacked()
 	{
 		;bool ImFontAtlasCustomRect_IsPacked(ImFontAtlasCustomRect* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImFontAtlasCustomRect_IsPacked, "ptr", this, "int")
+	    dll_rtn := DllCall(Cimgui_dll.ImFontAtlasCustomRect_IsPacked, "ptr", this, "char")
 	    return dll_rtn
 	}
 	
@@ -7470,7 +7470,7 @@ class ImFontGlyphRangesBuilder_AHK extends ImFontGlyphRangesBuilder
 	GetBit(n)
 	{
 		;bool ImFontGlyphRangesBuilder_GetBit(ImFontGlyphRangesBuilder* this, size_t n)
-	    dll_rtn := DllCall(Cimgui_dll.ImFontGlyphRangesBuilder_GetBit, "ptr", this, "uptr", n, "int")
+	    dll_rtn := DllCall(Cimgui_dll.ImFontGlyphRangesBuilder_GetBit, "ptr", this, "uptr", n, "char")
 	    return dll_rtn
 	}
 	
@@ -7596,63 +7596,63 @@ class ImGuiDockNode_AHK extends ImGuiDockNode
 	IsCentralNode()
 	{
 		;bool ImGuiDockNode_IsCentralNode(ImGuiDockNode* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiDockNode_IsCentralNode, "ptr", this, "int")
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiDockNode_IsCentralNode, "ptr", this, "char")
 	    return dll_rtn
 	}
 	
 	IsDockSpace()
 	{
 		;bool ImGuiDockNode_IsDockSpace(ImGuiDockNode* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiDockNode_IsDockSpace, "ptr", this, "int")
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiDockNode_IsDockSpace, "ptr", this, "char")
 	    return dll_rtn
 	}
 	
 	IsEmpty()
 	{
 		;bool ImGuiDockNode_IsEmpty(ImGuiDockNode* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiDockNode_IsEmpty, "ptr", this, "int")
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiDockNode_IsEmpty, "ptr", this, "char")
 	    return dll_rtn
 	}
 	
 	IsFloatingNode()
 	{
 		;bool ImGuiDockNode_IsFloatingNode(ImGuiDockNode* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiDockNode_IsFloatingNode, "ptr", this, "int")
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiDockNode_IsFloatingNode, "ptr", this, "char")
 	    return dll_rtn
 	}
 	
 	IsHiddenTabBar()
 	{
 		;bool ImGuiDockNode_IsHiddenTabBar(ImGuiDockNode* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiDockNode_IsHiddenTabBar, "ptr", this, "int")
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiDockNode_IsHiddenTabBar, "ptr", this, "char")
 	    return dll_rtn
 	}
 	
 	IsLeafNode()
 	{
 		;bool ImGuiDockNode_IsLeafNode(ImGuiDockNode* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiDockNode_IsLeafNode, "ptr", this, "int")
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiDockNode_IsLeafNode, "ptr", this, "char")
 	    return dll_rtn
 	}
 	
 	IsNoTabBar()
 	{
 		;bool ImGuiDockNode_IsNoTabBar(ImGuiDockNode* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiDockNode_IsNoTabBar, "ptr", this, "int")
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiDockNode_IsNoTabBar, "ptr", this, "char")
 	    return dll_rtn
 	}
 	
 	IsRootNode()
 	{
 		;bool ImGuiDockNode_IsRootNode(ImGuiDockNode* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiDockNode_IsRootNode, "ptr", this, "int")
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiDockNode_IsRootNode, "ptr", this, "char")
 	    return dll_rtn
 	}
 	
 	IsSplitNode()
 	{
 		;bool ImGuiDockNode_IsSplitNode(ImGuiDockNode* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiDockNode_IsSplitNode, "ptr", this, "int")
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiDockNode_IsSplitNode, "ptr", this, "char")
 	    return dll_rtn
 	}
 	
@@ -7692,7 +7692,7 @@ class ImGuiIO_AHK extends ImGuiIO
 	AddFocusEvent(focused)
 	{
 		;void ImGuiIO_AddFocusEvent(ImGuiIO* this, bool focused)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiIO_AddFocusEvent, "ptr", this, "int", focused)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiIO_AddFocusEvent, "ptr", this, "char", focused)
 	    return dll_rtn
 	}
 	
@@ -7720,21 +7720,21 @@ class ImGuiIO_AHK extends ImGuiIO
 	AddKeyAnalogEvent(key, down, v)
 	{
 		;void ImGuiIO_AddKeyAnalogEvent(ImGuiIO* this, ImGuiKey key, bool down, float v)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiIO_AddKeyAnalogEvent, "ptr", this, "int", key, "int", down, "float", v)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiIO_AddKeyAnalogEvent, "ptr", this, "int", key, "char", down, "float", v)
 	    return dll_rtn
 	}
 	
 	AddKeyEvent(key, down)
 	{
 		;void ImGuiIO_AddKeyEvent(ImGuiIO* this, ImGuiKey key, bool down)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiIO_AddKeyEvent, "ptr", this, "int", key, "int", down)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiIO_AddKeyEvent, "ptr", this, "int", key, "char", down)
 	    return dll_rtn
 	}
 	
 	AddMouseButtonEvent(button, down)
 	{
 		;void ImGuiIO_AddMouseButtonEvent(ImGuiIO* this, int button, bool down)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiIO_AddMouseButtonEvent, "ptr", this, "int", button, "int", down)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiIO_AddMouseButtonEvent, "ptr", this, "int", button, "char", down)
 	    return dll_rtn
 	}
 	
@@ -7790,7 +7790,7 @@ class ImGuiIO_AHK extends ImGuiIO
 	SetAppAcceptingEvents(accepting_events)
 	{
 		;void ImGuiIO_SetAppAcceptingEvents(ImGuiIO* this, bool accepting_events)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiIO_SetAppAcceptingEvents, "ptr", this, "int", accepting_events)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiIO_SetAppAcceptingEvents, "ptr", this, "char", accepting_events)
 	    return dll_rtn
 	}
 	
@@ -7849,7 +7849,7 @@ class ImGuiInputTextCallbackData_AHK extends ImGuiInputTextCallbackData
 	HasSelection()
 	{
 		;bool ImGuiInputTextCallbackData_HasSelection(ImGuiInputTextCallbackData* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiInputTextCallbackData_HasSelection, "ptr", this, "int")
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiInputTextCallbackData_HasSelection, "ptr", this, "char")
 	    return dll_rtn
 	}
 	
@@ -7985,7 +7985,7 @@ class ImGuiInputTextState_AHK extends ImGuiInputTextState
 	HasSelection()
 	{
 		;bool ImGuiInputTextState_HasSelection(ImGuiInputTextState* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiInputTextState_HasSelection, "ptr", this, "int")
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiInputTextState_HasSelection, "ptr", this, "char")
 	    return dll_rtn
 	}
 	
@@ -8143,7 +8143,7 @@ class ImGuiListClipper_AHK extends ImGuiListClipper
 	Step()
 	{
 		;bool ImGuiListClipper_Step(ImGuiListClipper* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiListClipper_Step, "ptr", this, "int")
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiListClipper_Step, "ptr", this, "char")
 	    return dll_rtn
 	}
 	
@@ -8188,7 +8188,7 @@ class ImGuiMenuColumns_AHK extends ImGuiMenuColumns
 	CalcNextTotalWidth(update_offsets)
 	{
 		;void ImGuiMenuColumns_CalcNextTotalWidth(ImGuiMenuColumns* this, bool update_offsets)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiMenuColumns_CalcNextTotalWidth, "ptr", this, "int", update_offsets)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiMenuColumns_CalcNextTotalWidth, "ptr", this, "char", update_offsets)
 	    return dll_rtn
 	}
 	
@@ -8209,7 +8209,7 @@ class ImGuiMenuColumns_AHK extends ImGuiMenuColumns
 	Update(spacing, window_reappearing)
 	{
 		;void ImGuiMenuColumns_Update(ImGuiMenuColumns* this, float spacing, bool window_reappearing)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiMenuColumns_Update, "ptr", this, "float", spacing, "int", window_reappearing)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiMenuColumns_Update, "ptr", this, "float", spacing, "char", window_reappearing)
 	    return dll_rtn
 	}
 	
@@ -8377,21 +8377,21 @@ class ImGuiPayload_AHK extends ImGuiPayload
 	IsDataType(type)
 	{
 		;bool ImGuiPayload_IsDataType(ImGuiPayload* this, const char* type)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiPayload_IsDataType, "ptr", this, "ptr", type, "int")
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiPayload_IsDataType, "ptr", this, "ptr", type, "char")
 	    return dll_rtn
 	}
 	
 	IsDelivery()
 	{
 		;bool ImGuiPayload_IsDelivery(ImGuiPayload* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiPayload_IsDelivery, "ptr", this, "int")
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiPayload_IsDelivery, "ptr", this, "char")
 	    return dll_rtn
 	}
 	
 	IsPreview()
 	{
 		;bool ImGuiPayload_IsPreview(ImGuiPayload* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiPayload_IsPreview, "ptr", this, "int")
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiPayload_IsPreview, "ptr", this, "char")
 	    return dll_rtn
 	}
 	
@@ -8616,14 +8616,14 @@ class ImGuiStorage_AHK extends ImGuiStorage
 	GetBool(key, default_val := false)
 	{
 		;bool ImGuiStorage_GetBool(ImGuiStorage* this, ImGuiID key, bool default_val)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiStorage_GetBool, "ptr", this, "uint", key, "int", default_val, "int")
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiStorage_GetBool, "ptr", this, "uint", key, "char", default_val, "char")
 	    return dll_rtn
 	}
 	
 	GetBoolRef(key, default_val := false)
 	{
 		;bool* ImGuiStorage_GetBoolRef(ImGuiStorage* this, ImGuiID key, bool default_val)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiStorage_GetBoolRef, "ptr", this, "uint", key, "int", default_val, "ptr")
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiStorage_GetBoolRef, "ptr", this, "uint", key, "char", default_val, "ptr")
 	    return dll_rtn
 	}
 	
@@ -8679,7 +8679,7 @@ class ImGuiStorage_AHK extends ImGuiStorage
 	SetBool(key, val)
 	{
 		;void ImGuiStorage_SetBool(ImGuiStorage* this, ImGuiID key, bool val)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiStorage_SetBool, "ptr", this, "uint", key, "int", val)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiStorage_SetBool, "ptr", this, "uint", key, "char", val)
 	    return dll_rtn
 	}
 	
@@ -9013,7 +9013,7 @@ class ImGuiTextBuffer_AHK extends ImGuiTextBuffer
 	appendf(fmt, p*)
 	{
 		;void ImGuiTextBuffer_appendf(ImGuiTextBuffer* this, const char* fmt, ...)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiTextBuffer_appendf, "ptr", this, "ptr", fmt)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiTextBuffer_appendf, "ptr", this, "ptr", fmt, p*)
 	    return dll_rtn
 	}
 	
@@ -9057,7 +9057,7 @@ class ImGuiTextBuffer_AHK extends ImGuiTextBuffer
 	empty()
 	{
 		;bool ImGuiTextBuffer_empty(ImGuiTextBuffer* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiTextBuffer_empty, "ptr", this, "int")
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiTextBuffer_empty, "ptr", this, "char")
 	    return dll_rtn
 	}
 	
@@ -9102,7 +9102,7 @@ class ImGuiTextFilter_AHK extends ImGuiTextFilter
 	Draw(label := "Filter([inc, -exc])", width := 0.0)
 	{
 		;bool ImGuiTextFilter_Draw(ImGuiTextFilter* this, const char* label, float width)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiTextFilter_Draw, "ptr", this, "ptr", label, "float", width, "int")
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiTextFilter_Draw, "ptr", this, "ptr", label, "float", width, "char")
 	    return dll_rtn
 	}
 	
@@ -9116,14 +9116,14 @@ class ImGuiTextFilter_AHK extends ImGuiTextFilter
 	IsActive()
 	{
 		;bool ImGuiTextFilter_IsActive(ImGuiTextFilter* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiTextFilter_IsActive, "ptr", this, "int")
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiTextFilter_IsActive, "ptr", this, "char")
 	    return dll_rtn
 	}
 	
 	PassFilter(text, text_end := 0)
 	{
 		;bool ImGuiTextFilter_PassFilter(ImGuiTextFilter* this, const char* text, const char* text_end)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiTextFilter_PassFilter, "ptr", this, "ptr", text, "ptr", text_end, "int")
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiTextFilter_PassFilter, "ptr", this, "ptr", text, "ptr", text_end, "char")
 	    return dll_rtn
 	}
 	
@@ -9203,7 +9203,7 @@ class ImGuiTextRange_AHK extends ImGuiTextRange
 	empty()
 	{
 		;bool ImGuiTextRange_empty(ImGuiTextRange* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiTextRange_empty, "ptr", this, "int")
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiTextRange_empty, "ptr", this, "char")
 	    return dll_rtn
 	}
 	
@@ -9483,14 +9483,14 @@ class ImRect_AHK extends ImRect
 	Contains_Vec2(p)
 	{
 		;bool ImRect_Contains_Vec2(ImRect* this, const ImVec2 p)
-	    dll_rtn := DllCall(Cimgui_dll.ImRect_Contains_Vec2, "ptr", this, "int64", NumGet(p, "int64"), "int")
+	    dll_rtn := DllCall(Cimgui_dll.ImRect_Contains_Vec2, "ptr", this, "int64", NumGet(p, "int64"), "char")
 	    return dll_rtn
 	}
 	
 	Contains_Rect(r)
 	{
 		;bool ImRect_Contains_Rect(ImRect* this, const ImRect r)
-	    dll_rtn := DllCall(Cimgui_dll.ImRect_Contains_Rect, "ptr", this, "ptr", r, "int")
+	    dll_rtn := DllCall(Cimgui_dll.ImRect_Contains_Rect, "ptr", this, "ptr", r, "char")
 	    return dll_rtn
 	}
 	
@@ -9609,14 +9609,14 @@ class ImRect_AHK extends ImRect
 	IsInverted()
 	{
 		;bool ImRect_IsInverted(ImRect* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImRect_IsInverted, "ptr", this, "int")
+	    dll_rtn := DllCall(Cimgui_dll.ImRect_IsInverted, "ptr", this, "char")
 	    return dll_rtn
 	}
 	
 	Overlaps(r)
 	{
 		;bool ImRect_Overlaps(ImRect* this, const ImRect r)
-	    dll_rtn := DllCall(Cimgui_dll.ImRect_Overlaps, "ptr", this, "ptr", r, "int")
+	    dll_rtn := DllCall(Cimgui_dll.ImRect_Overlaps, "ptr", this, "ptr", r, "char")
 	    return dll_rtn
 	}
 	
