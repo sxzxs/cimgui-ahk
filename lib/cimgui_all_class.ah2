@@ -4074,7 +4074,7 @@ class Cimgui_AHK
 	    return dll_rtn
 	}
 	
-	igPlotHistogram_FloatPtr(label, &values, values_count, values_offset := 0, overlay_text := 0, scale_min := 3.402823466e+38, scale_max := 3.402823466e+38, graph_size := ImVec2([0, 0]), stride := sizeof([float]))
+	igPlotHistogram_FloatPtr(label, &values, values_count, values_offset := 0, overlay_text := 0, scale_min := 3.402823466e+38, scale_max := 3.402823466e+38, graph_size := ImVec2([0, 0]), stride := 4)
 	{
 		;void igPlotHistogram_FloatPtr(const char* label, const float* values, int values_count, int values_offset, const char* overlay_text, float scale_min, float scale_max, ImVec2 graph_size, int stride)
 	    dll_rtn := DllCall(Cimgui_dll.igPlotHistogram_FloatPtr, "ptr", label, "float*", &values, "int", values_count, "int", values_offset, "ptr", overlay_text, "float", scale_min, "float", scale_max, "int64", NumGet(graph_size, "int64"), "int", stride)
@@ -4088,7 +4088,7 @@ class Cimgui_AHK
 	    return dll_rtn
 	}
 	
-	igPlotLines_FloatPtr(label, &values, values_count, values_offset := 0, overlay_text := 0, scale_min := 3.402823466e+38, scale_max := 3.402823466e+38, graph_size := ImVec2([0, 0]), stride := sizeof([float]))
+	igPlotLines_FloatPtr(label, &values, values_count, values_offset := 0, overlay_text := 0, scale_min := 3.402823466e+38, scale_max := 3.402823466e+38, graph_size := ImVec2([0, 0]), stride := 4)
 	{
 		;void igPlotLines_FloatPtr(const char* label, const float* values, int values_count, int values_offset, const char* overlay_text, float scale_min, float scale_max, ImVec2 graph_size, int stride)
 	    dll_rtn := DllCall(Cimgui_dll.igPlotLines_FloatPtr, "ptr", label, "float*", &values, "int", values_count, "int", values_offset, "ptr", overlay_text, "float", scale_min, "float", scale_max, "int64", NumGet(graph_size, "int64"), "int", stride)

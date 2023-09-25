@@ -2,8 +2,8 @@
 /************************************************************************
  * @description create struct, union, array and pointer binding, and use it like ahk object
  * @author thqby
- * @date 2023/03/16
- * @version 1.0.3
+ * @date 2023/07/19
+ * @version 1.0.4
  ***********************************************************************/
 
 class ctypes {
@@ -560,7 +560,7 @@ class ctypes {
 				size := basic_types.%tp%
 				return { align: 0, size: size, pack: size, type: tp, name: tp, wrapper: 0 }
 			}
-			tp := ctypes.types.Get(tp, 0) ||
+			tp := ctypes.types.Get(t := tp, 0) ||
 				((tp := RegExReplace(tp, '\*$', , &n)) && n ? ctypes.ptr(tp) :
 				RegExMatch(tp, '^(.+)\[(\d+)\]$', &tp) && ctypes.array(tp[1], Integer(tp[2])))
 		}
@@ -576,6 +576,6 @@ class ctypes {
 			}
 			return { align: align, size: size, pack: pack, type: type, name: tp.name, wrapper: tp }
 		}
-		throw TypeError('unknown type')
+		throw TypeError('unknown type',, t ?? tp)
 	}
 }

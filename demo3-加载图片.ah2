@@ -29,6 +29,10 @@ main()
             ui.igImageButton(ui.str('imageButton'), image, ImVec2(size))
             ui.igEnd()
         }
+        else
+        {
+            ExitApp
+        }
         ui.endframe()
     }
     ExitApp
