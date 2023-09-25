@@ -14,4 +14,4 @@ It works on , windows(x64)
 1. There are several demos that can be executed here
 2. If it does not work, you need to check whether the dx11 library is installed
 ![图 0](images/540617b1176fa053a11679d1b10e135dfbc112c226f8114bc1a90b8137ae64c2.png)  
-3. Current need use autohotkey_H https://github.com/thqby/AutoHotkey_H/releases
+3. The H version is recommended, autohotkey_H https://github.com/thqby/AutoHotkey_H/releases
