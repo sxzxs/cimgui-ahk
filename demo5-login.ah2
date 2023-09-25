@@ -1,6 +1,5 @@
 #Requires AutoHotkey v2.0
 #include <cimgui>
-#include <log>
 
 main()
 main()
@@ -81,7 +80,6 @@ main()
                         ui.igPushStyleVar_Float(ImGuiStyleVar_FrameRounding, 3)
                         if(ui.igButton(ui.str('Login'), ImVec2([260, 30])))
                         {
-                            logger.info('login in')
                         }
                         ui.igPopStyleVar()
                         ui.igSetCursorPos(ImVec2([22, 240]))
