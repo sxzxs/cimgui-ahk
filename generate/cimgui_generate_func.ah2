@@ -187,6 +187,7 @@ class_func_str := StrReplace(class_func_str, '(in)', '(in_)')
 class_func_str := StrReplace(class_func_str, ' in)', ' in_)')
 class_func_str := StrReplace(class_func_str, ' in,', ' in_,')
 class_func_str := StrReplace(class_func_str, 'destroy()', '__Delete()')
+class_func_str := StrReplace(class_func_str, 'sizeof([float])', '4')
 
 A_Clipboard := class_func_str
 logger.info(func_all_str)
