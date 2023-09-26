@@ -7,11 +7,9 @@ main()
     ui.enableviewports(true)
     hwnd := ui.guicreate_unbackground('test',,, 'GetGlyphRangesDefault')
     WinSetAlwaysOnTop(1, hwnd)
-    OnExit ExitFunc
 
     io := ui.igGetIO()
     global g_io := ImGuiIO_AHK.from_ptr(io)
-    imgui.ctype_bind_var.Push('g_io')
     g_io.ConfigViewportsNoTaskBarIcon := false
 
     is_open := true
@@ -35,13 +33,4 @@ main()
         ui.endframe()
     }
     ExitApp
-}
-
-ExitFunc(ExitReason, ExitCode)
-{
-    global
-    for k,v in imgui.ctype_bind_var
-    {
-        %v% := ''
-    }
 }

@@ -207,4 +207,20 @@ class Imgui extends Cimgui_AHK
         result := DllCall(Cimgui_dll.load_font, "ptr*", &font, "wstr", font_path, "float", font_size, "wstr", font_range, "ptr", range_charBuf, "int", OversampleH, "int", OversampleV, "int", PixelSnapH)
         return font
     }
+
+    toggle_button(text, &active)
+    {
+        b_active := buffer(4, 0)
+        NumPut("Int", active, b_active)
+        result := DllCall(Cimgui_dll.imgui_toggle_button, "wstr", text, "ptr", b_active)
+        active := NumGet(b_active, 0, "Int")
+        return result
+    }
+
+    change_window_icon(hwnd, ico_path)
+    {
+        hIcon := DllCall( "LoadImage", 'UInt',0, 'Str', ico_path, 'uint',1, 'UInt',0, 'UInt',0, 'UInt',0x10 )
+        SendMessage(0x80, 0, hIcon,, hwnd)
+        SendMessage(0x80, 1, hIcon,, hwnd)
+    }
 }

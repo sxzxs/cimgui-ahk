@@ -4,8 +4,6 @@
 main()
 main()
 {
-    ;Register exited functions, Variables that need to be cleared for ctypes binding
-    OnExit ExitFunc
     ui := Imgui()
     ui.enableviewports(true)
     hwnd := ui.guicreate_unbackground('test',, 12, 'GetGlyphRangesDefault')
@@ -119,13 +117,4 @@ load_styles(ui)
     style.FramePadding := ImVec2([8, 6])
     style.FrameRounding := 3
     style.FrameBorderSize := 1
-}
-
-ExitFunc(ExitReason, ExitCode)
-{
-    global
-    for k,v in imgui.ctype_bind_var
-    {
-        %v% := ''
-    }
 }

@@ -4,16 +4,14 @@
 main()
 main()
 {
-    ;Register exited functions, Variables that need to be cleared for ctypes binding
-    OnExit ExitFunc
     ui := Imgui()
     ui.enableviewports(false)
     hwnd := ui.gui_create("AHK ImGui", 500, 500, 0, 0, 0, 0,,, 'GetGlyphRangesDefault')
     WinShow(hwnd)
 
     io := ui.igGetIO()
+    ;调用from_ptr的对象，如果在函数退出之前还在堆栈中的，需要声明成global 或者，主动释放
     global g_io := ImGuiIO_AHK.from_ptr(io)
-    imgui.ctype_bind_var.Push('g_io')
 
     is_open_demo := true
     is_open_main := true 
@@ -35,20 +33,12 @@ main()
                 }
                 ui.igInputText(ui.str('input##3'), bf, bf.Size)
                 ui.igInputInt4(ui.str('int##int'), int4)
+                static active := 0
+                ui.toggle_button('tootle', &active)
             }
             ui.igEnd()
         }
         ui.endframe()
     }
     ExitApp
-}
-
-
-ExitFunc(ExitReason, ExitCode)
-{
-    global
-    for k,v in imgui.ctype_bind_var
-    {
-        %v% := ''
-    }
 }

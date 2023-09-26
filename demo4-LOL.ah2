@@ -4,8 +4,6 @@
 main()
 main()
 {
-    ;Register exited functions, Variables that need to be cleared for ctypes binding
-    OnExit ExitFunc
     ui := Imgui()
     ui.enableviewports(true)
     ui.load_font_range(A_ScriptDir '/font/ImguiText.txt', &range_array := [], &length := 0, &raw_data)
@@ -15,7 +13,6 @@ main()
 
     io := ui.igGetIO()
     global g_io := ImGuiIO_AHK.from_ptr(io) ;ctypes from_ptr 对象，需要主动释放
-    imgui.ctype_bind_var.Push('g_io')
 
     is_open_demo := false
     is_open_main := true 
@@ -54,16 +51,6 @@ main()
         ui.endframe()
     }
     ExitApp
-}
-
-
-ExitFunc(ExitReason, ExitCode)
-{
-    global
-    for k,v in imgui.ctype_bind_var
-    {
-        %v% := ''
-    }
 }
 
 change_window_icon(hwnd, ico_path)
