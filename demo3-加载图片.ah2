@@ -8,8 +8,11 @@ main()
     hwnd := ui.guicreate_unbackground('test',,, 'GetGlyphRangesDefault')
     WinSetAlwaysOnTop(1, hwnd)
 
-    image := ui.imageFromFile("E:\我的AHK程序\cherry-snippet-v2\icons\索隆.jpg")
+    image := ui.imageFromFile(A_ScriptDir '\long.png')
     size := ui.ImageGetSize(image)
+
+    ;使用这个方法，需要手动释放
+    ui.LoadTextureFromFile(A_ScriptDir '\long.png', &out_srv := 0, &out_width := 0, &out_height := 0)
 
     is_open := true
     is_open_demo := true
@@ -26,7 +29,8 @@ main()
             {
                 MsgBox('ok')
             }
-            ui.igImageButton(ui.str('imageButton'), image, ImVec2(size))
+            ui.igImageButton(ui.str('imageButton1'), image, ImVec2(size))
+            ui.igImageButton(ui.str('imageButton2'), out_srv, ImVec2(size))
             ui.igEnd()
         }
         else

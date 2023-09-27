@@ -129,10 +129,18 @@ class Imgui extends Cimgui_AHK
 
     beginframe() => DllCall(Cimgui_dll.BeginFrame, "Cdecl")
 
-    endframe(color := 0x004488)
+    /**
+     * 
+     * @param {number} color 
+     * @param {number} is_present 垂直同步，默认为false，需要手动管理，这样不会影响其他伪线程的效率
+     */
+    endframe(color := 0x004488, is_present := false)
     {
-        DllCall(Cimgui_dll.EndFrame, "UInt", color, "Cdecl")
-        if(-1 == WinGetMinMax(this.hwnd))
+        DllCall(Cimgui_dll.EndFrame, "UInt", color, 'char', is_present, "Cdecl")
+        if(!is_present)
+            Sleep(10)
+        ; 最小化时，垂直同步不生效
+        if(is_present && -1 == WinGetMinMax(this.hwnd))
             Sleep(20)
     }
 
@@ -164,14 +172,19 @@ class Imgui extends Cimgui_AHK
 
     LoadTextureFromFile(filename, &out_srv, &out_width, &out_height)
     {
-        rtn := DllCall(Cimgui_dll.LoadTextureFromFile, "wstr", filename, "int *", &out_srv, "int *", &out_width, "int *", &out_height)
+        rtn := DllCall(Cimgui_dll.LoadTextureFromFile, "wstr", filename, "ptr*", &out_srv, "int *", &out_width, "int *", &out_height)
         return rtn
     }
 
     LoadTextureFromMemory(buf, buf_size, &out_srv, &out_width, &out_height)
     {
-        rtn := DllCall(Cimgui_dll.LoadTextureFromMemory, "ptr", buf, "int", buf_size, "int *", &out_srv, "int *", &out_width, "int *", &out_height)
+        rtn := DllCall(Cimgui_dll.LoadTextureFromMemory, "ptr", buf, "int", buf_size, "ptr*", &out_srv, "int *", &out_width, "int *", &out_height)
         return rtn
+    }
+
+    TextureFree(srv)
+    {
+        return DllCall(Cimgui_dll.TextureFree, "ptr", srv)
     }
 
     /*
