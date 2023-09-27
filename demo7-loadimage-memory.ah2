@@ -1,6 +1,5 @@
 #Requires AutoHotkey v2.0
 #include <wincapture>
-#include <log>
 #include <cimgui>
 #DllLoad %A_ScriptDir%\libwebp.dll
 
