@@ -8,11 +8,11 @@ main()
     hwnd := ui.guicreate_unbackground('test',,, 'GetGlyphRangesDefault')
     WinSetAlwaysOnTop(1, hwnd)
 
-    image := ui.imageFromFile(A_ScriptDir '\long.png')
+    image := ui.imageFromFile(A_ScriptDir '\images\long.png')
     size := ui.ImageGetSize(image)
 
     ;使用这个方法，需要手动释放
-    ui.LoadTextureFromFile(A_ScriptDir '\long.png', &out_srv := 0, &out_width := 0, &out_height := 0)
+    ui.LoadTextureFromFile(A_ScriptDir '\images\long.png', &out_srv := 0, &out_width := 0, &out_height := 0)
 
     is_open := true
     is_open_demo := true

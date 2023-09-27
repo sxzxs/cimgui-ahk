@@ -23,7 +23,7 @@ class Ui_menu
         ui := this.ui := Imgui()
         ui.enableviewports(false)
         hwnd := ui.gui_create("AHK ImGui", 500, 500, 0, 0, 0, 0,, 18, 'GetGlyphRangesDefault')
-        ui.change_window_icon(hwnd, A_ScriptDir "\image\main.ico")
+        ui.change_window_icon(hwnd, A_ScriptDir "\images\main.ico")
         WinShow(hwnd)
         io := ui.igGetIO()
 

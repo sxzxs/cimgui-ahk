@@ -8,7 +8,7 @@ main()
     ui.enableviewports(true)
     ui.load_font_range(A_ScriptDir '/font/ImguiText.txt', &range_array := [], &length := 0, &raw_data)
     hwnd := ui.gui_create("AHK ImGui", 500, 500, 0, 0, 0, 0,,,, raw_data)
-    change_window_icon(hwnd, A_ScriptDir "\image\main.ico")
+    change_window_icon(hwnd, A_ScriptDir "\images\main.ico")
     WinShow(hwnd)
 
     io := ui.igGetIO()
