@@ -6,7 +6,7 @@ main()
 {
     ui := Imgui()
     ui.enableviewports(false)
-    hwnd := ui.gui_create("AHK ImGui", 500, 500, 0, 0, 0, 0,,, 'GetGlyphRangesDefault')
+    hwnd := ui.gui_create("AHK ImGui", 500, 500, 0, 0, 0, 0)
     WinShow(hwnd)
 
     io := ui.igGetIO()
@@ -40,5 +40,6 @@ main()
         }
         ui.endframe()
     }
+    ui.shutdown()
     ExitApp
 }

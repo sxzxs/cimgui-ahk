@@ -113,6 +113,10 @@ for k, v in js
                 logger.info('in')
             }
             dll_type := convert_to_dll_type(n['name'], n['type'])
+            if(InStr(original_func, '_destroy('))
+            {
+                dll_type := StrReplace(dll_type, 'self', 'self_this')
+            }
             func_str .= dll_type
             if(n['type'] = '...' && n['name'] = '...')
                 func_str .= ', p*'
@@ -186,8 +190,11 @@ class_func_str := StrReplace(class_func_str, 'a_min,', 'a_min_,')
 class_func_str := StrReplace(class_func_str, '(in)', '(in_)')
 class_func_str := StrReplace(class_func_str, ' in)', ' in_)')
 class_func_str := StrReplace(class_func_str, ' in,', ' in_,')
-class_func_str := StrReplace(class_func_str, 'destroy()', '__Delete()')
+class_func_str := StrReplace(class_func_str, 'destroy()', 'static free(self)')
 class_func_str := StrReplace(class_func_str, 'sizeof([float])', '4')
+class_func_str := StrReplace(class_func_str, '"ushort*", &glyph_ranges', '"ptr", glyph_ranges')
+class_func_str := StrReplace(class_func_str, '&glyph_ranges := 0', 'glyph_ranges := 0')
+class_func_str := StrReplace(class_func_str, 'this_this', 'self')
 
 A_Clipboard := class_func_str
 logger.info(func_all_str)

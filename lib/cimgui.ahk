@@ -17,7 +17,8 @@ class Imgui extends Cimgui_AHK
     static ctype_bind_var := []
     __New()
     {
-        
+        global g_imgui
+        g_imgui := this
     }
     __Delete()
     {
@@ -26,7 +27,12 @@ class Imgui extends Cimgui_AHK
 
     static color(cl := [0, 0, 0, 255]) ;rgba int
     {
-        return ImVec4.from_ptr(ImColor_AHK.ImColor_Int(cl*))
+        ;调用构造函数从堆分配内存,需要主动释放
+        color_ptr := ImColor_AHK.ImColor_Int(cl*)
+        color := ImColor.from_ptr(color_ptr)
+        rtn_color := ImVec4(color.Value)
+        ImColor_AHK.free(color_ptr)
+        return rtn_color
     }
 
     static str(str, encoding := 'UTF-8')
@@ -72,14 +78,6 @@ class Imgui extends Cimgui_AHK
 
     main() => DllCall(Cimgui_dll.main, 'int', 0, 'ptr', 0)
 
-    ;GUI_API const ImWchar*    GetGlyphRangesDefault();                // Basic Latin, Extended Latin
-    ;GUI_API const ImWchar*    GetGlyphRangesKorean();                 // Default + Korean characters
-    ;GUI_API const ImWchar*    GetGlyphRangesJapanese();               // Default + Hiragana, Katakana, Half-Width, Selection of 1946 Ideographs
-    ;GUI_API const ImWchar*    GetGlyphRangesChineseFull();            // Default + Half-Width + Japanese Hiragana/Katakana + full set of about 21000 CJK Unified Ideographs
-    ;GUI_API const ImWchar*    GetGlyphRangesChineseSimplifiedCommon();// Default + Half-Width + Japanese Hiragana/Katakana + set of 2500 CJK Unified Ideographs for common simplified Chinese
-    ;GUI_API const ImWchar*    GetGlyphRangesCyrillic();               // Default + about 400 Cyrillic characters
-    ;GUI_API const ImWchar*    GetGlyphRangesThai();                   // Default + Thai characters
-    ;GUI_API const ImWchar*    GetGlyphRangesVietnamese();             // Default + Vietnamese characters
     /**
     * 创建窗口
     * @param src 图像
@@ -115,6 +113,7 @@ class Imgui extends Cimgui_AHK
         return result
     }
 
+    ;背景隐藏的窗口
     guicreate_unbackground(title, font_path := "from_memory_simhei", font_size := 20, font_range := "GetGlyphRangesChineseFull", range_charBuf := 0, OversampleH := 2, OversampleV := 1, PixelSnapH := false)
     {
         WS_CAPTION :=  0x00C00000
@@ -125,16 +124,28 @@ class Imgui extends Cimgui_AHK
         return hwnd
     }
 
+    ;背景透明的窗口
+    gui_overlay(title, w, h, x := -1, y := -1, style := 0, ex_style := 0, font_path := "from_memory_simhei", font_size := 20, font_range := "GetGlyphRangesChineseFull", range_charBuf := 0, OversampleH := 2, OversampleV := 1, PixelSnapH := false)
+    {
+        result := DllCall(Cimgui_dll.GUICreate_overlay, "wstr", title, "int", w, "int", h, "int", x, "int", y, "wstr", font_path, "float", font_size, "wstr", font_range, "ptr", range_charBuf, "int", OversampleH, "int", OversampleV, "int", PixelSnapH)
+        this.hwnd := result
+        if(style != 0)
+            DllCall("SetWindowLongPtr", "Ptr", result, "Int", -16 ,"Int64", style)
+        if(ex_style != 0)
+            DllCall("SetWindowLongPtr", "Ptr", result, "Int", -20, "int64", ex_style)
+        return result
+    }
+
     peekmsg() => DllCall(Cimgui_dll.PeekMsg)
 
     beginframe() => DllCall(Cimgui_dll.BeginFrame, "Cdecl")
 
     /**
      * 
-     * @param {number} color 
+     * @param {number} color  ARGB 无效
      * @param {number} is_present 垂直同步，默认为false，需要手动管理，这样不会影响其他伪线程的效率
      */
-    endframe(color := 0x004488, is_present := false)
+    endframe(color := 0xff004488, is_present := false)
     {
         DllCall(Cimgui_dll.EndFrame, "UInt", color, 'char', is_present, "Cdecl")
         if(!is_present)
@@ -142,6 +153,25 @@ class Imgui extends Cimgui_AHK
         ; 最小化时，垂直同步不生效
         if(is_present && -1 == WinGetMinMax(this.hwnd))
             Sleep(20)
+    }
+
+    ;如果窗口是dll创建的,调用这个方法
+    ShutDown()
+    {
+        Critical
+        DllCall(Cimgui_dll.ShutDown, 'ptr')
+    }
+
+    ;如果窗口是ahk创建的,调用这个方法
+    shutdown_ahk()
+    {
+        Critical
+        DllCall(Cimgui_dll.ImGui_ImplDX11_Shutdown)
+        DllCall(Cimgui_dll.ImGui_ImplWin32_Shutdown)
+        DllCall(Cimgui_dll.igDestroyContext, 'ptr', 0)
+        DllCall(Cimgui_dll.CleanupDeviceD3D)
+        DllCall('DestroyWindow', 'ptr', this.hwnd)
+        this.UnregisterClass(this.class_name, NumGet(this.cls.cls, 24, 'ptr'))
     }
 
     enableviewports(enable := True) => DllCall(Cimgui_dll.EnableViewports, "Int", enable)
@@ -235,5 +265,73 @@ class Imgui extends Cimgui_AHK
         hIcon := DllCall( "LoadImage", 'UInt',0, 'Str', ico_path, 'uint',1, 'UInt',0, 'UInt',0, 'UInt',0x10 )
         SendMessage(0x80, 0, hIcon,, hwnd)
         SendMessage(0x80, 1, hIcon,, hwnd)
+    }
+    CreateDeviceD3D(hwnd) => DllCall(Cimgui_dll.CreateDeviceD3D, 'ptr', hwnd, 'char')
+    CleanupDeviceD3D() => DllCall(Cimgui_dll.CleanupDeviceD3D)
+    ShowWindow(hWnd, nCmdShow) => DllCall('User32\ShowWindow', 'ptr', hWnd, 'int', nCmdShow, 'int')
+    UpdateWindow(hwnd) => DllCall('User32\UpdateWindow', 'ptr', hwnd, 'int')
+    PostQuitMessage(nExitCode) => DllCall('User32\PostQuitMessage', 'int', nExitCode, 'int')
+
+    ImGui_ImplWin32_Init(hwnd) => DllCall(Cimgui_dll.ImGui_ImplWin32_Init, "ptr", hwnd, "char")
+    ImGui_ImplDX11_Init(device, device_context) => DllCall(Cimgui_dll.ImGui_ImplDX11_Init, "ptr", device, "ptr", device_context, 'char')
+
+    simhei_font() => DllCall(Cimgui_dll.simhei_font, 'ptr')
+
+    UnregisterClass(lpClassName, hInstance) => DllCall('User32\UnregisterClass', 'str', lpClassName, 'ptr', hInstance, 'int')
+    ImGui_ImplWin32_WndProcHandler(hWnd, msg, wParam, lParam) => DllCall(Cimgui_dll.ImGui_ImplWin32_WndProcHandler, "ptr", hWnd, "uint", msg, 'ptr', wParam, 'ptr', lParam, 'ptr')
+    GET_X_LPARAM(lParam)
+    {
+        x := lParam & 0xffff
+        bf := Buffer(2)
+        NumPut('ushort', x, bf)
+        return NumGet(bf, 'short')
+    }
+    GET_Y_LPARAM(lParam)
+    {
+        y := (lParam >> 16) & 0xffff
+        bf := Buffer(2)
+        NumPut('ushort', y, bf)
+        return NumGet(bf, 'short')
+    }
+
+    CreateWindowEx(dwExStyle, lpClassName, lpWindowName, dwStyle, x, y, nWidth, nHeight, parent, hMenu, hInstance, lpParam) => DllCall('CreateWindowExW', 'uint', dwExStyle, 'str', lpClassName, 'str', lpWindowName, 'uint', dwStyle, 'int', x, 'int', y, 'int', nWidth, 'int', nHeight, 'ptr', parent, 'ptr', hMenu, 'ptr', hInstance, 'ptr', lpParam, 'ptr')
+
+
+    WindowClass(pWndProc, cls := "", style := 0) 
+    {
+        ; The window class shares the name of this class.
+        (cls == "") && cls := "cimgui-ahk"
+        wc := Buffer(A_PtrSize = 4 ? 48:80) ; sizeof(WNDCLASSEX) = 48, 80
+
+        ; Check if the window class is already registered.
+        hInstance := DllCall("GetModuleHandle", "ptr", 0, "ptr")
+        if DllCall("GetClassInfoEx", "ptr", hInstance, "str", cls, "ptr", wc)
+            return cls
+
+        ; Create window data.
+        hCursor := DllCall("LoadCursor", "ptr", 0, "ptr", 32512, "ptr") ; IDC_ARROW
+        hBrush := DllCall("GetStockObject", "int", 5, "ptr") ; Hollow_brush
+
+        ; struct tagWNDCLASSEXA - https://docs.microsoft.com/en-us/windows/win32/api/winuser/ns-winuser-wndclassexa
+        ; struct tagWNDCLASSEXW - https://docs.microsoft.com/en-us/windows/win32/api/winuser/ns-winuser-wndclassexw
+        _ := (A_PtrSize = 4)
+        NumPut(  "uint",     wc.size, wc,         0) ; cbSize
+        NumPut(  "uint",       style, wc,         4) ; style
+        NumPut(   "ptr",    pWndProc, wc,         8) ; lpfnWndProc
+        NumPut(   "int",           0, wc, _ ? 12:16) ; cbClsExtra
+        NumPut(   "int",          40, wc, _ ? 16:20) ; cbWndExtra
+        NumPut(   "ptr",           0, wc, _ ? 20:24) ; hInstance
+        NumPut(   "ptr",           0, wc, _ ? 24:32) ; hIcon
+        NumPut(   "ptr",     hCursor, wc, _ ? 28:40) ; hCursor
+        NumPut(   "ptr",      hBrush, wc, _ ? 32:48) ; hbrBackground
+        NumPut(   "ptr",           0, wc, _ ? 36:56) ; lpszMenuName
+        NumPut(   "ptr", StrPtr(cls), wc, _ ? 40:64) ; lpszClassName
+        NumPut(   "ptr",           0, wc, _ ? 44:72) ; hIconSm
+
+        ; Registers a window class for subsequent use in calls to the CreateWindow or CreateWindowEx function.
+        rtn := DllCall("RegisterClassEx", "ptr", wc, "ushort")
+
+        ; Return the class name as a string.
+        return {class_name : cls, cls : wc}
     }
 }

@@ -6397,12 +6397,12 @@ class ImColor_AHK extends ImColor
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImColor_destroy(ImColor* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImColor_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImColor_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -6423,12 +6423,12 @@ class ImDrawCmd_AHK extends ImDrawCmd
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImDrawCmd_destroy(ImDrawCmd* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImDrawCmd_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImDrawCmd_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -6470,12 +6470,12 @@ class ImDrawData_AHK extends ImDrawData
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImDrawData_destroy(ImDrawData* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImDrawData_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImDrawData_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -6489,12 +6489,12 @@ class ImDrawDataBuilder_AHK extends ImDrawDataBuilder
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImDrawDataBuilder_destroy(ImDrawDataBuilder* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImDrawDataBuilder_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImDrawDataBuilder_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -6942,12 +6942,12 @@ class ImDrawList_AHK extends ImDrawList
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImDrawList_destroy(ImDrawList* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImDrawList_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImDrawList_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -6968,12 +6968,12 @@ class ImDrawListSharedData_AHK extends ImDrawListSharedData
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImDrawListSharedData_destroy(ImDrawListSharedData* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImDrawListSharedData_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImDrawListSharedData_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -7022,12 +7022,12 @@ class ImDrawListSplitter_AHK extends ImDrawListSplitter
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImDrawListSplitter_destroy(ImDrawListSplitter* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImDrawListSplitter_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImDrawListSplitter_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -7153,12 +7153,12 @@ class ImFont_AHK extends ImFont
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImFont_destroy(ImFont* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImFont_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImFont_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -7193,31 +7193,31 @@ class ImFontAtlas_AHK extends ImFontAtlas
 	    return dll_rtn
 	}
 	
-	AddFontFromFileTTF(filename, size_pixels, font_cfg := 0, &glyph_ranges := 0)
+	AddFontFromFileTTF(filename, size_pixels, font_cfg := 0, glyph_ranges := 0)
 	{
 		;ImFont* ImFontAtlas_AddFontFromFileTTF(ImFontAtlas* this, const char* filename, float size_pixels, const ImFontConfig* font_cfg, const ImWchar* glyph_ranges)
-	    dll_rtn := DllCall(Cimgui_dll.ImFontAtlas_AddFontFromFileTTF, "ptr", this, "ptr", filename, "float", size_pixels, "ptr", font_cfg, "ushort*", &glyph_ranges, "ptr")
+	    dll_rtn := DllCall(Cimgui_dll.ImFontAtlas_AddFontFromFileTTF, "ptr", this, "ptr", filename, "float", size_pixels, "ptr", font_cfg, "ptr", glyph_ranges, "ptr")
 	    return dll_rtn
 	}
 	
-	AddFontFromMemoryCompressedBase85TTF(compressed_font_data_base85, size_pixels, font_cfg := 0, &glyph_ranges := 0)
+	AddFontFromMemoryCompressedBase85TTF(compressed_font_data_base85, size_pixels, font_cfg := 0, glyph_ranges := 0)
 	{
 		;ImFont* ImFontAtlas_AddFontFromMemoryCompressedBase85TTF(ImFontAtlas* this, const char* compressed_font_data_base85, float size_pixels, const ImFontConfig* font_cfg, const ImWchar* glyph_ranges)
-	    dll_rtn := DllCall(Cimgui_dll.ImFontAtlas_AddFontFromMemoryCompressedBase85TTF, "ptr", this, "ptr", compressed_font_data_base85, "float", size_pixels, "ptr", font_cfg, "ushort*", &glyph_ranges, "ptr")
+	    dll_rtn := DllCall(Cimgui_dll.ImFontAtlas_AddFontFromMemoryCompressedBase85TTF, "ptr", this, "ptr", compressed_font_data_base85, "float", size_pixels, "ptr", font_cfg, "ptr", glyph_ranges, "ptr")
 	    return dll_rtn
 	}
 	
-	AddFontFromMemoryCompressedTTF(compressed_font_data, compressed_font_size, size_pixels, font_cfg := 0, &glyph_ranges := 0)
+	AddFontFromMemoryCompressedTTF(compressed_font_data, compressed_font_size, size_pixels, font_cfg := 0, glyph_ranges := 0)
 	{
 		;ImFont* ImFontAtlas_AddFontFromMemoryCompressedTTF(ImFontAtlas* this, const void* compressed_font_data, int compressed_font_size, float size_pixels, const ImFontConfig* font_cfg, const ImWchar* glyph_ranges)
-	    dll_rtn := DllCall(Cimgui_dll.ImFontAtlas_AddFontFromMemoryCompressedTTF, "ptr", this, "ptr", compressed_font_data, "int", compressed_font_size, "float", size_pixels, "ptr", font_cfg, "ushort*", &glyph_ranges, "ptr")
+	    dll_rtn := DllCall(Cimgui_dll.ImFontAtlas_AddFontFromMemoryCompressedTTF, "ptr", this, "ptr", compressed_font_data, "int", compressed_font_size, "float", size_pixels, "ptr", font_cfg, "ptr", glyph_ranges, "ptr")
 	    return dll_rtn
 	}
 	
-	AddFontFromMemoryTTF(font_data, font_size, size_pixels, font_cfg := 0, &glyph_ranges := 0)
+	AddFontFromMemoryTTF(font_data, font_size, size_pixels, font_cfg := 0, glyph_ranges := 0)
 	{
 		;ImFont* ImFontAtlas_AddFontFromMemoryTTF(ImFontAtlas* this, void* font_data, int font_size, float size_pixels, const ImFontConfig* font_cfg, const ImWchar* glyph_ranges)
-	    dll_rtn := DllCall(Cimgui_dll.ImFontAtlas_AddFontFromMemoryTTF, "ptr", this, "ptr", font_data, "int", font_size, "float", size_pixels, "ptr", font_cfg, "ushort*", &glyph_ranges, "ptr")
+	    dll_rtn := DllCall(Cimgui_dll.ImFontAtlas_AddFontFromMemoryTTF, "ptr", this, "ptr", font_data, "int", font_size, "float", size_pixels, "ptr", font_cfg, "ptr", glyph_ranges, "ptr")
 	    return dll_rtn
 	}
 	
@@ -7375,12 +7375,12 @@ class ImFontAtlas_AHK extends ImFontAtlas
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImFontAtlas_destroy(ImFontAtlas* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImFontAtlas_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImFontAtlas_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -7401,12 +7401,12 @@ class ImFontAtlasCustomRect_AHK extends ImFontAtlasCustomRect
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImFontAtlasCustomRect_destroy(ImFontAtlasCustomRect* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImFontAtlasCustomRect_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImFontAtlasCustomRect_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -7420,12 +7420,12 @@ class ImFontConfig_AHK extends ImFontConfig
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImFontConfig_destroy(ImFontConfig* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImFontConfig_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImFontConfig_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -7488,12 +7488,12 @@ class ImFontGlyphRangesBuilder_AHK extends ImFontGlyphRangesBuilder
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImFontGlyphRangesBuilder_destroy(ImFontGlyphRangesBuilder* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImFontGlyphRangesBuilder_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImFontGlyphRangesBuilder_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -7507,12 +7507,12 @@ class ImGuiComboPreviewData_AHK extends ImGuiComboPreviewData
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiComboPreviewData_destroy(ImGuiComboPreviewData* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiComboPreviewData_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiComboPreviewData_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -7526,12 +7526,12 @@ class ImGuiContext_AHK extends ImGuiContext
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiContext_destroy(ImGuiContext* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiContext_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiContext_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -7545,12 +7545,12 @@ class ImGuiContextHook_AHK extends ImGuiContextHook
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiContextHook_destroy(ImGuiContextHook* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiContextHook_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiContextHook_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -7574,12 +7574,12 @@ class ImGuiDockContext_AHK extends ImGuiDockContext
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiDockContext_destroy(ImGuiDockContext* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiDockContext_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiDockContext_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -7677,12 +7677,12 @@ class ImGuiDockNode_AHK extends ImGuiDockNode
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiDockNode_destroy(ImGuiDockNode* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiDockNode_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiDockNode_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -7801,12 +7801,12 @@ class ImGuiIO_AHK extends ImGuiIO
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiIO_destroy(ImGuiIO* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiIO_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiIO_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -7820,12 +7820,12 @@ class ImGuiInputEvent_AHK extends ImGuiInputEvent
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiInputEvent_destroy(ImGuiInputEvent* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiInputEvent_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiInputEvent_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -7874,12 +7874,12 @@ class ImGuiInputTextCallbackData_AHK extends ImGuiInputTextCallbackData
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiInputTextCallbackData_destroy(ImGuiInputTextCallbackData* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiInputTextCallbackData_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiInputTextCallbackData_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -7900,12 +7900,12 @@ class ImGuiInputTextDeactivatedState_AHK extends ImGuiInputTextDeactivatedState
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiInputTextDeactivatedState_destroy(ImGuiInputTextDeactivatedState* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiInputTextDeactivatedState_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiInputTextDeactivatedState_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -8010,12 +8010,12 @@ class ImGuiInputTextState_AHK extends ImGuiInputTextState
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiInputTextState_destroy(ImGuiInputTextState* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiInputTextState_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiInputTextState_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -8029,12 +8029,12 @@ class ImGuiKeyOwnerData_AHK extends ImGuiKeyOwnerData
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiKeyOwnerData_destroy(ImGuiKeyOwnerData* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiKeyOwnerData_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiKeyOwnerData_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -8048,12 +8048,12 @@ class ImGuiKeyRoutingData_AHK extends ImGuiKeyRoutingData
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiKeyRoutingData_destroy(ImGuiKeyRoutingData* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiKeyRoutingData_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiKeyRoutingData_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -8074,12 +8074,12 @@ class ImGuiKeyRoutingTable_AHK extends ImGuiKeyRoutingTable
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiKeyRoutingTable_destroy(ImGuiKeyRoutingTable* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiKeyRoutingTable_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiKeyRoutingTable_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -8093,12 +8093,12 @@ class ImGuiLastItemData_AHK extends ImGuiLastItemData
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiLastItemData_destroy(ImGuiLastItemData* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiLastItemData_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiLastItemData_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -8147,12 +8147,12 @@ class ImGuiListClipper_AHK extends ImGuiListClipper
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiListClipper_destroy(ImGuiListClipper* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiListClipper_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiListClipper_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -8173,12 +8173,12 @@ class ImGuiListClipperData_AHK extends ImGuiListClipperData
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiListClipperData_destroy(ImGuiListClipperData* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiListClipperData_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiListClipperData_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -8213,12 +8213,12 @@ class ImGuiMenuColumns_AHK extends ImGuiMenuColumns
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiMenuColumns_destroy(ImGuiMenuColumns* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiMenuColumns_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiMenuColumns_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -8239,12 +8239,12 @@ class ImGuiNavItemData_AHK extends ImGuiNavItemData
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiNavItemData_destroy(ImGuiNavItemData* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiNavItemData_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiNavItemData_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -8265,12 +8265,12 @@ class ImGuiNextItemData_AHK extends ImGuiNextItemData
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiNextItemData_destroy(ImGuiNextItemData* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiNextItemData_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiNextItemData_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -8291,12 +8291,12 @@ class ImGuiNextWindowData_AHK extends ImGuiNextWindowData
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiNextWindowData_destroy(ImGuiNextWindowData* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiNextWindowData_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiNextWindowData_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -8310,12 +8310,12 @@ class ImGuiOldColumnData_AHK extends ImGuiOldColumnData
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiOldColumnData_destroy(ImGuiOldColumnData* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiOldColumnData_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiOldColumnData_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -8329,12 +8329,12 @@ class ImGuiOldColumns_AHK extends ImGuiOldColumns
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiOldColumns_destroy(ImGuiOldColumns* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiOldColumns_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiOldColumns_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -8348,12 +8348,12 @@ class ImGuiOnceUponAFrame_AHK extends ImGuiOnceUponAFrame
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiOnceUponAFrame_destroy(ImGuiOnceUponAFrame* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiOnceUponAFrame_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiOnceUponAFrame_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -8395,12 +8395,12 @@ class ImGuiPayload_AHK extends ImGuiPayload
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiPayload_destroy(ImGuiPayload* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiPayload_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiPayload_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -8414,12 +8414,12 @@ class ImGuiPlatformIO_AHK extends ImGuiPlatformIO
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiPlatformIO_destroy(ImGuiPlatformIO* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiPlatformIO_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiPlatformIO_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -8433,12 +8433,12 @@ class ImGuiPlatformImeData_AHK extends ImGuiPlatformImeData
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiPlatformImeData_destroy(ImGuiPlatformImeData* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiPlatformImeData_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiPlatformImeData_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -8452,12 +8452,12 @@ class ImGuiPlatformMonitor_AHK extends ImGuiPlatformMonitor
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiPlatformMonitor_destroy(ImGuiPlatformMonitor* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiPlatformMonitor_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiPlatformMonitor_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -8471,12 +8471,12 @@ class ImGuiPopupData_AHK extends ImGuiPopupData
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiPopupData_destroy(ImGuiPopupData* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiPopupData_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiPopupData_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -8497,12 +8497,12 @@ class ImGuiPtrOrIndex_AHK extends ImGuiPtrOrIndex
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiPtrOrIndex_destroy(ImGuiPtrOrIndex* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiPtrOrIndex_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiPtrOrIndex_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -8516,12 +8516,12 @@ class ImGuiSettingsHandler_AHK extends ImGuiSettingsHandler
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiSettingsHandler_destroy(ImGuiSettingsHandler* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiSettingsHandler_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiSettingsHandler_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -8535,12 +8535,12 @@ class ImGuiStackLevelInfo_AHK extends ImGuiStackLevelInfo
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiStackLevelInfo_destroy(ImGuiStackLevelInfo* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiStackLevelInfo_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiStackLevelInfo_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -8568,12 +8568,12 @@ class ImGuiStackSizes_AHK extends ImGuiStackSizes
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiStackSizes_destroy(ImGuiStackSizes* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiStackSizes_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiStackSizes_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -8587,12 +8587,12 @@ class ImGuiStackTool_AHK extends ImGuiStackTool
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiStackTool_destroy(ImGuiStackTool* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiStackTool_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiStackTool_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -8728,12 +8728,12 @@ class ImGuiStoragePair_AHK extends ImGuiStoragePair
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiStoragePair_destroy(ImGuiStoragePair* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiStoragePair_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiStoragePair_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -8754,12 +8754,12 @@ class ImGuiStyle_AHK extends ImGuiStyle
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiStyle_destroy(ImGuiStyle* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiStyle_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiStyle_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -8787,12 +8787,12 @@ class ImGuiStyleMod_AHK extends ImGuiStyleMod
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiStyleMod_destroy(ImGuiStyleMod* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiStyleMod_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiStyleMod_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -8806,12 +8806,12 @@ class ImGuiTabBar_AHK extends ImGuiTabBar
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiTabBar_destroy(ImGuiTabBar* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiTabBar_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiTabBar_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -8825,12 +8825,12 @@ class ImGuiTabItem_AHK extends ImGuiTabItem
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiTabItem_destroy(ImGuiTabItem* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiTabItem_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiTabItem_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -8844,12 +8844,12 @@ class ImGuiTable_AHK extends ImGuiTable
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiTable_destroy(ImGuiTable* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiTable_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiTable_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -8863,12 +8863,12 @@ class ImGuiTableColumn_AHK extends ImGuiTableColumn
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiTableColumn_destroy(ImGuiTableColumn* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiTableColumn_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiTableColumn_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -8882,12 +8882,12 @@ class ImGuiTableColumnSettings_AHK extends ImGuiTableColumnSettings
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiTableColumnSettings_destroy(ImGuiTableColumnSettings* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiTableColumnSettings_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiTableColumnSettings_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -8901,12 +8901,12 @@ class ImGuiTableColumnSortSpecs_AHK extends ImGuiTableColumnSortSpecs
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiTableColumnSortSpecs_destroy(ImGuiTableColumnSortSpecs* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiTableColumnSortSpecs_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiTableColumnSortSpecs_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -8920,12 +8920,12 @@ class ImGuiTableInstanceData_AHK extends ImGuiTableInstanceData
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiTableInstanceData_destroy(ImGuiTableInstanceData* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiTableInstanceData_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiTableInstanceData_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -8946,12 +8946,12 @@ class ImGuiTableSettings_AHK extends ImGuiTableSettings
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiTableSettings_destroy(ImGuiTableSettings* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiTableSettings_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiTableSettings_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -8965,12 +8965,12 @@ class ImGuiTableSortSpecs_AHK extends ImGuiTableSortSpecs
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiTableSortSpecs_destroy(ImGuiTableSortSpecs* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiTableSortSpecs_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiTableSortSpecs_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -8984,12 +8984,12 @@ class ImGuiTableTempData_AHK extends ImGuiTableTempData
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiTableTempData_destroy(ImGuiTableTempData* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiTableTempData_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiTableTempData_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -9045,12 +9045,12 @@ class ImGuiTextBuffer_AHK extends ImGuiTextBuffer
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiTextBuffer_destroy(ImGuiTextBuffer* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiTextBuffer_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiTextBuffer_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -9127,12 +9127,12 @@ class ImGuiTextFilter_AHK extends ImGuiTextFilter
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiTextFilter_destroy(ImGuiTextFilter* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiTextFilter_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiTextFilter_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -9191,12 +9191,12 @@ class ImGuiTextRange_AHK extends ImGuiTextRange
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiTextRange_destroy(ImGuiTextRange* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiTextRange_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiTextRange_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -9238,12 +9238,12 @@ class ImGuiViewport_AHK extends ImGuiViewport
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiViewport_destroy(ImGuiViewport* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiViewport_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiViewport_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -9306,12 +9306,12 @@ class ImGuiViewportP_AHK extends ImGuiViewportP
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiViewportP_destroy(ImGuiViewportP* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiViewportP_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiViewportP_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -9395,12 +9395,12 @@ class ImGuiWindow_AHK extends ImGuiWindow
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiWindow_destroy(ImGuiWindow* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiWindow_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiWindow_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -9414,12 +9414,12 @@ class ImGuiWindowClass_AHK extends ImGuiWindowClass
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiWindowClass_destroy(ImGuiWindowClass* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiWindowClass_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiWindowClass_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -9440,12 +9440,12 @@ class ImGuiWindowSettings_AHK extends ImGuiWindowSettings
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImGuiWindowSettings_destroy(ImGuiWindowSettings* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImGuiWindowSettings_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImGuiWindowSettings_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -9648,12 +9648,12 @@ class ImRect_AHK extends ImRect
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImRect_destroy(ImRect* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImRect_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImRect_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -9674,12 +9674,12 @@ class ImVec1_AHK extends ImVec1
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImVec1_destroy(ImVec1* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImVec1_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImVec1_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -9700,12 +9700,12 @@ class ImVec2_AHK extends ImVec2
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImVec2_destroy(ImVec2* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImVec2_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImVec2_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -9733,12 +9733,12 @@ class ImVec2ih_AHK extends ImVec2ih
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImVec2ih_destroy(ImVec2ih* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImVec2ih_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImVec2ih_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	
@@ -9759,12 +9759,12 @@ class ImVec4_AHK extends ImVec4
 	    return dll_rtn
 	}
 	
-	__Delete()
+	static free(self)
 	{
 		if(this.HasOwnProp('__Delete'))
 	        return
 	    ;void ImVec4_destroy(ImVec4* this)
-	    dll_rtn := DllCall(Cimgui_dll.ImVec4_destroy, "ptr", this)
+	    dll_rtn := DllCall(Cimgui_dll.ImVec4_destroy, "ptr", self)
 	    return dll_rtn
 	}
 	

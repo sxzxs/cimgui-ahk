@@ -14,7 +14,7 @@ g_all_struct_str := ''
 g_printed_func := Map()
 g_printed_func_array := []
 
-json_str := FileRead(A_ScriptDir "\..\cimgui\cimgui\generator\output\structs_and_enums.json")
+json_str := FileRead(A_ScriptDir "\..\cimgui\generator\output\structs_and_enums.json")
 js := json.parse(json_str)
 
 for k,v in js['structs']
@@ -42,7 +42,7 @@ all_structs_str := StrReplace(all_structs_str, '32+1', '33')
 all_structs_str := StrReplace(all_structs_str, '(BITCOUNT+31)>>5', '')
 
 ;全局替换枚举值为数字
-json_str := FileRead(A_ScriptDir "\..\cimgui\cimgui\generator\output\structs_and_enums.json")
+json_str := FileRead(A_ScriptDir "\..\cimgui\generator\output\structs_and_enums.json")
 js := json.parse(json_str)
 for k,v in js['enums']
 {

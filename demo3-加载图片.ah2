@@ -39,5 +39,6 @@ main()
         }
         ui.endframe()
     }
+    ui.ShutDown()
     ExitApp
 }

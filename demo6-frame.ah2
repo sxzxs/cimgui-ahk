@@ -12,6 +12,7 @@ main()
         menu.render()
         menu.ui.endframe()
     }
+    menu.ui.ShutDown()
     menu := ''
     ExitApp
 }
@@ -22,7 +23,10 @@ class Ui_menu
     {
         ui := this.ui := Imgui()
         ui.enableviewports(false)
-        hwnd := ui.gui_create("AHK ImGui", 500, 500, 0, 0, 0, 0,, 18, 'GetGlyphRangesDefault')
+        hwnd := ui.gui_create("AHK ImGui", 800, 600, 0, 0, 0, 0,, 18, 'GetGlyphRangesDefault')
+        this.logo := ui.imageFromFile(A_ScriptDir '\images\main.ico')
+        this.logo_size := ui.ImageGetSize(this.logo)
+        ;hwnd := ui.guicreate_unbackground("AHK ImGui",, 18, 'GetGlyphRangesDefault')
         ui.change_window_icon(hwnd, A_ScriptDir "\images\main.ico")
         WinShow(hwnd)
         io := ui.igGetIO()
@@ -67,7 +71,7 @@ class Ui_menu
             ui.igShowDemoWindow(&is_open_demo)
 
         static is_open := 0
-        ;ui.igSetNextWindowSize(ImVec2([800, 600]))
+        ui.igSetNextWindowSize(ImVec2([800, 600]))
 
         main_view_port := ui.igGetMainViewport()
         g_main_view_port := ImGuiViewport.from_ptr(main_view_port)
@@ -149,9 +153,15 @@ class Ui_menu
         {
             ui.igBeginChild_Str(ui.str('LOGO'), ImVec2([158, 50]), true)
             ui.igSetCursorPosY(11)
+            ui.igImage(this.logo, ImVec2([40, 30]))
+            ui.igSameLine()
             ui.igPushStyleColor_Vec4(ImGuiCol_Text, this.item_color['btnActiveCol'])
             ui.igPushFont(this.big_font)
-            ui.igTextUnformatted(ui.str(' Big Paste'))
+            ui.igTextUnformatted(ui.str(' zzZ...'))
+            if(ui.igIsItemClicked())
+            {
+                MsgBox('logo')
+            }
             ui.igPopFont()
             ui.igPopStyleColor()
             ui.igEndChild()
