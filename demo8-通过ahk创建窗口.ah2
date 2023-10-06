@@ -7,7 +7,10 @@ main()
     ui := Imgui()
     ui.enableviewports(true)
     hwnd := create_window_hase_title(ui, "AHK ImGui", 500, 500, 0, 0)
-    WinShow(hwnd)
+    ui.change_window_icon(A_ScriptDir "\images\main.ico")
+    ui.SetDarkMode()
+    ui.SetDarkTitle()
+    ui.show()
 
     io := ui.igGetIO()
     ;调用from_ptr的对象，如果在函数退出之前还在堆栈中的，需要声明成global 或者，主动释放
@@ -25,7 +28,7 @@ main()
 
         if(is_open_main)
         {
-            if(ui.igBegin(ui.str('xxx##test'), &is_open_main))
+            if(ui.igBegin(ui.str('IMGUi##test'), &is_open_main))
             {
                 if(ui.igButton(ui.str('button##2'), ImVec2([100, 100])))
                 {
@@ -45,12 +48,14 @@ main()
 }
 
 ;创建一个带有标题栏的窗口
-create_window_hase_title(ui, title, w, h, x := 0, y := 0, style := 0, exstyle := 0)
+create_window_hase_title(ui, title, w, h, x := 0, y := 0)
 {
     class_name := 'cimgui-ahk'
     ui.class_name := class_name
     ui.proc := CallbackCreate(WndProc)
-    ui.cls := cls := ui.WindowClass(ui.proc, class_name, CS_CLASSDC := 0x0040)
+    CS_DROPSHADOW := 0x00020000
+    CS_CLASSDC := 0x0040
+    ui.cls := cls := ui.WindowClass(ui.proc, class_name, CS_DROPSHADOW)
 
     WS_EX_TOPMOST := 0x00000008, WS_EX_LAYERED := 0x00080000, WS_POPUP := 0x80000000
     WS_OVERLAPPED := 0x00000000, WS_CAPTION := 0x00C00000, WS_SYSMENU := 0x00080000, WS_THICKFRAME := 0x00040000, WS_MINIMIZEBOX := 0x00020000, WS_MAXIMIZEBOX := 0x00010000
@@ -75,7 +80,7 @@ create_window_hase_title(ui, title, w, h, x := 0, y := 0, style := 0, exstyle :=
     ;Load font
     fontAtlas := ImFontAtlas_AHK.from_ptr(io.Fonts.ptr)
     fontAtlas.ClearFonts()
-    glyphRange := fontAtlas.GetGlyphRangesChineseFull()
+    glyphRange := fontAtlas.GetGlyphRangesDefault()
 
     config_words_ptr := ImFontConfig_AHK.ImFontConfig()
     ;xx := ImFontConfig_AHK.ImFontConfig()
@@ -107,7 +112,7 @@ create_window_hase_title(ui, title, w, h, x := 0, y := 0, style := 0, exstyle :=
     static WndProc(hwnd, msg, wp, lp) 
     {
         Critical
-        try
+        if(g_is_running)
         {
             if(DllCall(Cimgui_dll.ImGui_ImplWin32_WndProcHandler, "ptr", hWnd, "uint", msg, 'ptr', wp, 'ptr', lp, 'ptr'))
                 return true
@@ -145,32 +150,9 @@ create_window_hase_title(ui, title, w, h, x := 0, y := 0, style := 0, exstyle :=
                 }
                 case 0x02E0: ;WM_DPICHANGED
                 {
-
                 }
                 case 0x0084: ;WM_NCHITTEST
                 {
-                    pt := Buffer(8, 0)
-                    NumPut('int', GET_X_LPARAM(lp), pt, 0)
-                    NumPut('int', GET_Y_LPARAM(lp), pt, 4)
-
-                    DllCall('ScreenToClient', 'ptr', hwnd, 'ptr', pt)
-
-                    hit := DllCall("DefWindowProcW", "ptr", hwnd, "uint", msg, "ptr", wp, "ptr", lp, "ptr")
-                    if(hit == 1) ;HTCLIENT
-                    {
-                        io := ImGuiIO.from_ptr(DllCall(Cimgui_dll.igGetIO, 'ptr'))
-                        if (io.WantCaptureMouse)
-                        {
-                            ; Let imgui handle the mouse event
-                            return hit
-                        }
-                        else
-                        {
-                            ; Let the window be moved by dragging any point
-                            return 2 ;HTCAPTION
-                        }
-                    }
-                    return hit
                 }
             }
             return DllCall("DefWindowProcW", "ptr", hwnd, "uint", msg, "ptr", wp, "ptr", lp, "ptr")

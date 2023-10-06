@@ -1,13 +1,12 @@
 #Requires AutoHotkey v2.0
 #include <cimgui>
+#include <log>
 
 main()
 main()
 {
     ui := Imgui()
     ui.enableviewports(true)
-    ;hwnd := ui.gui_overlay("AHK ImGui", 500, 500, 0, 0, 0, 0,,, 'GetGlyphRangesDefault')
-    ;hwnd := ui.create_window("AHK ImGui", 500, 500, 0, 0, 0, 0)
     hwnd := create_window(ui, "AHK ImGui", 500, 500, 0, 0)
     WinShow(hwnd)
 
@@ -19,14 +18,26 @@ main()
     is_open_main := true 
     bf := ui.tb('input')
     int4 := ctypes.array('int', 4)()
-    while(ui.peekmsg())
+
+    while(ui.peekmsg() && is_open_main)
     {
         ui.beginframe()
+
+        main_view_port := ui.igGetMainViewport()
+        g_main_view_port := ImGuiViewport.from_ptr(main_view_port)
+
+        bc_list := ui.igGetBackgroundDrawList_Nil()
+        ;从 from_ptr获取的对象，在主函数一定要设置成global
+        global bc_list := ImDrawList_AHK.from_ptr(bc_list)
+        bc_list.AddRectFilled(ImVec2([0, 0]), ImVec2([g_main_view_port.WorkSize.x, g_main_view_port.WorkSize.y]), 0xcccccccc, 10)
+        bc_list.AddRect(ImVec2([0, 0]), ImVec2([g_main_view_port.WorkSize.x, g_main_view_port.WorkSize.y]), 0xff000000,10,,5)
+
         if(is_open_demo)
             ui.igShowDemoWindow(&is_open_demo)
 
         if(is_open_main)
         {
+            ui.igSetNextWindowPos(ImVec2([0, 0]))
             if(ui.igBegin(ui.str('xxx##test'), &is_open_main))
             {
                 if(ui.igButton(ui.str('button##2'), ImVec2([100, 100])))
@@ -40,7 +51,7 @@ main()
             }
             ui.igEnd()
         }
-        ui.endframe(0xcccccccc)
+        ui.endframe(0x00cccccc)
     }
     ui.shutdown_ahk()
     ExitApp
@@ -83,11 +94,15 @@ create_window(ui, title, w, h, x := 0, y := 0)
     ;Load font
     fontAtlas := ImFontAtlas_AHK.from_ptr(io.Fonts.ptr)
     fontAtlas.ClearFonts()
-    glyphRange := fontAtlas.GetGlyphRangesChineseFull()
+    ;GetGlyphRangesDefault
+    ;GetGlyphRangesChineseFull
+    glyphRange := fontAtlas.GetGlyphRangesDefault()
 
     config_words_ptr := ImFontConfig_AHK.ImFontConfig()
     ;xx := ImFontConfig_AHK.ImFontConfig()
     config_words := ImFontConfig_AHK.from_ptr(config_words_ptr)
+    ;一定要设置false,否则ahk context释放的时候，会报错
+    config_words.FontDataOwnedByAtlas := false
     config_words.OversampleH := 2
     config_words.OversampleV := 1
     config_words.SizePixels := 20
@@ -160,11 +175,14 @@ create_window(ui, title, w, h, x := 0, y := 0)
 
                     DllCall('ScreenToClient', 'ptr', hwnd, 'ptr', pt)
 
+                    x := NumGet(pt, 0, 'int')
+                    y := NumGet(pt, 4, 'int')
+
                     hit := DllCall("DefWindowProcW", "ptr", hwnd, "uint", msg, "ptr", wp, "ptr", lp, "ptr")
                     if(hit == 1) ;HTCLIENT
                     {
                         io := ImGuiIO.from_ptr(DllCall(Cimgui_dll.igGetIO, 'ptr'))
-                        if (io.WantCaptureMouse)
+                        if ((io.WantCaptureMouse && y > 25) || (io.WantCaptureMouse && x < 25))
                         {
                             ; Let imgui handle the mouse event
                             return hit

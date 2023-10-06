@@ -18,6 +18,7 @@ class Imgui extends Cimgui_AHK
     __New()
     {
         global g_imgui
+        global g_is_running := true
         g_imgui := this
     }
     __Delete()
@@ -124,6 +125,8 @@ class Imgui extends Cimgui_AHK
         return hwnd
     }
 
+    show(p*) => WinShow(this.hwnd, p*)
+
     ;背景透明的窗口
     gui_overlay(title, w, h, x := -1, y := -1, style := 0, ex_style := 0, font_path := "from_memory_simhei", font_size := 20, font_range := "GetGlyphRangesChineseFull", range_charBuf := 0, OversampleH := 2, OversampleV := 1, PixelSnapH := false)
     {
@@ -166,12 +169,15 @@ class Imgui extends Cimgui_AHK
     shutdown_ahk()
     {
         Critical
+        global g_is_running
+        g_is_running := false
+        DllCall('DestroyWindow', 'ptr', this.hwnd)
+        this.UnregisterClass(this.class_name, NumGet(this.cls.cls, 24, 'ptr'))
+
         DllCall(Cimgui_dll.ImGui_ImplDX11_Shutdown)
         DllCall(Cimgui_dll.ImGui_ImplWin32_Shutdown)
         DllCall(Cimgui_dll.igDestroyContext, 'ptr', 0)
         DllCall(Cimgui_dll.CleanupDeviceD3D)
-        DllCall('DestroyWindow', 'ptr', this.hwnd)
-        this.UnregisterClass(this.class_name, NumGet(this.cls.cls, 24, 'ptr'))
     }
 
     enableviewports(enable := True) => DllCall(Cimgui_dll.EnableViewports, "Int", enable)
@@ -260,12 +266,32 @@ class Imgui extends Cimgui_AHK
         return result
     }
 
-    change_window_icon(hwnd, ico_path)
+    change_window_icon(ico_path)
     {
         hIcon := DllCall( "LoadImage", 'UInt',0, 'Str', ico_path, 'uint',1, 'UInt',0, 'UInt',0, 'UInt',0x10 )
-        SendMessage(0x80, 0, hIcon,, hwnd)
-        SendMessage(0x80, 1, hIcon,, hwnd)
+        SendMessage(0x80, 0, hIcon,, this.hwnd)
+        SendMessage(0x80, 1, hIcon,, this.hwnd)
     }
+
+    SetDarkMode() => (
+        DllCall("uxtheme\SetWindowTheme", "ptr", this.hwnd, "ptr", StrPtr("DarkMode_Explorer"), "ptr", 0) ? true : false
+    )
+
+    SetDarkTitle()
+    {
+        if VerCompare(A_OSVersion, "10.0.17763") >= 0
+        {
+            attr := 19
+
+            if VerCompare(A_OSVersion, "10.0.18985") >=  0
+                attr := 20
+            
+            if DllCall("dwmapi\DwmSetWindowAttribute", "ptr", this.hwnd, "int", attr, "int*", true, "int", 4)
+                return true
+        }
+        return false
+    }
+
     CreateDeviceD3D(hwnd) => DllCall(Cimgui_dll.CreateDeviceD3D, 'ptr', hwnd, 'char')
     CleanupDeviceD3D() => DllCall(Cimgui_dll.CleanupDeviceD3D)
     ShowWindow(hWnd, nCmdShow) => DllCall('User32\ShowWindow', 'ptr', hWnd, 'int', nCmdShow, 'int')
