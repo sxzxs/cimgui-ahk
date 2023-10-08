@@ -301,7 +301,7 @@ class Cimgui_AHK
 	    return dll_rtn
 	}
 	
-	igBeginTable(str_id, column, flags := 0, outer_size := ImVec2([0.0f, 0.0f]), inner_width := 0.0)
+	igBeginTable(str_id, column, flags := 0, outer_size := ImVec2([0.0, 0.0]), inner_width := 0.0)
 	{
 		;bool igBeginTable(const char* str_id, int column, ImGuiTableFlags flags, const ImVec2 outer_size, float inner_width)
 	    dll_rtn := DllCall(Cimgui_dll.igBeginTable, "ptr", str_id, "int", column, "int", flags, "int64", NumGet(outer_size, "int64"), "float", inner_width, "char")

@@ -195,6 +195,7 @@ class_func_str := StrReplace(class_func_str, 'sizeof([float])', '4')
 class_func_str := StrReplace(class_func_str, '"ushort*", &glyph_ranges', '"ptr", glyph_ranges')
 class_func_str := StrReplace(class_func_str, '&glyph_ranges := 0', 'glyph_ranges := 0')
 class_func_str := StrReplace(class_func_str, 'this_this', 'self')
+class_func_str := StrReplace(class_func_str, '0.0f', '0.0')
 
 A_Clipboard := class_func_str
 logger.info(func_all_str)
