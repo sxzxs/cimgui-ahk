@@ -81,6 +81,7 @@ create_window(ui, title, w, h, x := 0, y := 0)
     io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable 
     io.ConfigFlags |= ImGuiConfigFlags_DockingEnable 
 
+    io.ConfigViewportsNoAutoMerge := true
     io.ConfigViewportsNoTaskBarIcon := false
     io.ConfigDockingTransparentPayload := true
 

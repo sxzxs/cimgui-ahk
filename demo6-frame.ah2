@@ -27,7 +27,7 @@ class Ui_menu
         this.logo := ui.imageFromFile(A_ScriptDir '\images\main.ico')
         this.logo_size := ui.ImageGetSize(this.logo)
         ;hwnd := ui.guicreate_unbackground("AHK ImGui",, 18, 'GetGlyphRangesDefault')
-        ui.change_window_icon(hwnd, A_ScriptDir "\images\main.ico")
+        ui.change_window_icon(A_ScriptDir "\images\main.ico")
         WinShow(hwnd)
         io := ui.igGetIO()
 
