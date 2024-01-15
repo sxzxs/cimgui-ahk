@@ -292,6 +292,8 @@ class Imgui extends Cimgui_AHK
         return false
     }
 
+    EnableAlphaCompositing(hwnd) => DllCall(Cimgui_dll.EnableAlphaCompositing, 'ptr', hwnd, 'char')
+
     CreateDeviceD3D(hwnd) => DllCall(Cimgui_dll.CreateDeviceD3D, 'ptr', hwnd, 'char')
     CleanupDeviceD3D() => DllCall(Cimgui_dll.CleanupDeviceD3D)
     ShowWindow(hWnd, nCmdShow) => DllCall('User32\ShowWindow', 'ptr', hWnd, 'int', nCmdShow, 'int')
