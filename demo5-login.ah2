@@ -13,6 +13,7 @@ main()
     global g_io := ImGuiIO.from_ptr(io)
     load_styles(ui)
 
+    is_loader_status := true
     is_open_demo := false
     is_open_main := true 
     bf := ui.tb('input')
@@ -28,8 +29,8 @@ main()
         {
             if(!IsSet(is_once))
                 ui.igSetNextWindowPos(ImVec2([200, 200])), is_once := true
-            ui.igSetNextWindowSize(ImVec2([740, 460]))
-            if(ui.igBegin(ui.str('loader'), &is_open_main, ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar))
+            ;ui.igSetNextWindowSize(ImVec2([740, 460]))
+            if(ui.igBegin(ui.str('loader##loader'), &is_open_main, ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar))
             {
                 ui.igSetCursorPos(ImVec2([726, 5]))
                 ui.igTextDisabled(ui.str('X'))
@@ -90,6 +91,21 @@ main()
             }
             ui.igEnd()
         }
+
+        ;740 460
+        static init_height := 460
+        static init_widget := 0
+        if(is_loader_status)
+        {
+            if(init_height < 460)
+                init_height += 10
+            if(init_widget < 740)
+                init_widget += 20
+            ui.igSetWindowSize_Str(ui.str('loader##loader'), ImVec2([init_widget, init_height]))
+            if(init_widget > 740)
+                is_loader_status := false
+        }
+
         ui.endframe()
     }
     ui.ShutDown()

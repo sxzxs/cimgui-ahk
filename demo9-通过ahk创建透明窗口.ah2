@@ -9,6 +9,9 @@ main()
     hwnd := create_window(ui, "AHK ImGui", 500, 500, 0, 0)
     WinShow(hwnd)
 
+    ;下面这句可有可无
+    ui.EnableAlphaCompositing(hwnd) ;透明窗口
+
     io := ui.igGetIO()
     ;调用from_ptr的对象，如果在函数退出之前还在堆栈中的，需要声明成global 或者，主动释放
     global g_io := ImGuiIO_AHK.from_ptr(io)
@@ -50,7 +53,7 @@ main()
             }
             ui.igEnd()
         }
-        ui.endframe(0x00cccccc)
+        ui.endframe(0x0)
     }
     ui.shutdown_ahk()
     ExitApp

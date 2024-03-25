@@ -9,6 +9,7 @@ main()
 {
     global g_is_first_run := true
     ui := Imgui()
+
     hwnd := create_window(ui, "AHK ImGui", 2560, 1080, 0, 0)
     ;hwnd := ui.gui_create("cimgui", 2560, 1080, 0, 0)
 
@@ -23,6 +24,9 @@ main()
     DllCall("SetWindowLongPtr", "Ptr", hwnd, "Int", -20 ,"Int64", DllCall('GetWindowLongPtr', 'ptr', hwnd, 'int', -20, 'int64') | WS_EX_TRANSPARENT | WS_EX_LAYERED | WS_EX_TOPMOST)
     logger.info(DllCall('GetWindowLongPtr', 'ptr', hwnd, 'int', -20, 'int64'))
     ;SetWindowLong(hwnd, -20, GetWindowLong(hWnd, -20) | WS_EX_LAYERED | WS_EX_TRANSPARENT | WS_EX_TOPMOST)
+
+    ;ShowWindow(hwnd, 10)
+    ;UpdateWindow(hwnd)
 
 
 
@@ -45,7 +49,7 @@ main()
 
         ptr := ui.igGetForegroundDrawList_Nil()
         draw_list := ImDrawList_AHK.from_ptr(ptr)
-        draw_list.AddLine(ImVec2([500, 0]), ImVec2([500, 1000]), 0xcccccccc)
+        ;draw_list.AddLine(ImVec2([500, 0]), ImVec2([500, 1000]), 0xcccccccc)
         ;draw_list.AddLine(ImVec2([0, 0]), ImVec2([1000, 1000]), 0xcccccccc)
 
 
@@ -59,7 +63,11 @@ main()
                 ui.igSetNextWindowPos(ImVec2([100, 100]))
                 g_is_first_run := false
             }
-            if(ui.igBegin(ui.str('xxx##test'), &is_open_main, ImGuiWindowFlags_NoBackground | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize))
+            main_view_port := ui.igGetMainViewport()
+            g_main_view_port := ImGuiViewport.from_ptr(main_view_port)
+            ui.igSetNextWindowPos(ImVec2([g_main_view_port.WorkPos.x, g_main_view_port.WorkPos.y]))
+            ui.igSetNextWindowSize(ImVec2([g_main_view_port.WorkSize.x, g_main_view_port.WorkSize.y]))
+            if(ui.igBegin(ui.str('render##render'), &is_open_main, ImGuiWindowFlags_NoBackground | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize))
             {
                 ui.igSetWindowSize_Vec2(ImVector_ImVec2([0, 0]), ImGuiCond_Once)
                 ptr := ui.igGetForegroundDrawList_Nil()
@@ -87,7 +95,8 @@ main()
             ui.igEnd()
             try
             {
-                WinSetAlwaysOnTop(true, "xxx")
+                WinSetAlwaysOnTop(true, "控制窗口")
+                WinSetAlwaysOnTop(true, hwnd)
             }
         }
         ui.endframe(0x0)

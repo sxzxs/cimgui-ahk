@@ -19,8 +19,8 @@ class Cimgui_dll
 		DllCall("SetDllDirectory", "Str", path)
 		this.lib := DllCall("LoadLibrary", "Str", 'example_win32_directx11.dll', "ptr")
         ;属性比map要快一些
-		LibAddr this.lib, this
-        ;this.module := get_module_exports(this.lib)
+		;LibAddr this.lib, this
+        this.module := get_module_exports(this.lib, this)
 	}
 	static GPA(function)
 	{
@@ -46,7 +46,7 @@ LibAddr(h, t := {}) {
 	}
 }
 
-get_module_exports(mod) {
+get_module_exports(mod, t := {}) {
 	if !mod
 		mod := DllCall('GetModuleHandleW', 'ptr', 0, 'ptr')
 	else if (DllCall('GetModuleFileNameW', 'ptr', mod, 'ptr*', 0, 'uint', 1), A_LastError = 126)
@@ -66,6 +66,7 @@ get_module_exports(mod) {
 			fn_ptr := DllCall('GetProcAddress', 'ptr', DllCall('GetModuleHandle', 'str', fn_name[1], 'ptr'), 'astr', fn_name[2], 'ptr')
 		}
 		exports[StrGet(mod + NumGet(mod, name_tbl_offset, 'uint'), 'cp0')] := fn_ptr
+		t.%StrGet(mod + NumGet(mod, name_tbl_offset, 'uint'), 'cp0')% := fn_ptr
 		name_tbl_offset += 4, ordinal_tbl_offset += 2
 	}
 	return exports

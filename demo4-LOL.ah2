@@ -5,7 +5,7 @@ main()
 main()
 {
     ui := Imgui()
-    ui.enableviewports(true)
+    ui.enableviewports(false)
     ui.load_font_range(A_ScriptDir '/font/ImguiText.txt', &range_array := [], &length := 0, &raw_data)
     hwnd := ui.gui_create("AHK ImGui", 500, 500, 0, 0, 0, 0,,,, raw_data)
     change_window_icon(hwnd, A_ScriptDir "\images\main.ico")
@@ -25,13 +25,22 @@ main()
         if(is_open_main)
         {
             main_view_port := ui.igGetMainViewport()
-            g_main_view_port := ImGuiViewport.from_ptr(main_view_port)
+            global g_main_view_port := ImGuiViewport.from_ptr(main_view_port)
             ui.igSetNextWindowPos(ImVec2([g_main_view_port.WorkPos.x, g_main_view_port.WorkPos.y]))
             ui.igSetNextWindowSize(ImVec2([g_main_view_port.WorkSize.x, g_main_view_port.WorkSize.y]))
             static flags := ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoSavedSettings
             static mode := '大乱斗'
+
             if(ui.igBegin(ui.str('main'), &is_open_main, flags))
             {
+                if(ui.igBeginMenu(ui.str('main_menu')))
+                {
+                    static is_selected := true
+                    ui.igMenuItem_BoolPtr(ui.str('selected'), 0, &is_selected)
+                    static tb := ui.tb()
+                    ui.igInputText(ui.str('inputtext'), tb, tb.size)
+                    ui.igEndMenu()
+                }
                 static v := 1
                 ui.igRadioButton_IntPtr(ui.str('大乱斗'), &v, 1), ui.igSameLine()
                 ui.igRadioButton_IntPtr(ui.str('云顶匹配'), &v, 2), ui.igSameLine()
