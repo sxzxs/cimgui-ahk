@@ -75,7 +75,7 @@ main()
             ui.igSetNextWindowClass(noAutoMerge_class.ptr)
             ui.igPushStyleColor_Vec4(ImGuiCol_WindowBg, ImVec4([0.054, 0.054, 0.054, 0.5]))
 
-            ui.igPushStyleVar_Float(ImGuiStyleVar_WindowRounding, 3)
+            ui.igPushStyleVar_Float(ImGuiStyleVar_WindowRounding, 10)
             if(ui.igBegin(ui.str('控制窗口##test2'), &is_open_main))
             {
                 ;ui.igSetWindowSize_Vec2(ImVector_ImVec2([500, 500]), ImGuiCond_Once)

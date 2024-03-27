@@ -30,6 +30,9 @@ main()
             if(!IsSet(is_once))
                 ui.igSetNextWindowPos(ImVec2([200, 200])), is_once := true
             ;ui.igSetNextWindowSize(ImVec2([740, 460]))
+
+            ui.igPushStyleColor_Vec4(ImGuiCol_WindowBg, ImVec4([0.054, 0.054, 0.054, 0.9]))
+            ui.igPushStyleVar_Float(ImGuiStyleVar_WindowRounding, 10)
             if(ui.igBegin(ui.str('loader##loader'), &is_open_main, ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar))
             {
                 ui.igSetCursorPos(ImVec2([726, 5]))
@@ -37,7 +40,7 @@ main()
                 if(ui.igIsItemClicked())
                     exitapp
 
-                ui.igPushStyleColor_Vec4(ImGuiCol_ChildBg, ImVec4([0.054, 0.054, 0.054, 1]))
+                ui.igPushStyleColor_Vec4(ImGuiCol_ChildBg, ImVec4([0.054, 0.054, 0.054, 0.5]))
                 ui.igPushStyleColor_Vec4(ImGuiCol_Border, ImVec4([0.082, 0.078, 0.078, 1]))
                 ui.igPushStyleVar_Float(ImGuiStyleVar_ChildRounding, 3)
                 {
@@ -89,6 +92,8 @@ main()
                 ui.igPopStyleColor(2)
                 ui.igPopStyleVar(1)
             }
+            ui.igPopStyleColor()
+            ui.igPopStyleVar()
             ui.igEnd()
         }
 
