@@ -95,7 +95,10 @@ main()
                 ui.igPushStyleColor_Vec4(ImGuiCol_ButtonActive, ImVec4([255, 255, 255, 255]))
 
                 ui.igSetCursorPos(ImVec2([745, 15]))
-                ui.igImageButton(ui.str('qq_set'), qq_set, ImVec2(qq_set_size))
+                if(ui.igImageButton(ui.str('qq_set'), qq_set, ImVec2(qq_set_size)))
+                {
+                    WinMinimize('xxx')
+                }
 
                 ui.igSetCursorPos(ImVec2([800, 18]))
                 if(ui.igImageButton(ui.str('qq_close'), qq_close, ImVec2(qq_close_size)))
@@ -130,7 +133,7 @@ main()
                 ui.igGetWindowPos(current_window_pos)
                 
                 static draw_list := ui.igGetWindowDrawList()
-                dl := ImDrawList_AHK.from_ptr(draw_list)
+                global dl := ImDrawList_AHK.from_ptr(draw_list)
                 dl.AddLine(ImVec2([current_window_pos.x + 540, current_window_pos.y + 340]), ImVec2([current_window_pos.x + 815, current_window_pos.y + 340]), 0xffe0e0e0e0, 1)
 
                 ui.igSetCursorPos(ImVec2([550, 360]))
@@ -166,6 +169,7 @@ main()
 create_window(ui, title, w, h, x := 0, y := 0)
 {
     class_name := 'cimgui-ahk'
+    ui.class_name := 'cimgui-ahk'
     ui.cls := cls := ui.WindowClass(CallbackCreate(WndProc), class_name, CS_CLASSDC := 0x0040)
 
     WS_EX_TOPMOST := 0x00000008, WS_EX_LAYERED := 0x00080000, WS_POPUP := 0x80000000

@@ -6,7 +6,7 @@ main()
 {
     global g_is_first_run := true
     ui := Imgui()
-    hwnd := create_window(ui, "AHK ImGui", 0, 0, -5000, -5000)
+    hwnd := create_window(ui, "AHK ImGui", 0, 0, 0, 0)
     WinHide(hwnd)
 
     set_image := ui.imageFromFile(A_ScriptDir '\images\set.png')
@@ -104,6 +104,7 @@ main()
 create_window(ui, title, w, h, x := 0, y := 0)
 {
     class_name := 'cimgui-ahk'
+    ui.class_name := 'cimgui-ahk'
     ui.cls := cls := ui.WindowClass(CallbackCreate(WndProc), class_name, CS_CLASSDC := 0x0040)
 
     WS_EX_TOPMOST := 0x00000008, WS_EX_LAYERED := 0x00080000, WS_POPUP := 0x80000000

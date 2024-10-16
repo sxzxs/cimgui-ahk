@@ -65,17 +65,22 @@ main()
             }
             main_view_port := ui.igGetMainViewport()
             g_main_view_port := ImGuiViewport.from_ptr(main_view_port)
-            ui.igSetNextWindowPos(ImVec2([g_main_view_port.WorkPos.x, g_main_view_port.WorkPos.y]))
-            ui.igSetNextWindowSize(ImVec2([g_main_view_port.WorkSize.x, g_main_view_port.WorkSize.y]))
+            ;ui.igSetNextWindowPos(ImVec2([g_main_view_port.WorkPos.x, g_main_view_port.WorkPos.y]))
+            ;ui.igSetNextWindowSize(ImVec2([g_main_view_port.WorkSize.x, g_main_view_port.WorkSize.y]))
             if(ui.igBegin(ui.str('render##render'), &is_open_main, ImGuiWindowFlags_NoBackground | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize))
             {
                 ui.igSetWindowSize_Vec2(ImVector_ImVec2([0, 0]), ImGuiCond_Once)
                 ptr := ui.igGetForegroundDrawList_Nil()
                 draw_list := ImDrawList_AHK.from_ptr(ptr)
-                draw_list.AddLine(ImVec2([0, 0]), ImVec2([1000, 1000]), 0xff0000ff, 2)
-                draw_list.AddCircle(ImVec2([500, 500]), 100, 0xffff0000,, 2) ;abgr
+                ;draw_list.AddLine(ImVec2([0, 0]), ImVec2([1000, 1000]), 0xff0000ff, 2)
+                ;draw_list.AddCircle(ImVec2([500, 500]), 100, 0xffff0000,, 2) ;abgr
             }
             ui.igEnd()
+
+            ptr := ui.igGetForegroundDrawList_ViewportPtr(main_view_port)
+            draw_list := ImDrawList_AHK.from_ptr(ptr)
+            draw_list.AddLine(ImVec2([0, 0]), ImVec2([1000, 1000]), 0xff0000ff, 2)
+            draw_list.AddCircle(ImVec2([500, 500]), 100, 0xffff0000,, 2) ;abgr
 
             noAutoMerge_class := ImGuiWindowClass()
             noAutoMerge_class.ViewportFlagsOverrideSet := ImGuiViewportFlags_NoAutoMerge

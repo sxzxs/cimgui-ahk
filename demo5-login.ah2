@@ -1,5 +1,6 @@
 #Requires AutoHotkey v2.0
 #include <cimgui>
+#include <log>
 
 main()
 main()

@@ -102,6 +102,7 @@ main()
             }
             ui.igEnd()
 
+            ;如果设置automerge，则继承主窗口透明穿透，无法点击
             noAutoMerge_class := ImGuiWindowClass()
             noAutoMerge_class.ViewportFlagsOverrideSet := ImGuiViewportFlags_NoAutoMerge
             ui.igSetNextWindowClass(noAutoMerge_class.ptr)

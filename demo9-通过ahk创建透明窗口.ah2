@@ -66,6 +66,7 @@ create_window(ui, title, w, h, x := 0, y := 0)
     ui.cls := cls := ui.WindowClass(CallbackCreate(WndProc), class_name, CS_CLASSDC := 0x0040)
 
     WS_EX_TOPMOST := 0x00000008, WS_EX_LAYERED := 0x00080000, WS_POPUP := 0x80000000
+    WS_EX_TRANSPARENT := 0x00000020 ; 穿透点击
     ui.hwnd := hwnd := ui.CreateWindowEx(WS_EX_TOPMOST | WS_EX_LAYERED, class_name, 'cimgui', WS_POPUP, x, y, w, h, 0, 0, 0, 0)
 
     margins := Buffer(16,0)
