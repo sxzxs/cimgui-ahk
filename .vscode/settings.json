@@ -1,0 +1,18 @@
+{
+    "files.associations": {
+        "*.ahk": "ahk2",
+        "type_traits": "cpp",
+        "system_error": "cpp",
+        "xlocale": "cpp",
+        "initializer_list": "cpp",
+        "list": "cpp",
+        "vector": "cpp",
+        "xhash": "cpp",
+        "xstring": "cpp",
+        "xtree": "cpp",
+        "xutility": "cpp",
+        "iterator": "cpp",
+        "algorithm": "cpp",
+        "functional": "cpp"
+    }
+}
